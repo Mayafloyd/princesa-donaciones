@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 820" width="100%" height="100%">
+  <rect width="600" height="820" fill="#ffffff" stroke="#0a5c36" stroke-width="4"/>
+  
+  <!-- Header UdeA style -->
+  <rect x="0" y="0" width="600" height="115" fill="#0a5c36"/>
+  <text x="30" y="42" font-family="'Times New Roman', serif" font-size="22" font-weight="bold" fill="#ffffff">UNIVERSIDAD DE ANTIOQUIA</text>
+  <text x="30" y="68" font-family="sans-serif" font-size="14" fill="#e8f5e9">FACULTAD DE CIENCIAS AGRARIAS</text>
+  <text x="30" y="92" font-family="sans-serif" font-size="13" font-weight="bold" fill="#c8e6c9">HOSPITAL CLÍNICO VETERINARIO - ROBLEDO / MEDELLÍN</text>
+  
+  <!-- Watermark Stamp -->
+  <g transform="translate(500, 58)">
+    <circle cx="0" cy="0" r="38" fill="none" stroke="#ffffff" stroke-width="2" stroke-dasharray="4 2"/>
+    <text x="0" y="-10" font-family="sans-serif" font-size="8" fill="#ffffff" text-anchor="middle">CLÍNICA VET</text>
+    <text x="0" y="5" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">UDEA</text>
+    <text x="0" y="18" font-family="sans-serif" font-size="8" fill="#ffffff" text-anchor="middle">MEDELLÍN</text>
+  </g>
+
+  <!-- Document Meta -->
+  <rect x="30" y="130" width="540" height="85" rx="6" fill="#f8f9fa" stroke="#ced4da" stroke-width="1.5"/>
+  <text x="45" y="155" font-family="sans-serif" font-size="13" font-weight="bold" fill="#212529">HISTORIA CLÍNICA: <tspan fill="#0a5c36">REPORTE DIAGNÓSTICO &amp; REMISIÓN QUIRÚRGICA</tspan></text>
+  <text x="45" y="175" font-family="sans-serif" font-size="12" fill="#495057">Nº HC: HCV-UDEA-2026-09418 | Fecha: Octubre 2026</text>
+  <text x="45" y="195" font-family="sans-serif" font-size="12" fill="#495057">Servicio: Cirugía y Medicina Interna de Pequeñas Especies</text>
+
+  <!-- Paciente Box -->
+  <rect x="30" y="230" width="540" height="105" rx="6" fill="#f1f8f4" stroke="#a3cfbb" stroke-width="2"/>
+  <text x="45" y="255" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0f5132">DATOS DEL PACIENTE FELINO</text>
+  <line x1="45" y1="262" x2="555" y2="262" stroke="#a3cfbb" stroke-width="1"/>
+  <text x="45" y="285" font-family="sans-serif" font-size="13" fill="#212529">Nombre: <tspan font-weight="bold">Princesa</tspan> | Especie: <tspan font-weight="bold">Felino Doméstico</tspan> | Sexo: <tspan font-weight="bold">Hembra</tspan></text>
+  <text x="45" y="305" font-family="sans-serif" font-size="13" fill="#212529">Color: <tspan font-weight="bold">Negro Sólido</tspan> | Propietaria: <tspan font-weight="bold">Sara</tspan></text>
+  <text x="45" y="325" font-family="sans-serif" font-size="13" fill="#212529">Sede de Atención: <tspan font-weight="bold">Clínica Veterinaria Universidad de Antioquia (Medellín)</tspan></text>
+
+  <!-- Hallazgo Clínico Principal: CÁLCULO Y ÚLCERA -->
+  <rect x="30" y="350" width="540" height="180" rx="6" fill="#fff3cd" stroke="#ffeeba" stroke-width="2"/>
+  <text x="45" y="375" font-family="sans-serif" font-size="14" font-weight="bold" fill="#856404">DIAGNÓSTICO DEFINITIVO (ECOGRAFÍA &amp; VALORACIÓN CLÍNICA):</text>
+  
+  <text x="45" y="405" font-family="sans-serif" font-size="13" font-weight="bold" fill="#b02a37">⚠️ PRESENCIA DE CÁLCULO Y LESIÓN ULCERATIVA ASOCIADA</text>
+  <text x="45" y="428" font-family="sans-serif" font-size="12" fill="#333333">1. Estudio ecográfico confirma urolitiasis / estructura de cálculo con sombra acústica posterior.</text>
+  <text x="45" y="448" font-family="sans-serif" font-size="12" fill="#333333">2. Evidencia de úlcera parietal con proceso inflamatorio severo que genera dolor persistente.</text>
+  <text x="45" y="468" font-family="sans-serif" font-size="12" fill="#333333">3. Riesgo de obstrucción aguda y necrosis si no se interviene quirúrgicamente a la brevedad.</text>
+  <text x="45" y="495" font-family="sans-serif" font-size="13" font-weight="bold" fill="#0a5c36">👉 CONDUCTA: INTERVENCIÓN QUIRÚRGICA URGENTE PARA EXTRACCIÓN Y TRATAMIENTO DE ÚLCERA</text>
+
+  <!-- Desglose Quirúrgico -->
+  <text x="30" y="555" font-family="sans-serif" font-size="13" font-weight="bold" fill="#0a5c36">PROCEDIMIENTOS Y PLAN MÉDICO EN CLÍNICA UDEA:</text>
+  <rect x="30" y="570" width="540" height="125" rx="6" fill="#ffffff" stroke="#ced4da" stroke-width="1.5"/>
+  <text x="45" y="595" font-family="sans-serif" font-size="12" fill="#212529">• Extracción quirúrgica del cálculo y debridamiento / manejo de úlcera.</text>
+  <text x="45" y="615" font-family="sans-serif" font-size="12" fill="#212529">• Protocolo de anestesia inhalatoria general monitorizada (oxigenación continua).</text>
+  <text x="45" y="635" font-family="sans-serif" font-size="12" fill="#212529">• Cuadro hemático y perfiles bioquímicos pre-anestésicos completos (renal y hepático).</text>
+  <text x="45" y="655" font-family="sans-serif" font-size="12" fill="#212529">• Hospitalización post-quirúrgica en UCI de pequeñas especies (48 horas) + analgesia multimodal.</text>
+  <text x="45" y="675" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0a5c36">• Estimado Total Cirugía UdeA: $ 2.900.000 COP</text>
+
+  <!-- Firma y Sello -->
+  <g transform="translate(120, 755)">
+    <line x1="-70" y1="0" x2="90" y2="0" stroke="#495057" stroke-width="1.5"/>
+    <text x="10" y="16" font-family="sans-serif" font-size="11" font-weight="bold" fill="#212529" text-anchor="middle">Médico Veterinario Especialista</text>
+    <text x="10" y="30" font-family="sans-serif" font-size="10" fill="#6c757d" text-anchor="middle">Hospital Veterinario UdeA</text>
+  </g>
+
+  <g transform="translate(450, 750)">
+    <circle cx="0" cy="0" r="34" fill="none" stroke="#b02a37" stroke-width="2" opacity="0.9"/>
+    <circle cx="0" cy="0" r="30" fill="none" stroke="#b02a37" stroke-width="1" stroke-dasharray="3 2" opacity="0.9"/>
+    <text x="0" y="-8" font-family="sans-serif" font-size="8" font-weight="bold" fill="#b02a37" text-anchor="middle">HOSPITAL VET</text>
+    <text x="0" y="5" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b02a37" text-anchor="middle">UDEA ROBLEDO</text>
+    <text x="0" y="16" font-family="sans-serif" font-size="7" fill="#b02a37" text-anchor="middle">SELLO OFICIAL</text>
+  </g>
+</svg>

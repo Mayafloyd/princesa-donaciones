@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <rect width="400" height="400" fill="#fff9fb" rx="20"/>
+  <rect x="10" y="10" width="380" height="380" fill="none" stroke="#ffb6c1" stroke-width="3" stroke-dasharray="8 6" rx="15"/>
+  
+  <!-- Merch representation -->
+  <g transform="translate(200, 180)">
+    
+    
+
+    
+
+    
+    <!-- Tote bag -->
+    <path d="M -45 -120 Q 0 -150 45 -120 L 45 -40 L -45 -40 Z" fill="none" stroke="#d4a373" stroke-width="10"/>
+    <rect x="-80" y="-40" width="160" height="170" rx="10" fill="#faedcd" stroke="#d4a373" stroke-width="4"/>
+    <rect x="-55" y="-15" width="110" height="110" rx="8" fill="#ffffff" stroke="#ffb6c1" stroke-width="2"/>
+    <circle cx="0" cy="40" r="32" fill="#1e1822"/>
+    <polygon points="-22,18 -12,-2 0,18" fill="#1e1822"/>
+    <polygon points="0,18 12,-2 22,18" fill="#1e1822"/>
+    <circle cx="-10" cy="38" r="5" fill="#ffea79"/>
+    <circle cx="10" cy="38" r="5" fill="#ffea79"/>
+    <text x="0" y="80" font-family="sans-serif" font-size="11" font-weight="bold" fill="#ff4081" text-anchor="middle">CAT MOM</text>
+    
+
+    
+  </g>
+
+  <!-- Tag / Ribbons -->
+  <rect x="30" y="325" width="340" height="50" rx="25" fill="#ffd1eb" stroke="#ff80ab" stroke-width="2"/>
+  <text x="200" y="356" font-family="'Comic Sans MS', cursive, sans-serif" font-size="18" font-weight="bold" fill="#c2185b" text-anchor="middle">
+    ✨ Tote Bag Ecológica ✨
+  </text>
+</svg>

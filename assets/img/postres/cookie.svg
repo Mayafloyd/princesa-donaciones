@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <rect width="400" height="400" fill="#fff5f8" rx="20"/>
+  <rect x="10" y="10" width="380" height="380" fill="none" stroke="#ffb6c1" stroke-width="3" stroke-dasharray="6 6" rx="15"/>
+  <g transform="translate(200, 180)">
+    
+
+    
+    <!-- Cookie Cat Paw -->
+    <circle cx="0" cy="15" r="65" fill="#e6b87d" stroke="#c48a4c" stroke-width="4"/>
+    <!-- Paw pads in chocolate -->
+    <ellipse cx="0" cy="28" rx="28" ry="20" fill="#4a2511"/>
+    <circle cx="-25" cy="-8" r="11" fill="#4a2511"/>
+    <circle cx="0" cy="-18" r="12" fill="#4a2511"/>
+    <circle cx="25" cy="-8" r="11" fill="#4a2511"/>
+    <circle cx="-42" cy="12" r="4" fill="#6d391c"/>
+    <circle cx="42" cy="22" r="5" fill="#6d391c"/>
+    
+
+    
+  </g>
+  <rect x="40" y="325" width="320" height="50" rx="25" fill="#fff0f5" stroke="#ff4081" stroke-width="2"/>
+  <text x="200" y="356" font-family="'Comic Sans MS', cursive, sans-serif" font-size="18" font-weight="bold" fill="#ad1457" text-anchor="middle">
+    🧁 Galleta Huellita 🧁
+  </text>
+</svg>

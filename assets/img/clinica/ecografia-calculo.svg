@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400" width="100%" height="100%">
+  <rect width="500" height="400" fill="#0d1117" rx="10"/>
+  
+  <!-- Ultrasound monitor UI -->
+  <rect x="10" y="10" width="480" height="35" fill="#161b22" rx="6"/>
+  <text x="25" y="32" font-family="monospace" font-size="12" fill="#58a6ff">HCV-UDEA MEDELLIN | PACIENTE: PRINCESA</text>
+  <text x="470" y="32" font-family="monospace" font-size="12" fill="#3fb950" text-anchor="end">ESTUDIO ECOGRÁFICO</text>
+
+  <!-- Ultrasound scan cone -->
+  <g transform="translate(250, 60)">
+    <path d="M 0 0 L -180 250 A 260 260 0 0 0 180 250 Z" fill="#1f242c" opacity="0.7"/>
+    <path d="M 0 0 L -150 240 A 230 230 0 0 0 150 240 Z" fill="#242b35" opacity="0.6"/>
+    
+    <!-- Organ boundary -->
+    <ellipse cx="0" cy="150" rx="110" ry="70" fill="none" stroke="#388bfd" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.7"/>
+
+    <!-- The stone (cálculo) with acoustic shadow -->
+    <ellipse cx="-25" cy="145" rx="18" ry="14" fill="#ffffff" stroke="#e6edf3" stroke-width="2"/>
+    <!-- Acoustic Shadow behind stone -->
+    <polygon points="-43,148 7,148 20,250 -60,250" fill="#0d1117" opacity="0.9"/>
+
+    <!-- Ulcer lesion (úlcera parietal) -->
+    <path d="M -15 190 Q 10 180 35 195 Q 20 205 -15 190 Z" fill="#f85149" opacity="0.8" stroke="#ff7b72" stroke-width="1.5"/>
+
+    <!-- Measurement caliper crosses -->
+    <line x1="-47" y1="145" x2="-3" y2="145" stroke="#d29922" stroke-width="1"/>
+    <line x1="-25" y1="127" x2="-25" y2="163" stroke="#d29922" stroke-width="1"/>
+
+    <!-- Pointer & labels -->
+    <line x1="-25" y1="130" x2="-90" y2="70" stroke="#ffffff" stroke-width="1.5"/>
+    <line x1="-90" y1="70" x2="-140" y2="70" stroke="#ffffff" stroke-width="1.5"/>
+    <text x="-145" y="66" font-family="sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="end">CÁLCULO IDENTIFICADO</text>
+    <text x="-145" y="80" font-family="monospace" font-size="10" fill="#ffd1eb" text-anchor="end">Sombr. Acústica Post.</text>
+
+    <!-- Pointer Ulcer -->
+    <line x1="20" y1="195" x2="80" y2="220" stroke="#ff7b72" stroke-width="1.5"/>
+    <line x1="80" y1="220" x2="130" y2="220" stroke="#ff7b72" stroke-width="1.5"/>
+    <text x="135" y="216" font-family="sans-serif" font-size="11" font-weight="bold" fill="#ff7b72">ZONA DE ÚLCERA</text>
+    <text x="135" y="230" font-family="monospace" font-size="10" fill="#ffccd5">Lesión mucosa activa</text>
+  </g>
+
+  <!-- Bottom info bar -->
+  <rect x="10" y="350" width="480" height="40" fill="#161b22" rx="6"/>
+  <text x="25" y="374" font-family="sans-serif" font-size="11" font-weight="bold" fill="#ffeb3b">
+    ⚠️ REPORTE: Cirugía requerida para remoción del cálculo y tratamiento de úlcera
+  </text>
+</svg>

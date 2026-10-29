@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffe4f2"/>
+      <stop offset="100%" stop-color="#ffd1eb"/>
+    </radialGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#da70d6" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="200" cy="200" r="185" fill="url(#bgGlow)" stroke="#ff94c2" stroke-width="6"/>
+  <circle cx="200" cy="200" r="175" fill="none" stroke="#ffffff" stroke-width="2" stroke-dasharray="6 6"/>
+
+  <!-- Sparkles -->
+  <g fill="#ffd700">
+    <path d="M 60 90 Q 70 90 70 80 Q 70 90 80 90 Q 70 90 70 100 Q 70 90 60 90 Z" />
+    <path d="M 330 110 Q 340 110 340 100 Q 340 110 350 110 Q 340 110 340 120 Q 340 110 330 110 Z" />
+    <path d="M 70 290 Q 80 290 80 280 Q 80 290 90 290 Q 80 290 80 300 Q 80 290 70 290 Z" />
+    <path d="M 320 280 Q 330 280 330 270 Q 330 280 340 280 Q 330 280 330 290 Q 330 280 320 280 Z" />
+  </g>
+
+  <!-- Cat Group -->
+  <g filter="url(#shadow)">
+    <!-- Cat Ears -->
+    <polygon points="120,180 150,70 185,160" fill="#1e1822" stroke="#ffb6c1" stroke-width="4"/>
+    <polygon points="135,170 155,95 175,155" fill="#ff99bb"/>
+    
+    <polygon points="280,180 250,70 215,160" fill="#1e1822" stroke="#ffb6c1" stroke-width="4"/>
+    <polygon points="265,170 245,95 225,155" fill="#ff99bb"/>
+
+    <!-- Cat Body -->
+    <ellipse cx="200" cy="290" rx="90" ry="75" fill="#1e1822"/>
+    <!-- Cute pink paws -->
+    <ellipse cx="160" cy="335" rx="28" ry="18" fill="#1e1822" stroke="#ff94c2" stroke-width="2"/>
+    <circle cx="152" cy="335" r="5" fill="#ffb6c1"/>
+    <circle cx="162" cy="333" r="5" fill="#ffb6c1"/>
+    <circle cx="172" cy="336" r="4" fill="#ffb6c1"/>
+
+    <ellipse cx="240" cy="335" rx="28" ry="18" fill="#1e1822" stroke="#ff94c2" stroke-width="2"/>
+    <circle cx="230" cy="335" r="5" fill="#ffb6c1"/>
+    <circle cx="240" cy="333" r="5" fill="#ffb6c1"/>
+    <circle cx="250" cy="336" r="4" fill="#ffb6c1"/>
+
+    <!-- Cat Head -->
+    <ellipse cx="200" cy="190" rx="95" ry="85" fill="#1e1822"/>
+
+    <!-- Cheek Fluffs -->
+    <path d="M 105 195 Q 90 200 110 215 Q 95 225 120 235" fill="#1e1822"/>
+    <path d="M 295 195 Q 310 200 290 215 Q 305 225 280 235" fill="#1e1822"/>
+
+    <!-- Big Kawaii Eyes -->
+    <ellipse cx="160" cy="180" rx="24" ry="28" fill="#ffea79"/>
+    <ellipse cx="240" cy="180" rx="24" ry="28" fill="#ffea79"/>
+    
+    <!-- Pupils -->
+    <ellipse cx="160" cy="180" rx="16" ry="24" fill="#16121a"/>
+    <ellipse cx="240" cy="180" rx="16" ry="24" fill="#16121a"/>
+    
+    <!-- Big Eye Highlights -->
+    <circle cx="152" cy="170" r="9" fill="#ffffff"/>
+    <circle cx="168" cy="190" r="4" fill="#ffffff"/>
+    <circle cx="232" cy="170" r="9" fill="#ffffff"/>
+    <circle cx="248" cy="190" r="4" fill="#ffffff"/>
+
+    <!-- Cute Pink Nose -->
+    <polygon points="194,204 206,204 200,212" fill="#ff94c2"/>
+
+    <!-- Mouth -->
+    <path d="M 190 216 Q 200 222 200 214 Q 200 222 210 216" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- Whiskers -->
+    <line x1="130" y1="205" x2="80" y2="198" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+    <line x1="125" y1="215" x2="75" y2="218" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+    <line x1="270" y1="205" x2="320" y2="198" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+    <line x1="275" y1="215" x2="325" y2="218" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Cute Blush -->
+    <ellipse cx="130" cy="210" rx="14" ry="8" fill="#ff69b4" opacity="0.6"/>
+    <ellipse cx="270" cy="210" rx="14" ry="8" fill="#ff69b4" opacity="0.6"/>
+
+    <!-- Accessory: Ribbon or Bandage -->
+    <g transform="translate(200, 245)">
+      <path d="M -25 -5 Q -40 -20 -25 -30 Q -10 -20 -15 -5 Z" fill="#ff4081"/>
+      <path d="M 25 -5 Q 40 -20 25 -30 Q 10 -20 15 -5 Z" fill="#ff4081"/>
+      <circle cx="0" cy="-15" r="9" fill="#ff80ab"/>
+      <circle cx="0" cy="-15" r="5" fill="#ffffff"/>
+      <!-- Small healing heart badge -->
+      <path d="M 0 0 L -8 15 L 0 12 L 8 15 Z" fill="#ff4081"/>
+    </g>
+  </g>
+
+  <!-- Bottom banner badge -->
+  <rect x="70" y="340" width="260" height="34" rx="17" fill="#ffffff" stroke="#ff80ab" stroke-width="3"/>
+  <text x="200" y="363" font-family="'Comic Sans MS', 'MS Sans Serif', cursive, sans-serif" font-size="16" font-weight="bold" fill="#d81b60" text-anchor="middle">
+    ★ Michi Curada 💕 ★
+  </text>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="88" height="31" viewBox="0 0 88 31">
+  <rect width="88" height="31" fill="#f57c00" stroke="#ffffff" stroke-width="1"/>
+  <rect x="1" y="1" width="86" height="29" fill="none" stroke="#000000" stroke-width="1"/>
+  <rect x="2" y="15" width="84" height="14" fill="#ffb300"/>
+  <text x="44" y="11" font-family="'MS Sans Serif', 'Arial', sans-serif" font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">EN PROCESO</text>
+  <text x="44" y="25" font-family="'MS Sans Serif', 'Arial', sans-serif" font-size="8" font-weight="bold" fill="#ffffff" text-anchor="middle">RECUPERACIÓN</text>
+</svg>

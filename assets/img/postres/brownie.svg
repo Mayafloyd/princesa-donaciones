@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <rect width="400" height="400" fill="#fff5f8" rx="20"/>
+  <rect x="10" y="10" width="380" height="380" fill="none" stroke="#ffb6c1" stroke-width="3" stroke-dasharray="6 6" rx="15"/>
+  <g transform="translate(200, 180)">
+    
+    <!-- Brownie -->
+    <rect x="-80" y="-40" width="160" height="80" rx="8" fill="#4a2511" stroke="#2d1508" stroke-width="4"/>
+    <path d="M -80 -10 Q 0 -5 80 -10 L 80 40 L -80 40 Z" fill="#3b1d0d"/>
+    <circle cx="-50" cy="-20" r="8" fill="#8d5b4c"/>
+    <circle cx="10" cy="-15" r="12" fill="#8d5b4c"/>
+    <circle cx="50" cy="-25" r="9" fill="#8d5b4c"/>
+    <!-- Cute cat paw powdered sugar -->
+    <ellipse cx="0" cy="5" rx="20" ry="15" fill="#ffffff" opacity="0.85"/>
+    <circle cx="-16" cy="-10" r="6" fill="#ffffff" opacity="0.85"/>
+    <circle cx="0" cy="-15" r="6" fill="#ffffff" opacity="0.85"/>
+    <circle cx="16" cy="-10" r="6" fill="#ffffff" opacity="0.85"/>
+    
+
+    
+
+    
+  </g>
+  <rect x="40" y="325" width="320" height="50" rx="25" fill="#fff0f5" stroke="#ff4081" stroke-width="2"/>
+  <text x="200" y="356" font-family="'Comic Sans MS', cursive, sans-serif" font-size="18" font-weight="bold" fill="#ad1457" text-anchor="middle">
+    🧁 Brownie Melcochudo 🧁
+  </text>
+</svg>

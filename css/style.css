@@ -1,0 +1,2687 @@
+/* ==========================================================================
+   PRINCESA'S RESCUE QUEST - ESTILO OLD WEB & GIRLIE Y2K
+   Diseño inspirado en Web Design Museum (1998 - 2004) + Geocities + Kawaii Y2K
+   Completamente Responsive, Intuitivo y Accesible para Móvil y Desktop
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Silkscreen:wght@400;700&family=Quicksand:wght@400;500;600;700&family=Comic+Neue:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  --bg-pastel: #ffeef8;
+  --bg-pattern: #fbe4f0;
+  --pink-light: #ffd6ec;
+  --pink-main: #ff77a9;
+  --pink-dark: #d81b60;
+  --pink-deep: #880e4f;
+  --lavender: #e8d7ff;
+  --lavender-dark: #7b2cbf;
+  --yellow-sparkle: #fff275;
+  --yellow-dark: #b8860b;
+  --mint: #cbf3f0;
+  --nequi-purple: #20002c;
+  --nequi-pink: #ff007f;
+  
+  --font-retro-title: 'VT323', monospace;
+  --font-pixel: 'Silkscreen', cursive;
+  --font-fun: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
+  --font-body: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --retro-bevel: 3px solid;
+  --border-light: #ffffff;
+  --border-dark: #e096ba;
+  --box-shadow-retro: 4px 4px 0px rgba(216, 27, 96, 0.25);
+  --box-shadow-window: 6px 6px 0px rgba(136, 14, 79, 0.35);
+  --border-radius-window: 14px;
+}
+
+/* Reset y base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  color: #3b202e;
+  background-color: var(--bg-pastel);
+  background-image: 
+    radial-gradient(#ffb6c1 1.2px, transparent 1.2px), 
+    radial-gradient(#d8b4e2 1.2px, var(--bg-pastel) 1.2px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Sparkle cursor opcional */
+.sparkle-particle {
+  position: fixed;
+  pointer-events: none;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, #fff, var(--pink-main));
+  border-radius: 50%;
+  animation: sparkle-fade 0.8s forwards;
+  z-index: 99999;
+}
+
+@keyframes sparkle-fade {
+  0% { transform: scale(1) translate(0, 0); opacity: 1; }
+  100% { transform: scale(0.2) translate(10px, 15px); opacity: 0; }
+}
+
+/* ==========================================================================
+   OLD WEB TOP MARQUEE & BAR
+   ========================================================================== */
+.top-marquee-bar {
+  background: linear-gradient(90deg, #ff77a9, #da70d6, #7b2cbf, #ff77a9);
+  background-size: 300% 100%;
+  animation: gradientShift 10s ease infinite;
+  color: #fff;
+  padding: 6px 0;
+  font-family: var(--font-retro-title);
+  font-size: 1.25rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #880e4f;
+  overflow: hidden;
+  position: relative;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.top-marquee-content {
+  display: flex;
+  white-space: nowrap;
+  animation: marqueeScroll 28s linear infinite;
+}
+
+.top-marquee-content span {
+  padding: 0 2rem;
+}
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Top Mini Controls Bar */
+.top-sub-bar {
+  background: #fff0f7;
+  border-bottom: 2px dashed var(--pink-main);
+  padding: 6px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.88rem;
+  font-family: var(--font-fun);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sub-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sub-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-sound-toggle, .btn-sparkle-toggle {
+  background: #ffffff;
+  border: 2px solid var(--pink-main);
+  border-radius: 20px;
+  padding: 3px 12px;
+  font-family: var(--font-fun);
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--pink-dark);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--pink-dark);
+  transition: all 0.15s ease;
+}
+
+.btn-sound-toggle:hover, .btn-sparkle-toggle:hover {
+  background: var(--pink-light);
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--pink-dark);
+}
+
+.btn-sound-toggle:active, .btn-sparkle-toggle:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--pink-dark);
+}
+
+/* ==========================================================================
+   LAYOUT PRINCIPAL
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 20px 16px 80px 16px;
+}
+
+/* ==========================================================================
+   VENTANAS RETRO (OLD WEB OS / GEOCITIES FRAMES)
+   ========================================================================== */
+.retro-window {
+  background: #ffffff;
+  border: 3px solid var(--pink-main);
+  border-radius: var(--border-radius-window);
+  box-shadow: var(--box-shadow-window);
+  margin-bottom: 28px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.retro-window:hover {
+  box-shadow: 8px 8px 0px rgba(136, 14, 79, 0.4);
+}
+
+.retro-window-header {
+  background: linear-gradient(90deg, #ff94c2, #f3a6cf, #d8b4e2);
+  border-bottom: 3px solid var(--pink-main);
+  padding: 8px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+
+.retro-window-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-pixel);
+  font-size: 0.88rem;
+  font-weight: bold;
+  color: #590d34;
+  letter-spacing: 0.5px;
+}
+
+.retro-window-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.retro-win-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 1.5px solid #4a154b;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 1px 1px 0 #4a154b;
+}
+
+.retro-win-btn.close {
+  background: #ff7675;
+  color: #fff;
+}
+.retro-win-btn.max {
+  background: #ffeaa7;
+}
+.retro-win-btn.min {
+  background: #a8e6cf;
+}
+
+.retro-window-body {
+  padding: 24px;
+}
+
+@media (max-width: 600px) {
+  .retro-window-body {
+    padding: 16px 12px;
+  }
+}
+
+/* ==========================================================================
+   HERO / BANNER PRINCIPAL
+   ========================================================================== */
+.hero-window {
+  border-color: #d81b60;
+  background: linear-gradient(180deg, #fff9fc 0%, #ffffff 100%);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: center;
+}
+
+@media (min-width: 820px) {
+  .hero-grid {
+    grid-template-columns: 320px 1fr;
+  }
+}
+
+.hero-avatar-card {
+  text-align: center;
+  position: relative;
+}
+
+.polaroid-frame {
+  background: #ffffff;
+  padding: 14px 14px 24px 14px;
+  border: 3px solid var(--pink-main);
+  border-radius: 8px;
+  box-shadow: 4px 6px 0px rgba(216, 27, 96, 0.3);
+  display: inline-block;
+  transform: rotate(-2deg);
+  transition: transform 0.3s ease;
+  max-width: 100%;
+}
+
+.polaroid-frame:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.washi-tape {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(2deg);
+  width: 90px;
+  height: 24px;
+  background: rgba(255, 234, 167, 0.85);
+  border-left: 2px dashed #d6a2e8;
+  border-right: 2px dashed #d6a2e8;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  z-index: 5;
+}
+
+.hero-cat-img {
+  width: 100%;
+  max-width: 270px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 4px;
+  object-fit: cover;
+  border: 2px solid #ffd1eb;
+  display: block;
+  margin: 0 auto;
+}
+
+.polaroid-caption {
+  font-family: var(--font-fun);
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: var(--pink-dark);
+  margin-top: 10px;
+}
+
+.hero-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.retro-title-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffd1eb;
+  border: 2px solid var(--pink-dark);
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-family: var(--font-pixel);
+  font-size: 0.78rem;
+  font-weight: bold;
+  color: var(--pink-deep);
+  box-shadow: 2px 2px 0 var(--pink-dark);
+  width: fit-content;
+}
+
+.hero-main-title {
+  font-family: var(--font-fun);
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #4a154b;
+}
+
+@media (max-width: 600px) {
+  .hero-main-title {
+    font-size: 1.7rem;
+  }
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: #553549;
+}
+
+.hero-subtitle strong {
+  color: var(--pink-dark);
+}
+
+/* Barra de progreso de recaudación retro */
+.fund-meter-box {
+  background: #fff0f7;
+  border: 2px dashed var(--pink-main);
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 6px;
+}
+
+.fund-meter-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+  font-family: var(--font-pixel);
+  font-size: 0.85rem;
+}
+
+.fund-collected {
+  color: #0f5132;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.fund-goal {
+  color: #880e4f;
+  font-size: 0.85rem;
+}
+
+.progress-bar-retro-outer {
+  width: 100%;
+  height: 28px;
+  background: #ffffff;
+  border: 2px solid #880e4f;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: inset 2px 2px 4px rgba(0,0,0,0.15);
+  position: relative;
+}
+
+.progress-bar-retro-inner {
+  height: 100%;
+  width: 52%; /* Dinámico vía JS */
+  background: repeating-linear-gradient(
+    45deg,
+    #ff77a9,
+    #ff77a9 12px,
+    #ff94c2 12px,
+    #ff94c2 24px
+  );
+  border-radius: 12px;
+  transition: width 1s ease-in-out;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+  color: #ffffff;
+  font-family: var(--font-retro-title);
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+
+.hero-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+/* ==========================================================================
+   BOTONES RETRO ESTILO OLD WEB / BEVEL
+   ========================================================================== */
+.btn-retro {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-family: var(--font-fun);
+  font-size: 1.05rem;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 0.15s ease;
+  border: 2.5px solid #20002c;
+  box-shadow: 4px 4px 0px #20002c;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.btn-retro:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #20002c;
+}
+
+.btn-retro:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #20002c;
+}
+
+.btn-nequi {
+  background: var(--nequi-pink);
+  color: #ffffff;
+  border-color: var(--nequi-purple);
+  box-shadow: 4px 4px 0px var(--nequi-purple);
+}
+
+.btn-nequi:hover {
+  background: #ff1a8c;
+  box-shadow: 6px 6px 0px var(--nequi-purple);
+}
+
+.btn-merch {
+  background: #ffd1eb;
+  color: #4a154b;
+  border-color: #880e4f;
+  box-shadow: 4px 4px 0px #880e4f;
+}
+
+.btn-whatsapp {
+  background: #25d366;
+  color: #0b4b20;
+  border-color: #0b4b20;
+  box-shadow: 4px 4px 0px #0b4b20;
+}
+
+.btn-whatsapp:hover {
+  background: #2fe06f;
+}
+
+.btn-outline-clinic {
+  background: #e8f5e9;
+  color: #0a5c36;
+  border-color: #0a5c36;
+  box-shadow: 4px 4px 0px #0a5c36;
+}
+
+/* ==========================================================================
+   NAVEGACIÓN DE PESTAÑAS RETRO (TABS / QUICK NAV)
+   ========================================================================== */
+.retro-tabs-nav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 24px;
+  scrollbar-width: thin;
+}
+
+.retro-tab-link {
+  background: #ffffff;
+  border: 2px solid var(--pink-main);
+  border-radius: 12px 12px 0 0;
+  padding: 8px 16px;
+  font-family: var(--font-pixel);
+  font-size: 0.78rem;
+  font-weight: bold;
+  color: #590d34;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 2px 2px 0 var(--pink-dark);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.retro-tab-link:hover, .retro-tab-link.active {
+  background: var(--pink-light);
+  transform: translateY(-2px);
+  color: var(--pink-deep);
+}
+
+/* ==========================================================================
+   SECCIÓN 1: DONACIÓN DIRECTA NEQUI
+   ========================================================================== */
+.nequi-card {
+  background: linear-gradient(135deg, #2b003a 0%, #15001c 100%);
+  border: 3px solid var(--nequi-pink);
+  border-radius: 16px;
+  color: #ffffff;
+  padding: 24px;
+  box-shadow: 6px 6px 0px rgba(255, 0, 127, 0.4);
+}
+
+.nequi-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .nequi-card-grid {
+    grid-template-columns: 240px 1fr;
+  }
+}
+
+.nequi-qr-wrapper {
+  text-align: center;
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 12px;
+  border: 3px dashed var(--nequi-pink);
+  max-width: 220px;
+  margin: 0 auto;
+}
+
+.nequi-qr-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.nequi-info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.nequi-badge-tag {
+  background: var(--nequi-pink);
+  color: #fff;
+  font-family: var(--font-pixel);
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  display: inline-block;
+  width: fit-content;
+}
+
+.nequi-number-box {
+  background: #390a4d;
+  border: 2px solid #ff77a9;
+  border-radius: 10px;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.nequi-phone {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.7rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #ffeb3b;
+}
+
+.btn-copy {
+  background: var(--nequi-pink);
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-family: var(--font-fun);
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 2px 2px 0px #ffffff;
+  transition: all 0.1s ease;
+}
+
+.btn-copy:hover {
+  background: #ff3399;
+}
+
+.btn-copy:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0;
+}
+
+.nequi-steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+.nequi-steps li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nequi-steps li span.step-num {
+  background: var(--nequi-pink);
+  color: #fff;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   SECCIÓN 2: MERCH & POSTRES (CATÁLOGO DE PRODUCTOS)
+   ========================================================================== */
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 16px;
+}
+
+.product-card {
+  background: #ffffff;
+  border: 2.5px solid var(--pink-main);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 3px 3px 0px var(--pink-dark);
+  transition: all 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 6px 6px 0px var(--pink-dark);
+}
+
+.product-img-box {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #fff5f8;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 2px dashed var(--pink-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-img {
+  transform: scale(1.05);
+}
+
+.product-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff4081;
+  color: #ffffff;
+  font-family: var(--font-pixel);
+  font-size: 0.68rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 0 #880e4f;
+}
+
+.product-details {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 8px;
+}
+
+.product-title {
+  font-family: var(--font-fun);
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: #4a154b;
+  line-height: 1.3;
+}
+
+.product-desc {
+  font-size: 0.88rem;
+  color: #634358;
+  flex-grow: 1;
+}
+
+.product-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.product-price {
+  font-family: var(--font-pixel);
+  font-size: 1.05rem;
+  font-weight: bold;
+  color: var(--pink-dark);
+}
+
+.product-select {
+  padding: 4px 8px;
+  border: 1.5px solid var(--pink-main);
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  background: #fff0f7;
+  color: #4a154b;
+  cursor: pointer;
+}
+
+.btn-add-cart {
+  width: 100%;
+  background: #ffd1eb;
+  border: 2px solid var(--pink-dark);
+  color: var(--pink-deep);
+  font-family: var(--font-fun);
+  font-size: 0.95rem;
+  font-weight: bold;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--pink-dark);
+  transition: all 0.15s ease;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn-add-cart:hover {
+  background: var(--pink-main);
+  color: #ffffff;
+}
+
+.btn-add-cart:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0;
+}
+
+/* ==========================================================================
+   SECCIÓN 3: PREVENTA CALENDARIO 2027 DE MEMES FELINOS
+   ========================================================================== */
+.calendar-banner-box {
+  background: linear-gradient(135deg, #ffd1eb 0%, #fff0f7 50%, #e8d7ff 100%);
+  border: 3px solid #ff4081;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 5px 5px 0px #880e4f;
+  margin-top: 16px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .calendar-grid {
+    grid-template-columns: 280px 1fr;
+  }
+}
+
+.calendar-mockup-wrapper {
+  text-align: center;
+}
+
+.calendar-mockup-img {
+  width: 100%;
+  max-width: 260px;
+  border-radius: 12px;
+  border: 2px solid var(--pink-dark);
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.15);
+}
+
+.calendar-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.calendar-content h3 {
+  font-family: var(--font-fun);
+  font-size: 1.8rem;
+  color: #880e4f;
+  line-height: 1.2;
+}
+
+.calendar-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.calendar-tag {
+  background: #ffffff;
+  border: 1.5px solid var(--pink-main);
+  border-radius: 12px;
+  padding: 3px 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #6a1b9a;
+}
+
+/* ==========================================================================
+   SECCIÓN 4: DIAGNÓSTICO & FACTURAS UdeA (TRANSPARENCIA)
+   ========================================================================== */
+.clinic-alert-box {
+  background: #e8f5e9;
+  border: 2px solid #2e7d32;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: #1b5e20;
+}
+
+.clinic-alert-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.clinic-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .clinic-cards-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.clinic-doc-card {
+  background: #f8f9fa;
+  border: 2px solid #0a5c36;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 4px 4px 0px #0a5c36;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+}
+
+.clinic-doc-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 6px 6px 0px #0a5c36;
+}
+
+.clinic-doc-header {
+  background: #0a5c36;
+  color: #ffffff;
+  padding: 10px 14px;
+  font-family: var(--font-pixel);
+  font-size: 0.82rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clinic-preview-img-box {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border-bottom: 1px solid #ced4da;
+}
+
+.clinic-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.clinic-preview-img-box:hover .clinic-preview-img {
+  transform: scale(1.03);
+}
+
+.zoom-overlay-hint {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(10, 92, 54, 0.85);
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  pointer-events: none;
+}
+
+.clinic-doc-info {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.clinic-doc-title {
+  font-family: var(--font-fun);
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: #0a5c36;
+}
+
+.clinic-summary-list {
+  list-style: none;
+  font-size: 0.88rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #333333;
+}
+
+.btn-view-doc {
+  margin-top: 8px;
+  background: #ffffff;
+  border: 2px solid #0a5c36;
+  color: #0a5c36;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: var(--font-fun);
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #0a5c36;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn-view-doc:hover {
+  background: #e8f5e9;
+}
+
+/* ==========================================================================
+   SECCIÓN 5: GALERÍA DE MEMES & FOTOS DE PRINCESA
+   ========================================================================== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 14px;
+}
+
+.polaroid-gallery-item {
+  background: #ffffff;
+  padding: 12px 12px 18px 12px;
+  border: 2.5px solid var(--pink-main);
+  border-radius: 6px;
+  box-shadow: 3px 3px 0px var(--pink-dark);
+  text-align: center;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.polaroid-gallery-item:nth-child(even) {
+  transform: rotate(1deg);
+}
+
+.polaroid-gallery-item:nth-child(odd) {
+  transform: rotate(-1.5deg);
+}
+
+.polaroid-gallery-item:hover {
+  transform: rotate(0deg) scale(1.03);
+  z-index: 10;
+}
+
+.gallery-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #ffd1eb;
+  display: block;
+}
+
+.gallery-caption {
+  font-family: var(--font-fun);
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: var(--pink-dark);
+  margin-top: 8px;
+}
+
+/* ==========================================================================
+   SECCIÓN 6: GUESTBOOK / MURO DE APOYO RETRO
+   ========================================================================== */
+.guestbook-box {
+  background: #fff8fc;
+  border: 2px dashed var(--pink-main);
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.guestbook-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+  background: #ffffff;
+  border: 2px solid var(--pink-light);
+  border-radius: 10px;
+  padding: 14px;
+}
+
+@media (min-width: 600px) {
+  .guestbook-form {
+    grid-template-columns: 1fr 1fr;
+  }
+  .form-full {
+    grid-column: span 2;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-group label {
+  font-family: var(--font-fun);
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #4a154b;
+}
+
+.form-input, .form-textarea, .form-select {
+  padding: 8px 12px;
+  border: 2px solid var(--pink-main);
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  background: #fff9fc;
+}
+
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  outline: none;
+  border-color: var(--pink-dark);
+  background: #ffffff;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+.guestbook-wall {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 380px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.guestbook-card {
+  background: #ffffff;
+  border: 1.5px solid #ffb6c1;
+  border-radius: 8px;
+  padding: 10px 14px;
+  box-shadow: 2px 2px 0px rgba(216, 27, 96, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.guestbook-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-fun);
+  font-size: 0.88rem;
+  font-weight: bold;
+  color: var(--pink-dark);
+}
+
+.guestbook-message {
+  font-size: 0.9rem;
+  color: #4a283e;
+}
+
+.guestbook-date {
+  font-size: 0.72rem;
+  color: #888888;
+}
+
+/* ==========================================================================
+   CONTADOR DE VISITAS RETRO & BADGES Y2K
+   ========================================================================== */
+.retro-counter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 24px 0 16px 0;
+  text-align: center;
+}
+
+.counter-label {
+  font-family: var(--font-pixel);
+  font-size: 0.82rem;
+  color: var(--pink-deep);
+  font-weight: bold;
+}
+
+.odometer-box {
+  display: inline-flex;
+  background: #111111;
+  border: 3px solid #ff77a9;
+  border-radius: 6px;
+  padding: 4px 10px;
+  gap: 4px;
+  box-shadow: inset 0 0 8px rgba(255, 0, 127, 0.4), 3px 3px 0 rgba(0,0,0,0.25);
+}
+
+.odometer-digit {
+  background: #222222;
+  color: #00ff66;
+  font-family: var(--font-retro-title);
+  font-size: 1.9rem;
+  line-height: 1;
+  font-weight: bold;
+  padding: 2px 5px;
+  border-radius: 3px;
+  border: 1px solid #333333;
+  text-shadow: 0 0 5px #00ff66;
+}
+
+.btn-purr {
+  background: #ffffff;
+  border: 2px solid var(--pink-main);
+  border-radius: 20px;
+  padding: 4px 16px;
+  font-family: var(--font-fun);
+  font-size: 0.88rem;
+  font-weight: bold;
+  color: var(--pink-dark);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--pink-dark);
+  transition: all 0.15s ease;
+}
+
+.btn-purr:hover {
+  background: var(--pink-light);
+  transform: scale(1.05);
+}
+
+.btn-purr:active {
+  transform: scale(0.95);
+}
+
+/* Retro Badges Collection */
+.badges-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.retro-badge-img {
+  width: 88px;
+  height: 31px;
+  border: 1px solid #333333;
+  image-rendering: pixelated;
+  transition: transform 0.2s ease;
+}
+
+.retro-badge-img:hover {
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   FOOTER RETRO
+   ========================================================================== */
+.footer-retro {
+  background: #fdf0f7;
+  border-top: 3px solid var(--pink-main);
+  padding: 24px 16px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #634358;
+}
+
+.footer-retro p {
+  margin-bottom: 6px;
+}
+
+.footer-highlight {
+  color: var(--pink-dark);
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   CARRITO FLOTANTE Y MODAL RETRO
+   ========================================================================== */
+.floating-cart-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #ff4081;
+  color: #ffffff;
+  border: 3px solid #20002c;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-family: var(--font-fun);
+  font-size: 1.05rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 4px 4px 0px #20002c;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 999;
+  transition: all 0.2s ease;
+}
+
+.floating-cart-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 6px 6px 0px #20002c;
+}
+
+.cart-count-badge {
+  background: #ffffff;
+  color: #ff4081;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(43, 0, 58, 0.6);
+  backdrop-filter: blur(3px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 16px;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-window {
+  background: #ffffff;
+  border: 4px solid var(--pink-main);
+  border-radius: 16px;
+  box-shadow: 8px 8px 0px #880e4f;
+  width: 100%;
+  max-width: 580px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: modalPop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalPop {
+  0% { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.modal-header {
+  background: linear-gradient(90deg, #ff94c2, #f3a6cf);
+  padding: 10px 16px;
+  border-bottom: 3px solid var(--pink-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  font-family: var(--font-pixel);
+  font-size: 0.95rem;
+  color: #4a154b;
+}
+
+.modal-body {
+  padding: 20px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.cart-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.cart-item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px dashed #ffb6c1;
+  padding-bottom: 8px;
+  gap: 10px;
+}
+
+.cart-item-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-item-name {
+  font-weight: bold;
+  font-size: 0.95rem;
+  color: #4a154b;
+}
+
+.cart-item-meta {
+  font-size: 0.8rem;
+  color: #777777;
+}
+
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cart-qty-btn {
+  background: #ffd1eb;
+  border: 1.5px solid var(--pink-main);
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.cart-total-box {
+  background: #fff0f7;
+  border: 2px solid var(--pink-main);
+  border-radius: 10px;
+  padding: 12px;
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: var(--pink-deep);
+}
+
+.cart-form-group {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Lightbox para documentos médicos */
+.lightbox-modal-window {
+  max-width: 800px;
+}
+
+.lightbox-img {
+  width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  background: #f1f1f1;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+}
+
+/* Toast de notificación retro */
+.retro-toast {
+  position: fixed;
+  top: 40px;
+  right: 20px;
+  background: #ffeb3b;
+  color: #20002c;
+  border: 3px solid #20002c;
+  box-shadow: 4px 4px 0px #20002c;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-family: var(--font-fun);
+  font-size: 1.05rem;
+  font-weight: bold;
+  z-index: 999999;
+  display: none;
+  animation: slideInToast 0.3s ease;
+}
+
+.retro-toast.show {
+  display: block;
+}
+
+@keyframes slideInToast {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(0); }
+}
+
+/* Responsive bottom bar for mobile convenience */
+@media (max-width: 600px) {
+  .floating-cart-btn {
+    bottom: 14px;
+    right: 14px;
+    padding: 8px 14px;
+    font-size: 0.95rem;
+  }
+}
+
+/* ==========================================================================
+   PANEL DE GESTIÓN DE PEDIDOS DE SARA (DASHBOARD RETRO)
+   ========================================================================== */
+.admin-badge-btn {
+  background: #3a005c;
+  color: #ffeb3b;
+  border: 1.5px solid #ff77a9;
+  border-radius: 12px;
+  padding: 3px 10px;
+  font-family: var(--font-pixel);
+  font-size: 0.75rem;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #20002c;
+  transition: all 0.15s ease;
+}
+
+.admin-badge-btn:hover {
+  background: #5c0091;
+  transform: translateY(-1px);
+}
+
+.admin-orders-table-wrapper {
+  overflow-x: auto;
+  margin-top: 14px;
+  border: 2px solid var(--pink-main);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.admin-orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  text-align: left;
+}
+
+.admin-orders-table th {
+  background: #ffd1eb;
+  color: #4a154b;
+  font-family: var(--font-pixel);
+  font-size: 0.78rem;
+  padding: 10px 12px;
+  border-bottom: 2px solid var(--pink-dark);
+}
+
+.admin-orders-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #ffd6ec;
+  vertical-align: middle;
+}
+
+.admin-orders-table tr:hover {
+  background: #fff9fc;
+}
+
+.order-status-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.status-pending {
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+}
+
+.status-confirmed {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status-shipped {
+  background: #d1ecf1;
+  color: #0c5460;
+  border: 1px solid #bee5eb;
+}
+
+.order-code-tag {
+  font-family: var(--font-retro-title);
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: #d81b60;
+  letter-spacing: 1px;
+}
+
+/* Modal de Éxito / Confirmación de Pedido */
+.order-success-box {
+  background: #fff5fa;
+  border: 2px dashed #ff4081;
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.order-success-code {
+  font-family: var(--font-retro-title);
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #880e4f;
+  margin: 6px 0;
+  text-shadow: 1px 1px 0 #ffd1eb;
+}
+
+.step-instruction-box {
+  background: #ffffff;
+  border: 2px solid var(--pink-main);
+  border-radius: 10px;
+  padding: 14px;
+  margin-top: 12px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.95rem;
+}
+
+.step-circle-badge {
+  background: var(--pink-dark);
+  color: #ffffff;
+  font-weight: bold;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.85rem;
+}
+
+
+/* ==========================================================================
+   SUB-PESTAÑAS CLÍNICAS RETRO (DIAGNÓSTICO & FACTURAS UdeA)
+   ========================================================================== */
+.clinic-subtabs-bar {
+  display: flex;
+  gap: 8px;
+  border-bottom: 2px solid #0a5c36;
+  padding-bottom: 4px;
+  margin-bottom: 18px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.clinic-subtab-btn {
+  background: #ffffff;
+  border: 2px solid #0a5c36;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  padding: 8px 16px;
+  font-family: var(--font-pixel);
+  font-size: 0.78rem;
+  color: #0a5c36;
+  cursor: pointer;
+  box-shadow: 2px -2px 0 rgba(10, 92, 54, 0.2);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.clinic-subtab-btn:hover {
+  background: #e8f5e9;
+  transform: translateY(-2px);
+}
+
+.clinic-subtab-btn.active {
+  background: #0a5c36;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.clinic-subtab-pane {
+  display: none;
+  animation: fadeIn 0.2s ease;
+}
+
+.clinic-subtab-pane.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   ENFASIS: 100% ARTE HUMANO / NO IA
+   ========================================================================== */
+.human-art-banner {
+  background: linear-gradient(135deg, #fff0f7 0%, #ffd6ec 50%, #fff9fc 100%);
+  border: 2.5px solid #d81b60;
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  box-shadow: 3px 3px 0px #880e4f;
+}
+
+.human-art-badge-pill {
+  background: #d81b60;
+  color: #ffffff;
+  font-family: var(--font-pixel);
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 0px #20002c;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.5px;
+}
+
+.human-art-text {
+  font-size: 0.95rem;
+  color: #4a154b;
+  flex-grow: 1;
+}
+
+.human-art-text strong {
+  color: #d81b60;
+}
+
+
+/* ==========================================================================
+   MEDIDOR WOW RETRO AUTÉNTICO 1998/Y2K: WINDOWS 98 / RPG QUEST LOG
+   (Biselado 3D, sin redondeos modernos, tipografía bitmap, casillas 3D)
+   ========================================================================== */
+.wow-fund-container {
+  background: #f0d8e8;
+  border-top: 3px solid #ffffff;
+  border-left: 3px solid #ffffff;
+  border-right: 3px solid #602848;
+  border-bottom: 3px solid #602848;
+  border-radius: 0px !important; /* Cero bordes redondeados modernos */
+  box-shadow: 4px 4px 0px #301020;
+  padding: 16px;
+  margin-top: 18px;
+  position: relative;
+}
+
+.wow-fund-header {
+  background: linear-gradient(90deg, #d81b60 0%, #880e4f 100%);
+  color: #ffffff;
+  padding: 6px 10px;
+  margin: -16px -16px 14px -16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-pixel);
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.wow-live-pill {
+  background: #ffffff;
+  color: #d81b60;
+  font-family: var(--font-pixel);
+  font-size: 0.72rem;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #401020;
+  border-bottom: 2px solid #401020;
+  border-radius: 0px !important;
+}
+
+.wow-fund-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+@media (min-width: 680px) {
+  .wow-fund-grid {
+    grid-template-columns: 215px 1fr;
+  }
+}
+
+.wow-potion-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fff0f7;
+  border-top: 2px solid #804060;
+  border-left: 2px solid #804060;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  padding: 8px 6px;
+  overflow: visible;
+}
+
+.wow-potion-img {
+  width: 100%;
+  max-width: 205px;
+  height: auto;
+  cursor: pointer;
+  image-rendering: auto;
+}
+
+/* Pantalla LED / Odometer 90s */
+.wow-stats-banner {
+  background: #000000;
+  border-top: 2px solid #404040;
+  border-left: 2px solid #404040;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+  border-radius: 0px !important;
+  padding: 10px 14px;
+  color: #00ff66;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.wow-stat-val {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.6rem;
+  line-height: 1;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.wow-stat-val.collected {
+  color: #00ff66;
+  text-shadow: 0 0 5px #00ff66;
+}
+
+/* Barra Segmentada Retro Windows 95 (Bloques de Progreso) */
+.win95-progress-segmented {
+  width: 100%;
+  height: 22px;
+  background: #c0c0c0;
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  padding: 2px;
+  display: flex;
+  gap: 3px;
+  margin-top: 6px;
+  box-sizing: border-box;
+}
+
+.win95-block {
+  flex: 1;
+  height: 100%;
+  background: #d8d8d8;
+}
+
+.win95-block.filled {
+  background: #d81b60;
+  border-top: 1px solid #ff77a9;
+  border-left: 1px solid #ff77a9;
+  border-right: 1px solid #880e4f;
+  border-bottom: 1px solid #880e4f;
+}
+
+/* Lista de Hitos: Quest Log Retro 1999 (Sin curvas modernas) */
+.wow-milestones-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.milestone-item {
+  background: #ffffff;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #804060;
+  border-bottom: 2px solid #804060;
+  border-radius: 0px !important; /* CERO bordes redondos modernos */
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: 'MS Sans Serif', Tahoma, 'Courier New', monospace;
+  font-size: 0.88rem;
+  box-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+}
+
+.milestone-item.active {
+  background: #fff0f7;
+  border-top: 2px solid #ff007f;
+  border-left: 2px solid #ff007f;
+  border-right: 2px solid #880e4f;
+  border-bottom: 2px solid #880e4f;
+  box-shadow: 2px 2px 0px #880e4f;
+}
+
+.milestone-item.completed {
+  background: #f4fbf7;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #2e7d32;
+  border-bottom: 2px solid #2e7d32;
+}
+
+/* Casilla Sunken 3D Windows 95 */
+.win95-sunken-box {
+  width: 18px;
+  height: 18px;
+  background: #ffffff;
+  border-top: 2px solid #404040;
+  border-left: 2px solid #404040;
+  border-right: 2px solid #dfdfdf;
+  border-bottom: 2px solid #dfdfdf;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.win95-sunken-box.checked {
+  color: #0a5c36;
+}
+
+.win95-sunken-box.current {
+  color: #d81b60;
+  background: #ffe4f2;
+}
+
+/* Insignia / Botón Biselado Retro */
+.milestone-pct-badge {
+  font-family: var(--font-pixel);
+  font-size: 0.7rem;
+  padding: 3px 6px;
+  border-radius: 0px !important;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  white-space: nowrap;
+}
+
+.pct-active {
+  background: #ff007f;
+  color: #ffffff;
+}
+
+.pct-done {
+  background: #0a5c36;
+  color: #ffffff;
+}
+
+.pct-future {
+  background: #c0c0c0;
+  color: #333333;
+}
+
+/* ==========================================================================
+   SUB-PESTAÑAS CLÍNICAS RETRO (DIAGNÓSTICO & FACTURAS UdeA)
+   ========================================================================== */
+.clinic-subtabs-bar {
+  display: flex;
+  gap: 8px;
+  border-bottom: 2px solid #0a5c36;
+  padding-bottom: 4px;
+  margin-bottom: 18px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.clinic-subtab-btn {
+  background: #ffffff;
+  border: 2px solid #0a5c36;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  padding: 8px 16px;
+  font-family: var(--font-pixel);
+  font-size: 0.78rem;
+  color: #0a5c36;
+  cursor: pointer;
+  box-shadow: 2px -2px 0 rgba(10, 92, 54, 0.2);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.clinic-subtab-btn:hover {
+  background: #e8f5e9;
+  transform: translateY(-2px);
+}
+
+.clinic-subtab-btn.active {
+  background: #0a5c36;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.clinic-subtab-pane {
+  display: none;
+  animation: fadeIn 0.2s ease;
+}
+
+.clinic-subtab-pane.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   ENFASIS: 100% ARTE HUMANO / NO IA
+   ========================================================================== */
+.human-art-banner {
+  background: linear-gradient(135deg, #fff0f7 0%, #ffd6ec 50%, #fff9fc 100%);
+  border: 2.5px solid #d81b60;
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  box-shadow: 3px 3px 0px #880e4f;
+}
+
+.human-art-badge-pill {
+  background: #d81b60;
+  color: #ffffff;
+  font-family: var(--font-pixel);
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 0px #20002c;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.5px;
+}
+
+.human-art-text {
+  font-size: 0.95rem;
+  color: #4a154b;
+  flex-grow: 1;
+}
+
+.human-art-text strong {
+  color: #d81b60;
+}
+
+/* ==========================================================================
+   MEDIDOR WOW DE RECAUDACIÓN: PÓCIMA VERTICAL & ROADMAP QUIRÚRGICO
+   ========================================================================== */
+.wow-fund-container {
+  background: linear-gradient(135deg, #fff5fa 0%, #ffeaf5 50%, #fdf0f8 100%);
+  border: 3px solid #ff007f;
+  border-radius: 16px;
+  box-shadow: 6px 6px 0px rgba(216, 27, 96, 0.35);
+  padding: 20px;
+  margin-top: 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.wow-fund-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+  border-bottom: 2px dashed #ff77a9;
+  padding-bottom: 10px;
+}
+
+.wow-fund-title {
+  font-family: var(--font-pixel);
+  font-size: 0.95rem;
+  color: #880e4f;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wow-live-pill {
+  background: #ff007f;
+  color: #ffffff;
+  font-family: var(--font-pixel);
+  font-size: 0.72rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  animation: livePulse 1.8s infinite;
+  box-shadow: 0 0 8px rgba(255, 0, 127, 0.5);
+}
+
+@keyframes livePulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.04); }
+}
+
+.wow-fund-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  align-items: center;
+}
+
+@media (min-width: 680px) {
+  .wow-fund-grid {
+    grid-template-columns: 180px 1fr;
+  }
+}
+
+.wow-potion-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.wow-potion-img {
+  width: 100%;
+  max-width: 170px;
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(216, 27, 96, 0.25));
+  animation: potionHover 3s ease-in-out infinite;
+  cursor: pointer;
+}
+
+@keyframes potionHover {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.wow-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.wow-stats-banner {
+  background: #20002c;
+  border: 2px solid #ff007f;
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  box-shadow: inset 0 0 10px rgba(255, 0, 127, 0.3);
+}
+
+.wow-stat-item {
+  text-align: center;
+}
+
+.wow-stat-label {
+  font-family: var(--font-pixel);
+  font-size: 0.68rem;
+  color: #ffb6c1;
+  text-transform: uppercase;
+}
+
+.wow-stat-val {
+  font-family: var(--font-retro-title);
+  font-size: 1.8rem;
+  line-height: 1.1;
+  color: #ffeb3b;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.wow-stat-val.collected {
+  color: #00ff66;
+  text-shadow: 0 0 6px rgba(0, 255, 102, 0.6);
+}
+
+.wow-milestones-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.milestone-item {
+  background: #ffffff;
+  border: 2px solid #ffd1eb;
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.milestone-item.active {
+  background: #fff0f7;
+  border-color: #ff007f;
+  box-shadow: 2px 2px 0px #d81b60;
+  transform: scale(1.02);
+}
+
+.milestone-item.completed {
+  border-color: #a3cfbb;
+  background: #f1f8f4;
+}
+
+.milestone-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.milestone-icon {
+  font-size: 1.1rem;
+}
+
+.milestone-text strong {
+  color: #4a154b;
+}
+
+.milestone-pct-badge {
+  font-family: var(--font-pixel);
+  font-size: 0.72rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.pct-active {
+  background: #ff007f;
+  color: #ffffff;
+  box-shadow: 0 0 4px #ff007f;
+}
+
+.pct-done {
+  background: #0a5c36;
+  color: #ffffff;
+}
+
+.pct-future {
+  background: #e9ecef;
+  color: #6c757d;
+}
+
+/* ==========================================================================
+   MEDIDOR DE RECAUDACIÓN COMPACTO, ELEGANTE Y RETRO (EQUILIBRADO)
+   ========================================================================== */
+.compact-fund-card {
+  background: linear-gradient(135deg, #fff7fa 0%, #ffeef6 100%);
+  border: 2px solid #ff77a9;
+  border-radius: 12px;
+  box-shadow: 4px 4px 0px rgba(216, 27, 96, 0.2);
+  padding: 14px 16px;
+  margin-top: 14px;
+}
+
+.compact-fund-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.compact-fund-title {
+  font-family: var(--font-pixel);
+  font-size: 0.85rem;
+  color: #880e4f;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: bold;
+}
+
+.compact-live-badge {
+  background: #d81b60;
+  color: #ffffff;
+  font-family: var(--font-pixel);
+  font-size: 0.68rem;
+  padding: 3px 8px;
+  border-radius: 12px;
+  letter-spacing: 0.5px;
+}
+
+.compact-stats-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 1px solid #ffd1eb;
+  border-radius: 8px;
+  padding: 8px 14px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.compact-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.compact-stat-lbl {
+  font-family: var(--font-pixel);
+  font-size: 0.64rem;
+  color: #888888;
+  text-transform: uppercase;
+}
+
+.compact-stat-val {
+  font-family: var(--font-retro-title);
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: #3b202e;
+}
+
+.compact-stat-val.highlight {
+  color: #0a7b44;
+}
+
+.compact-stat-val.missing {
+  color: #d81b60;
+}
+
+.compact-stat-divider {
+  color: #ffb3d1;
+  font-weight: bold;
+}
+
+.compact-progress-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.compact-progress-track {
+  flex-grow: 1;
+  height: 22px;
+  background: #f0d5e5;
+  border-top: 2px solid #804060;
+  border-left: 2px solid #804060;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.compact-progress-fill {
+  height: 100%;
+  background: repeating-linear-gradient(
+    -45deg,
+    #ff4081,
+    #ff4081 10px,
+    #f50057 10px,
+    #f50057 20px
+  );
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.4);
+}
+
+.compact-progress-indicator {
+  font-family: var(--font-pixel);
+  font-size: 0.68rem;
+  color: #ffffff;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px #880e4f;
+  white-space: nowrap;
+}
+
+.compact-potion-btn {
+  background: #ffffff;
+  border: 1px solid #ff77a9;
+  border-radius: 8px;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 2px 2px 0px #ffd1eb;
+}
+
+.compact-potion-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 3px 3px 0px #ff77a9;
+  background: #fff0f7;
+}
+
+.compact-potion-icon {
+  width: 24px;
+  height: 28px;
+}
+
+.potion-tap-hint {
+  font-family: var(--font-pixel);
+  font-size: 0.65rem;
+  color: #880e4f;
+  font-weight: bold;
+}
+
+.compact-milestones-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+
+@media (min-width: 600px) {
+  .compact-milestones-row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.compact-step {
+  font-size: 0.75rem;
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1px solid #ffd1eb;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--font-pixel);
+}
+
+.compact-step.done {
+  background: #eef7f2;
+  border-color: #a3cfbb;
+  color: #0f5132;
+}
+
+.compact-step.current {
+  background: #fff0f7;
+  border-color: #ff007f;
+  color: #880e4f;
+  font-weight: bold;
+  box-shadow: 1px 1px 0px #ff77a9;
+}
+
+.compact-step.future {
+  background: #fdfdfd;
+  color: #8a7a84;
+}
+
+.step-check {
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   DATO CURIOSO: HOVER TOOLTIP FLOTANTE SOBRE FOTOS DE PRINCESA (BOJACK)
+   ========================================================================== */
+.has-cat-curiosity {
+  position: relative !important;
+  cursor: pointer;
+}
+
+.curiosity-pill-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #ffe3f0;
+  color: #880e4f;
+  font-size: 0.68rem;
+  font-family: var(--font-pixel);
+  padding: 3px 8px;
+  border-radius: 12px;
+  border: 1px dashed #ff77a9;
+  margin-top: 6px;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.has-cat-curiosity:hover .curiosity-pill-hint,
+.has-cat-curiosity.active-tip .curiosity-pill-hint {
+  background: #d81b60;
+  color: #ffffff;
+  border-style: solid;
+}
+
+.cat-curiosity-tooltip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  width: 295px;
+  max-width: 88vw;
+  background: #ffffff;
+  border: 2.5px solid #d81b60;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0px rgba(74, 21, 75, 0.35);
+  padding: 10px 12px;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: left;
+}
+
+/* Flechita inferior del tooltip */
+.cat-curiosity-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px;
+  border-style: solid;
+  border-color: #d81b60 transparent transparent transparent;
+}
+
+.has-cat-curiosity:hover .cat-curiosity-tooltip,
+.has-cat-curiosity:focus-within .cat-curiosity-tooltip,
+.has-cat-curiosity.active-tip .cat-curiosity-tooltip {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.cat-tooltip-header {
+  font-family: var(--font-pixel);
+  font-size: 0.72rem;
+  color: #880e4f;
+  border-bottom: 1px dashed #ffd1eb;
+  padding-bottom: 5px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  letter-spacing: 0.5px;
+}
+
+.cat-tooltip-close {
+  font-size: 1.1rem;
+  cursor: pointer;
+  line-height: 1;
+  color: #888888;
+}
+
+.cat-tooltip-close:hover {
+  color: #d81b60;
+}
+
+.cat-tooltip-body {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.cat-tooltip-img {
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
+  border-radius: 6px;
+  border: 1px solid #ffd1eb;
+  background: #fff5fa;
+  flex-shrink: 0;
+}
+
+.cat-tooltip-text {
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: #3b202e;
+}
+
+.cat-tooltip-text strong {
+  display: block;
+  color: #880e4f;
+  font-size: 0.85rem;
+  margin-bottom: 3px;
+}
+
+.cat-tooltip-quote {
+  font-size: 0.75rem;
+  color: #008779;
+  font-style: italic;
+  font-weight: bold;
+  margin-top: 5px;
+  border-left: 2px solid #00a896;
+  padding-left: 6px;
+}
+
+/* ==========================================================================
+   DATO CURIOSO: PRINCESA CAROLYN (BOJACK HORSEMAN)
+   ========================================================================== */
+.bojack-curiosity-box {
+  background: linear-gradient(135deg, #fff5fa 0%, #ffeaf5 100%);
+  border: 3px solid #d81b60;
+  box-shadow: 4px 4px 0px #4a154b;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .bojack-curiosity-box {
+    grid-template-columns: 280px 1fr;
+  }
+}
+
+.bojack-img-wrapper {
+  text-align: center;
+}
+
+.bojack-card-img {
+  width: 100%;
+  max-width: 250px;
+  border-radius: 8px;
+  border: 2px solid #d81b60;
+  box-shadow: 4px 4px 0px rgba(74, 21, 75, 0.3);
+}
+
+.bojack-quote-box {
+  background: #ffffff;
+  border-left: 4px solid #00a896;
+  border-top: 1px solid #ffd1eb;
+  border-right: 1px solid #ffd1eb;
+  border-bottom: 1px solid #ffd1eb;
+  padding: 12px 16px;
+  margin-top: 12px;
+  font-style: italic;
+  font-family: var(--font-fun);
+  color: #4a154b;
+  font-size: 0.92rem;
+}
+
+.bojack-quote-author {
+  display: block;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 0.82rem;
+  color: #00a896;
+  margin-top: 4px;
+}

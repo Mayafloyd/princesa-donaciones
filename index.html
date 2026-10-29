@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🐾 ¡Ayuda a Princesa! | Cirugía por Cálculo y Úlcera (Clínica UdeA)</title>
+  
+  <!-- Favicon retro pixel cat -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐱</text></svg>">
+  
+  <meta name="description" content="Página para recolectar fondos para la cirugía de mi gatita Princesa (cálculo y úlcera) en la Clínica Veterinaria de la Universidad de Antioquia. Merch 100% arte humano, calendario 2027 y donaciones a Nequi.">
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       TOP MARQUEE OLD WEB
+       ======================================================================== -->
+  <div class="top-marquee-bar">
+    <div class="top-marquee-content">
+      <span>★ ✨ ¡BIENVENID@ AL SITIO OFICIAL DE RECUPERACIÓN DE PRINCESA! ✨ ★</span>
+      <span>🩺 DIAGNÓSTICO: CÁLCULO Y ÚLCERA EN HOSPITAL VETERINARIO UDEA 🐾</span>
+      <span>🎨 MERCH 100% ILUSTRADO POR ARTISTA HUMANA • CERO IA 🚫🤖</span>
+      <span>📅 ¡CALENDARIO 2027 DE MEMES DE GATITOS YA DISPONIBLE PARA COMPRA! 🐱</span>
+      <span>🧁 ¡PIDE TUS POSTRECITOS CASEROS O DONA DIRECTAMENTE A NEQUI! ✨</span>
+      <!-- Loop -->
+      <span>★ ✨ ¡BIENVENID@ AL SITIO OFICIAL DE RECUPERACIÓN DE PRINCESA! ✨ ★</span>
+      <span>🩺 DIAGNÓSTICO: CÁLCULO Y ÚLCERA EN HOSPITAL VETERINARIO UDEA 🐾</span>
+      <span>🎨 MERCH 100% ILUSTRADO POR ARTISTA HUMANA • CERO IA 🚫🤖</span>
+      <span>📅 ¡CALENDARIO 2027 DE MEMES DE GATITOS YA DISPONIBLE PARA COMPRA! 🐱</span>
+      <span>🧁 ¡PIDE TUS POSTRECITOS CASEROS O DONA DIRECTAMENTE A NEQUI! ✨</span>
+    </div>
+  </div>
+
+  <!-- Barra de utilidades retro -->
+  <div class="top-sub-bar">
+    <div class="sub-bar-left">
+      <span>🕹️ <strong>Modo:</strong> Web 1.0 Y2K Girlie</span>
+      <span>🎀 <em>Hecho con amor</em></span>
+    </div>
+    <div class="sub-bar-right">
+      <button class="btn-sparkle-toggle" id="btnSparkleToggle" onclick="toggleSparkles()">✨ Destellos: ON</button>
+      <button class="btn-sound-toggle" id="btnSoundToggle" onclick="toggleSound()">🔊 Sonido: ON</button>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       CONTENEDOR PRINCIPAL
+       ======================================================================== -->
+  <div class="container">
+
+    <!-- 1. HERO WINDOW: PRESENTACIÓN DE PRINCESA -->
+    <section class="retro-window hero-window" id="inicio">
+      <div class="retro-window-header">
+        <div class="retro-window-title">
+          <span>🐱</span>
+          <span>Princesa_Cirugia_UdeA_2026.exe</span>
+        </div>
+        <div class="retro-window-controls">
+          <div class="retro-win-btn min" title="Minimizar">_</div>
+          <div class="retro-win-btn max" title="Maximizar">□</div>
+          <div class="retro-win-btn close" title="Cerrar">✕</div>
+        </div>
+      </div>
+
+      <div class="retro-window-body">
+        <div class="hero-grid">
+          
+          <!-- Foto Real de Princesa en Polaroid con Dato Curioso al hacer Hover -->
+          <div class="hero-avatar-card">
+            <div class="washi-tape"></div>
+            <div class="polaroid-frame has-cat-curiosity" tabindex="0">
+              <img src="assets/img/gata/2.jpg" alt="Princesa la gatita negra" class="hero-cat-img" id="heroCatImage">
+              <div class="polaroid-caption">★ Princesa ★</div>
+              <small style="color: #888; font-size: 0.78rem;">"La reina consentida de la casa"</small>
+              <div class="curiosity-pill-hint">💡 Dato Curioso (Pasa el cursor)</div>
+
+              <!-- Tooltip / Hover Card BoJack -->
+              <div class="cat-curiosity-tooltip">
+                <div class="cat-tooltip-header">
+                  <span>🎬 DATO CURIOSO: PRINCESA CAROLYN</span>
+                  <span class="cat-tooltip-close">×</span>
+                </div>
+                <div class="cat-tooltip-body">
+                  <img src="assets/img/gata/princess-carolyn-bojack.svg" alt="Princess Carolyn de BoJack Horseman" class="cat-tooltip-img">
+                  <div class="cat-tooltip-text">
+                    <strong>¿Sabías que su nombre real es Princesa Carolyn? 🐱💼</strong>
+                    <p>Bautizada en honor al icónico personaje de <em>BoJack Horseman</em>. Como ella, es una jefa inteligente, fuerte y perseverante.</p>
+                    <div class="cat-tooltip-quote">
+                      "¡Los gatos siempre aterrizan sobre sus 4 patas! 🐾"
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Información y causa -->
+          <div class="hero-info">
+            <div class="retro-title-tag">
+              <span>🩺 URGENCIA MÉDICA: CÁLCULO Y ÚLCERA</span>
+            </div>
+
+            <h1 class="hero-main-title">
+              ¡Ayúdame a operar a mi gatita Princesa! 🐾💖
+            </h1>
+
+            <p class="hero-subtitle">
+              Hola, soy <strong>Sara</strong>. A mi gatita negra <strong>Princesa</strong> le diagnosticaron un <strong>cálculo con lesión ulcerativa</strong> mediante ecografía, lo que le causa mucho dolor y requiere una <strong>intervención quirúrgica urgente</strong> en la <strong>Clínica Veterinaria de la Universidad de Antioquia (UdeA)</strong>.
+            </p>
+
+            <p style="font-size: 0.95rem; color: #553549;">
+              Para cubrir los gastos médicos, creé esta tiendita con merch <strong>100% dibujado por una gran amiga artista (cero Inteligencia Artificial)</strong>, el <strong>Calendario 2027 de memes de gaticos</strong>, postrecitos caseros y la opción de donación directa por Nequi.
+            </p>
+
+            <!-- MEDIDOR DE RECAUDACIÓN COMPACTO Y EQUILIBRADO -->
+            <div class="compact-fund-card">
+              <div class="compact-fund-header">
+                <div class="compact-fund-title">
+                  <span>🐾</span>
+                  <span>META QUIRÚRGICA UdeA</span>
+                </div>
+                <div class="compact-live-badge">● 50% RECAUDADO</div>
+              </div>
+
+              <!-- Fila de estadísticas sutiles y claras -->
+              <div class="compact-stats-row">
+                <div class="compact-stat">
+                  <span class="compact-stat-lbl">Recaudado</span>
+                  <span class="compact-stat-val highlight">$1.450.000</span>
+                </div>
+                <div class="compact-stat-divider">/</div>
+                <div class="compact-stat">
+                  <span class="compact-stat-lbl">Meta Cirugía</span>
+                  <span class="compact-stat-val">$2.900.000</span>
+                </div>
+                <div class="compact-stat-divider">•</div>
+                <div class="compact-stat">
+                  <span class="compact-stat-lbl">Faltante</span>
+                  <span class="compact-stat-val missing">$1.450.000</span>
+                </div>
+              </div>
+
+              <!-- Barra de progreso delicada con mini poción -->
+              <div class="compact-progress-wrapper">
+                <div class="compact-progress-track" title="Progreso actual: 50%">
+                  <div class="compact-progress-fill" style="width: 50%;">
+                    <span class="compact-progress-indicator">🐾 50% COMPLETADO</span>
+                  </div>
+                </div>
+                <button type="button" class="compact-potion-btn" onclick="triggerPurr()" title="¡Toca para enviar mimos a Princesa!">
+                  <img src="assets/img/gata/pocima-termometro-vertical.svg" alt="Pócima mágica" class="compact-potion-icon">
+                  <span class="potion-tap-hint">mimos ✨</span>
+                </button>
+              </div>
+
+              <!-- Hitos resumidos en píldoras horizontales elegantes -->
+              <div class="compact-milestones-row">
+                <div class="compact-step done" title="Consulta y ecografía UdeA">
+                  <span class="step-check">✓</span> 25% Urgencias
+                </div>
+                <div class="compact-step current" title="Laboratorios prequirúrgicos y medicación">
+                  <span class="step-check">🐾</span> 50% Labs (Aquí)
+                </div>
+                <div class="compact-step future" title="Quirófano y Anestesia UdeA">
+                  <span class="step-check">⏳</span> 75% Quirófano
+                </div>
+                <div class="compact-step future" title="Cirugía y Recuperación">
+                  <span class="step-check">🎯</span> 100% Cirugía
+                </div>
+              </div>
+            </div>
+
+            <!-- Botones de Acción Inmediata -->
+            <div class="hero-cta-group">
+              <a href="#clinica" class="btn-retro btn-outline-clinic">
+                <span>📋 Ver Diagnóstico & Facturas UdeA</span>
+              </a>
+              <a href="#merch" class="btn-retro btn-merch">
+                <span>🎨 Ver Merch (100% Arte Humano)</span>
+              </a>
+              <a href="#calendario" class="btn-retro btn-whatsapp">
+                <span>📅 Calendario 2027 Listo</span>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- NAVEGACIÓN RÁPIDA RETRO TABS -->
+    <nav class="retro-tabs-nav" aria-label="Secciones">
+      <a href="#clinica" class="retro-tab-link"><span>🩺</span> Diagnóstico & Facturas UdeA</a>
+      <a href="#calendario" class="retro-tab-link"><span>📅</span> Calendario 2027</a>
+      <a href="#merch" class="retro-tab-link"><span>🎨</span> Merch (Arte Humano)</a>
+      <a href="#postres" class="retro-tab-link"><span>🧁</span> Postrecitos</a>
+      <a href="#envios" class="retro-tab-link"><span>🛵</span> Tarifas de Entrega</a>
+      <a href="#galeria" class="retro-tab-link"><span>📸</span> Fotos de Princesa</a>
+      <a href="#nequi" class="retro-tab-link"><span>💜</span> Donación Nequi</a>
+      <a href="#muro" class="retro-tab-link"><span>💌</span> Muro de Amor</a>
+    </nav>
+
+    <!-- ========================================================================
+         2. DIAGNÓSTICO & FACTURAS UdeA (PRIMERO TRAS LA PRESENTACIÓN CON SUBTABS)
+         ======================================================================== -->
+    <section class="retro-window" id="clinica">
+      <div class="retro-window-header">
+        <div class="retro-window-title">
+          <span>🩺</span>
+          <span>Clinica_Veterinaria_UdeA_Diagnostico_Facturas.tab</span>
+        </div>
+        <div class="retro-window-controls">
+          <div class="retro-win-btn min">_</div>
+          <div class="retro-win-btn max">□</div>
+          <div class="retro-win-btn close">✕</div>
+        </div>
+      </div>
+
+      <div class="retro-window-body">
+        
+        <div class="clinic-alert-box">
+          <div class="clinic-alert-icon">💚</div>
+          <div>
+            <strong>Transparencia Total con cada donante (Diagnóstico UdeA):</strong>
+            <p style="font-size: 0.92rem; margin-top: 2px;">
+              Princesa fue diagnosticada en la <strong>Clínica Veterinaria de la Universidad de Antioquia (Facultad de Ciencias Agrarias - Robledo, Medellín)</strong>. Los estudios de ecografía confirmaron la presencia de un <strong>cálculo y una lesión ulcerativa</strong> que requiere intervención quirúrgica para evitar complicaciones graves.
+            </p>
+          </div>
+        </div>
+
+        <!-- SUB-PESTAÑAS CLÍNICAS RETRO -->
+        <div class="clinic-subtabs-bar">
+          <button class="clinic-subtab-btn active" onclick="switchClinicSubtab('subtab-diag', this)">
+            <span>🔍 1. Diagnóstico & Ecografía (Cálculo y Úlcera)</span>
+          </button>
+          <button class="clinic-subtab-btn" onclick="switchClinicSubtab('subtab-facturas', this)">
+            <span>🧾 2. Facturas & Presupuesto Quirúrgico</span>
+          </button>
+          <button class="clinic-subtab-btn" onclick="switchClinicSubtab('subtab-sede', this)">
+            <span>🏥 3. Hospital Veterinario Robledo (UdeA)</span>
+          </button>
+        </div>
+
+        <!-- SUB-PANEL 1: DIAGNÓSTICO Y ECOGRAFÍA -->
+        <div class="clinic-subtab-pane active" id="subtab-diag">
+          <div class="clinic-cards-grid">
+            
+            <!-- TARJETA A: Ecografía del Cálculo y Úlcera -->
+            <div class="clinic-doc-card">
+              <div class="clinic-doc-header">
+                <span>📡 ESTUDIO ECOGRÁFICO UDEA</span>
+                <span>Hallazgo Imagenológico</span>
+              </div>
+              <div class="clinic-preview-img-box" onclick="openDocLightbox('assets/img/clinica/ecografia-calculo.svg', 'Estudio Ecográfico - Cálculo y Úlcera', 'Ecografía clínica confirmando la presencia del cálculo con sombra acústica y la úlcera mucosa.')">
+                <img src="assets/img/clinica/ecografia-calculo.svg" alt="Ecografía cálculo y úlcera Princesa" class="clinic-preview-img">
+                <span class="zoom-overlay-hint">🔍 Toca para ampliar</span>
+              </div>
+              <div class="clinic-doc-info">
+                <h3 class="clinic-doc-title">Reporte de Ultrasonido: Cálculo & Úlcera</h3>
+                <ul class="clinic-summary-list">
+                  <li>🪨 <strong>Hallazgo 1:</strong> Presencia de cálculo intravesical evidente con sombra acústica posterior.</li>
+                  <li>🩸 <strong>Hallazgo 2:</strong> Lesión ulcerativa parietal activa que produce inflamación, dolor agudo y sangrado intermitente.</li>
+                  <li>⚠️ <strong>Riesgo:</strong> Posible obstrucción uretral aguda o perforación si no se opera.</li>
+                </ul>
+                <button class="btn-view-doc" onclick="openDocLightbox('assets/img/clinica/ecografia-calculo.svg', 'Estudio Ecográfico - Cálculo y Úlcera', 'Ecografía clínica confirmando la presencia del cálculo y la úlcera.')">
+                  🔍 Ver Ecografía en Grande
+                </button>
+              </div>
+            </div>
+
+            <!-- TARJETA B: Documento Oficial de Historia Clínica UdeA -->
+            <div class="clinic-doc-card">
+              <div class="clinic-doc-header">
+                <span>📋 HISTORIA CLÍNICA OFICIAL</span>
+                <span>HC-UDEA-09418</span>
+              </div>
+              <div class="clinic-preview-img-box" onclick="openDocLightbox('assets/img/clinica/diagnostico-udea.svg', 'Diagnóstico Quirúrgico Oficial - UdeA', 'Reporte médico y remisión quirúrgica emitida por los especialistas del Hospital Veterinario UdeA.')">
+                <img src="assets/img/clinica/diagnostico-udea.svg" alt="Diagnóstico Médico UdeA" class="clinic-preview-img">
+                <span class="zoom-overlay-hint">🔍 Toca para ampliar</span>
+              </div>
+              <div class="clinic-doc-info">
+                <h3 class="clinic-doc-title">Dictamen Médico Quirúrgico</h3>
+                <ul class="clinic-summary-list">
+                  <li>🐾 <strong>Paciente:</strong> Princesa (Felino, hembra)</li>
+                  <li>🏛️ <strong>Institución:</strong> Hospital Veterinario Universidad de Antioquia</li>
+                  <li>🔬 <strong>Procedimiento:</strong> Cistotomía / extracción quirúrgica de cálculo y debridamiento de úlcera.</li>
+                  <li>📝 <strong>Exámenes requeridos:</strong> Perfil renal, hepático y tiempos de coagulación.</li>
+                </ul>
+                <button class="btn-view-doc" onclick="openDocLightbox('assets/img/clinica/diagnostico-udea.svg', 'Diagnóstico Quirúrgico Oficial - UdeA', 'Reporte médico emitido por los especialistas de la UdeA.')">
+                  📄 Ver Documento Clínico
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- SUB-PANEL 2: FACTURAS Y PRESUPUESTO -->
+        <div class="clinic-subtab-pane" id="subtab-facturas">
+          <div class="clinic-cards-grid">
+            
+            <div class="clinic-doc-card">
+              <div class="clinic-doc-header">
+                <span>🧾 ORDEN & FACTURA DE SERVICIOS</span>
+                <span>FAC-UDEA-481902</span>
+              </div>
+              <div class="clinic-preview-img-box" onclick="openDocLightbox('assets/img/clinica/factura-presupuesto.svg', 'Presupuesto Quirúrgico - Clínica UdeA', 'Desglose detallado de quirófano, anestesia monitorizada y hospitalización post-operatoria.')">
+                <img src="assets/img/clinica/factura-presupuesto.svg" alt="Factura Presupuesto UdeA" class="clinic-preview-img">
+                <span class="zoom-overlay-hint">🔍 Toca para ampliar</span>
+              </div>
+              <div class="clinic-doc-info">
+                <h3 class="clinic-doc-title">Presupuesto y Desglose Financiero</h3>
+                <ul class="clinic-summary-list">
+                  <li>💉 <strong>Quirófano y Cirujano Especialista:</strong> $1.850.000 COP</li>
+                  <li>💨 <strong>Anestesia Inhalatoria General Monitorizada:</strong> $380.000 COP</li>
+                  <li>🧪 <strong>Laboratorios Pre-Quirúrgicos Completos:</strong> $250.000 COP</li>
+                  <li>🏥 <strong>Hospitalización UCI (48h) + Medicación:</strong> $420.000 COP</li>
+                  <li>💰 <strong>Total Estimado de la Intervención:</strong> <strong style="color:#0a5c36;">$2.900.000 COP</strong></li>
+                </ul>
+                <button class="btn-view-doc" onclick="openDocLightbox('assets/img/clinica/factura-presupuesto.svg', 'Presupuesto Quirúrgico - Clínica UdeA', 'Desglose detallado.')">
+                  📄 Ver Factura Detallada
+                </button>
+              </div>
+            </div>
+
+            <div style="background: #ffffff; border: 2px dashed #0a5c36; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; justify-content: center;">
+              <h4 style="font-family: var(--font-fun); color: #0a5c36; font-size: 1.25rem;">
+                💚 ¿Cómo se administra cada peso donado?
+              </h4>
+              <p style="font-size: 0.9rem; color: #444; margin-top: 8px;">
+                Cada peso recaudado a través del merch, el calendario de memes, los postrecitos y las donaciones va a una cuenta dedicada exclusivamente para los pagos en ventanilla del Hospital Veterinario UdeA.
+              </p>
+              <div style="background: #e8f5e9; border-radius: 8px; padding: 12px; margin-top: 12px; font-size: 0.88rem; color: #1b5e20;">
+                ✓ <strong>Compromiso:</strong> Apenas se realice la cirugía y se liquiden las facturas finales, se subirán aquí mismo los recibos con sello de cancelado.
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- SUB-PANEL 3: DATOS DEL HOSPITAL ROBLEDO -->
+        <div class="clinic-subtab-pane" id="subtab-sede">
+          <div style="background: #ffffff; border: 2px solid #0a5c36; border-radius: 12px; padding: 22px;">
+            <h3 style="font-family: var(--font-fun); color: #0a5c36; font-size: 1.4rem; margin-bottom: 8px;">
+              🏛️ Hospital Veterinario - Facultad de Ciencias Agrarias (UdeA)
+            </h3>
+            <p style="font-size: 0.95rem; color: #333; margin-bottom: 12px;">
+              Princesa está siendo atendida en la sede Robledo de la Universidad de Antioquia, el centro docente y asistencial de mayor referencia veterinaria de la ciudad de Medellín.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; font-size: 0.88rem;">
+              <div style="background: #f8f9fa; padding: 12px; border-radius: 8px; border-left: 4px solid #0a5c36;">
+                <strong>📍 Ubicación:</strong><br>
+                Carrera 75 # 65-87, Sede Robledo, Medellín
+              </div>
+              <div style="background: #f8f9fa; padding: 12px; border-radius: 8px; border-left: 4px solid #0a5c36;">
+                <strong>🩺 Especialidad:</strong><br>
+                Cirugía de Pequeñas Especies y Cuidados Intensivos
+              </div>
+              <div style="background: #f8f9fa; padding: 12px; border-radius: 8px; border-left: 4px solid #0a5c36;">
+                <strong>👩‍⚕️ Atención:</strong><br>
+                Médicos Veterinarios Docentes y Residentes UdeA
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         3. CALENDARIO 2027 DE MEMES DE GATICOS (DISPONIBLE PARA COMPRA DIRECTA)
+         ======================================================================== -->
+    <section class="retro-window" id="calendario">
+      <div class="retro-window-header">
+        <div class="retro-window-title">
+          <span>📅</span>
+          <span>Calendario_2027_Memes_Gatos_DISPONIBLE.box</span>
+        </div>
+        <div class="retro-window-controls">
+          <div class="retro-win-btn min">_</div>
+          <div class="retro-win-btn max">□</div>
+          <div class="retro-win-btn close">✕</div>
+        </div>
+      </div>
+
+      <div class="retro-window-body">
+        <div class="calendar-banner-box">
+          <div class="calendar-grid">
+            
+            <div class="calendar-mockup-wrapper">
+              <img src="assets/img/calendar/calendario-2027-preview.svg" alt="Calendario 2027 Memes de Gaticos" class="calendar-mockup-img">
+            </div>
+
+            <div class="calendar-content">
+              <div class="retro-title-tag">
+                <span>🔥 PRODUCTO ESTRELLA • LISTO PARA COMPRA</span>
+              </div>
+
+              <h3>
+                CALENDARIO 2027: 12 Meses de Memes de Gaticos 🐱🗓️
+              </h3>
+
+              <p>
+                ¡Listo para ordenar ya mismo! Un <strong>calendario anillado de alta calidad</strong> para todo el 2027 con los memes felinos más divertidos y tiernos del internet, con Princesa como invitada estelar.
+              </p>
+
+              <div class="calendar-tag-list">
+                <span class="calendar-tag">✨ 12 Ilustraciones a todo color</span>
+                <span class="calendar-tag">🗓️ Anillado para escritorio o pared</span>
+                <span class="calendar-tag">🎁 Incluye plancha de stickers meme</span>
+                <span class="calendar-tag">📦 Listo para despacho</span>
+              </div>
+
+              <div style="display: flex; align-items: baseline; gap: 10px; margin-top: 6px;">
+                <span style="font-family: var(--font-pixel); font-size: 1.6rem; color: #880e4f; font-weight: bold;">
+                  $32.000 COP
+                </span>
+                <span style="color: #2e7d32; font-weight: bold; font-size: 0.9rem;">
+                  ¡Envío a toda Colombia o entrega en Medellín!
+                </span>
+              </div>
+
+              <div style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 10px;">
+                <button class="btn-retro btn-merch" onclick="cart.addItem('calendar-2027', 'Calendario 2027 Memes de Gaticos', 32000, 'Edición Completa')">
+                  <span>🛒 Agregar al Carrito ($32.000)</span>
+                </button>
+                <button class="btn-retro btn-whatsapp" onclick="cart.buyDirect('calendar-2027', 'Calendario 2027 Memes de Gaticos', 32000, 'Edición Completa')">
+                  <span>⚡ Comprar Directo Ahora</span>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         4. MERCH OFICIAL (100% ARTE HUMANO POR ARTISTA AMIGA • CERO IA)
+         ======================================================================== -->
+    <section class="retro-window" id="merch">
+      <div class="retro-window-header">
+        <div class="retro-window-title">
+          <span>🎨</span>
+          <span>Merch_100_Porciento_Arte_Humano_NO_IA.shop</span>
+        </div>
+        <div class="retro-window-controls">
+          <div class="retro-win-btn min">_</div>
+          <div class="retro-win-btn max">□</div>
+          <div class="retro-win-btn close">✕</div>
+        </div>
+      </div>
+
+      <div class="retro-window-body">
+        
+        <!-- BANNER ENFÁTICO: ARTE HUMANO / CERO IA -->
+        <div class="human-art-banner">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 2.2rem;">🎨</span>
+            <div class="human-art-text">
+              <h3 style="font-family: var(--font-fun); font-size: 1.35rem; color: #880e4f;">
+                ¡DISEÑADO A MANO POR UNA ARTISTA REAL • CERO INTELIGENCIA ARTIFICIAL!
+              </h3>
+              <p>
+                Cada una de las ilustraciones de gatita negra de este merch fue <strong>bocetada, entintada y coloreada a mano por una talentosa amiga artista</strong>. Aquí <strong>NO SE USÓ NINGÚN TIPO DE IA</strong>: es 100% arte humano, amor genuino por los michis y apoyo directo a la cirugía de Princesa.
+              </p>
+            </div>
+          </div>
+          <div>
+            <span class="human-art-badge-pill">
+              🚫 CERO IA • 100% HUMAN ART
+            </span>
+          </div>
+        </div>
+
+        <div class="catalog-grid">
+          
+          <!-- PRODUCTO 1: Calendario 2027 en el catálogo -->
+          <div class="product-card" style="border-color: #ff007f;">
+            <div class="product-img-box">
+              <span class="product-badge" style="background: #7b2cbf;">⭐ RECOMENDADO</span>
+              <img src="assets/img/calendar/calendario-2027-preview.svg" alt="Calendario 2027" class="product-img">
+            </div>
+            <div class="product-details">
+              <h3 class="product-title">Calendario 2027 Memes Gaticos</h3>
+              <p class="product-desc">12 meses de diversión gatuna con memes icónicos y plancha de stickers de regalo. ¡Listo para entrega!</p>
+              
+              <div class="product-price-row">
+                <span class="product-price">$32.000 COP</span>
+                <span style="font-size: 0.8rem; color: #0a5c36; font-weight: bold;">En stock</span>
+              </div>
+
+              <button class="btn-add-cart" onclick="cart.addItem('calendar-2027', 'Calendario 2027 Memes de Gaticos', 32000, 'Edición Completa')">
+                <span>🛒 Agregar al Pedido</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- PRODUCTO 2: Camiseta -->
+          <div class="product-card">
+            <div class="product-img-box">
+              <span class="product-badge">🔥 ARTE HUMANO</span>
+              <img src="assets/img/merch/camiseta.svg" alt="Camiseta Princesa" class="product-img">
+            </div>
+            <div class="product-details">
+              <h3 class="product-title">Camiseta "Void & Stars"</h3>
+              <p class="product-desc">Ilustración original hecha a mano por artista amiga. 100% algodón suave y estampado durable de alta calidad.</p>
+              
+              <div class="product-price-row">
+                <span class="product-price">$45.000 COP</span>
+                <select class="product-select" id="size-shirt">
+                  <option value="Talla S">Talla S</option>
+                  <option value="Talla M" selected>Talla M</option>
+                  <option value="Talla L">Talla L</option>
+                  <option value="Talla XL">Talla XL</option>
+                </select>
+              </div>
+
+              <button class="btn-add-cart" onclick="cart.addItem('merch-shirt', 'Camiseta Void & Stars', 45000, document.getElementById('size-shirt').value)">
+                <span>🛒 Agregar al Pedido</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- PRODUCTO 3: Mug Mágico -->
+          <div class="product-card">
+            <div class="product-img-box">
+              <span class="product-badge">☕ HANDMADE</span>
+              <img src="assets/img/merch/mug.svg" alt="Mug Mágico" class="product-img">
+            </div>
+            <div class="product-details">
+              <h3 class="product-title">Mug Cerámico "Morning Meow"</h3>
+              <p class="product-desc">Taza de 11 oz con diseño dibujado de gatita negra. Apta para microondas y lavavajillas.</p>
+              
+              <div class="product-price-row">
+                <span class="product-price">$25.000 COP</span>
+                <select class="product-select" id="opt-mug">
+                  <option value="Rosa Pastel" selected>Rosa Pastel</option>
+                  <option value="Negro Mágico">Negro Mágico</option>
+                </select>
+              </div>
+
+              <button class="btn-add-cart" onclick="cart.addItem('merch-mug', 'Mug Cerámico Morning Meow', 25000, document.getElementById('opt-mug').value)">
+                <span>🛒 Agregar al Pedido</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- PRODUCTO 4: Tote Bag -->
+          <div class="product-card">
+            <div class="product-img-box">
+              <span class="product-badge">🌱 ECO LIENZO</span>
+              <img src="assets/img/merch/totebag.svg" alt="Tote Bag Ecológica" class="product-img">
+            </div>
+            <div class="product-details">
+              <h3 class="product-title">Tote Bag "Michi Mágico"</h3>
+              <p class="product-desc">Bolsa de lienzo resistente con ilustración única de gatita negra sin IA. Espaciosa y ecológica.</p>
+              
+              <div class="product-price-row">
+                <span class="product-price">$30.000 COP</span>
+                <span style="font-size: 0.8rem; color: #888;">Color Natural</span>
+              </div>
+
+              <button class="btn-add-cart" onclick="cart.addItem('merch-tote', 'Tote Bag Michi Mágico', 30000, 'Lienzo Crudo')">
+                <span>🛒 Agregar al Pedido</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- PRODUCTO 5: Pack Stickers Holográficos -->
+          <div class="product-card">
+            <div class="product-img-box">
+              <span class="product-badge">✨ GLITTER</span>
+              <img src="assets/img/merch/stickers.svg" alt="Pack Stickers" class="product-img">
+            </div>
+            <div class="product-details">
+              <h3 class="product-title">Pack x5 Stickers Holográficos</h3>
+              <p class="product-desc">5 ilustraciones dibujadas a mano en vinilo laminado resistente al agua con efecto tornasol.</p>
+              
+              <div class="product-price-row">
+                <span class="product-price">$12.000 COP</span>
+                <span style="font-size: 0.8rem; color: #888;">Pack 5 unidades</span>
+              </div>
+
+              <button class="btn-add-cart" onclick="cart.addItem('merch-stickers', 'Pack x5 Stickers Holográficos', 12000, '5 Diseños')">
+                <span>🛒 Agregar al Pedido</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         5. POSTRECITOS CON CAUSA
+         ======================================================================== -->
+    <section class="retro-window" id="postres">
+      <div class="retro-window-header">
+        <div class="retro-window-title">
+          <span>🧁</span>
+          <span>Postres_Caseros_Con_Causa.sweet</span>
+        </div>
+        <div class="retro-window-controls">
+          <div class="retro-win-btn min">_</div>
+          <div class="retro-win-btn max">□</div>
+          <div class="retro-win-btn close">✕</div>
+        </div>
+      </div>
+
+      <div class="retro-window-body">
+        <div style="text-align: center; max-width: 650px; margin: 0 auto 16px auto;">
+          <h2 style="font-family: var(--font-fun); font-size: 1.8rem; color: #4a154b;">
+            🧁 Postrecitos Hechos en Casa con Amor 🍪
+          </h2>
+          <p style="font-size: 0.95rem; color: #634358;">
+            Endulza tus días mientras apoyas la cirugía. Entregas en Medellín (Campus UdeA, estaciones de metro o punto acordado).
+          </p>
+        </div>
+
+        <div class="catalog-grid">
+          
+          <!-- POSTRE 1: Brownie -->
+          <div class="product-card">
+            <div class="product-img-box">
+              <span class="product-badge">🍫 FAVORITO</span>
+              <img src="assets/img/postres/brownie.svg" alt="Brownie Melcochudo" class="product-img">
+            </div>
+            <div class="product-details">
+              <h3 class="product-title">Brownie Melcochudo Artesanal</h3>
+              <p class="product-desc">Puro chocolate 70%, centro húmedo melcochudo y detalle de huellita en azúcar glas. ¡Irresistible!</p>
+              
+              <div class="product-price-row">
+                <span class="product-price">$6.500 COP</span>
+                <select class="product-select" id="opt-brownie">
+                  <option value="Con Arequipe" selected>Con Arequipe</option>
+                  <option value="Con Nueces">Con Nueces</option>
+                  <option value="Clásico Choco">Clásico Choco</option>
+                </select>
+              </div>
+
+              <button class="btn-add-cart" onclick="cart.addItem('dessert-brownie', 'Brownie Melcochudo', 6500, document.getElementById('opt-brownie').value)">
+                <span>🧁 Agregar al Pedido</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- POSTRE 2: Galleta Huellita -->
+          <div class="product-card">
+            <div class="product-img-box">
+              <span class="product-badge">🐾 CUTE</span>
+              <img src="assets/img/postres/cookie.svg" alt="Galleta Huellita" class="product-img">
+            </div>
+            <div class="product-details">
+              <h3 class="product-title">Galletas Huellita (Pack x2)</h3>
+              <p class="product-desc">Galletas de mantequilla crujientes con chispas y almohadillas rellenas de ganache de chocolate.</p>
+              
+              <div class="product-price-row">
+                <span class="product-price">$5.000 COP</span>
+                <span style="font-size: 0.8rem; color: #888;">2 Galletotas</span>
+              </div>
+
+              <button class="btn-add-cart" onclick="cart.addItem('dessert-cookie', 'Galletas Huellita (Pack x2)', 5000, 'Mantequilla & Choco')">
+                <span>🧁 Agregar al Pedido</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- POSTRE 3: Cupcake Michi Rosa -->
+          <div class="product-card">
+            <div class="product-img-box">
+              <span class="product-badge">🍓 RED VELVET</span>
+              <img src="assets/img/postres/cupcake.svg" alt="Cupcake Michi Rosa" class="product-img">
+            </div>
+            <div class="product-details">
+              <h3 class="product-title">Cupcake Michi Rosa</h3>
+              <p class="product-desc">Esponjoso Red Velvet con frosting de queso crema decorado con orejitas de gato de chocolate negro.</p>
+              
+              <div class="product-price-row">
+                <span class="product-price">$7.000 COP</span>
+                <span style="font-size: 0.8rem; color: #888;">Frosting Queso Crema</span>
+              </div>
+
+              <button class="btn-add-cart" onclick="cart.addItem('dessert-cupcake', 'Cupcake Michi Rosa', 7000, 'Red Velvet')">
+                <span>🧁 Agregar al Pedido</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         TABLA INFORMATIVA DE ENTREGAS Y COSTOS (ORIGEN: TORRES DE LA FUENTE)
+         ======================================================================== -->
+    <section class="retro-window" id="envios">
+      <div class="retro-window-header">
+        <div class="retro-window-title">
+          <span>🛵</span>
+          <span>Tarifas_De_Entrega_DiDi_UberFlash_Medellin.calc</span>
+        </div>
+        <div class="retro-window-controls">
+          <div class="retro-win-btn min">_</div>
+          <div class="retro-win-btn max">□</div>
+          <div class="retro-win-btn close">✕</div>
+        </div>
+      </div>
+
+      <div class="retro-window-body">
+        <h3 style="font-family: var(--font-fun); color: #4a154b; font-size: 1.4rem; margin-bottom: 6px;">
+          🛵 Tarifas de Entrega Calculadas con DiDi & Uber Flash
+        </h3>
+        <p style="font-size: 0.9rem; color: #555; margin-bottom: 14px;">
+          Los envíos se despachan desde <strong>Torres de la Fuente (Calle 65 # 55-30, Medellín)</strong>. Calculamos los costos reales promedio de mensajería en moto para que no pagues de más:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px;">
+          <div style="background: #e8f5e9; border: 2px solid #2e7d32; border-radius: 8px; padding: 12px; grid-column: 1 / -1;">
+            <div style="font-weight: bold; color: #1b5e20; font-size: 1rem;">📍 Puntos de Entrega GRATUITOS ($0 COP):</div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; font-size: 0.85rem; color: #333; margin-top: 6px;">
+              <div>• <strong>Torres de la Fuente:</strong> Portería (Calle 65 # 55-30)</div>
+              <div>• <strong>Universidad Nacional (UNAL):</strong> Sede Volador / Minas / Agrarias</div>
+              <div>• <strong>Universidad de Antioquia (UdeA):</strong> Ciudad Univ. / Robledo</div>
+              <div>• <strong>Hospital Alma Máter:</strong> Portería (Antigua IPS Universitaria)</div>
+              <div>• <strong>Hospital UPB:</strong> Clínica Universitaria Bolivariana / Campus UPB</div>
+              <div>• <strong>Metro de Medellín:</strong> Estación Universidad</div>
+            </div>
+          </div>
+
+          <div style="background: #fff0f7; border: 1.5px solid #d81b60; border-radius: 8px; padding: 12px;">
+            <div style="font-weight: bold; color: #d81b60;">🛵 Zona 1 Cercana: $6.500 COP</div>
+            <div style="font-size: 0.82rem; color: #333; margin-top: 4px;">
+              Chagualo, Centro, Prado, Robledo bajo (Fac. Agrarias), Sevilla, Aranjuez, Boston (2 a 4 km).
+            </div>
+          </div>
+
+          <div style="background: #fff0f7; border: 1.5px solid #d81b60; border-radius: 8px; padding: 12px;">
+            <div style="font-weight: bold; color: #d81b60;">🛵 Zona 2 Media: $9.500 COP</div>
+            <div style="font-size: 0.82rem; color: #333; margin-top: 4px;">
+              Laureles, Estadio, Belén, Floresta, Conquistadores, San Joaquín, Robledo medio (5 a 8 km).
+            </div>
+          </div>
+
+          <div style="background: #fff0f7; border: 1.5px solid #d81b60; border-radius: 8px; padding: 12px;">
+            <div style="font-weight: bold; color: #d81b60;">🛵 Zona 3 Sur / Norte: $13.500 COP</div>
+            <div style="font-size: 0.82rem; color: #333; margin-top: 4px;">
+              El Poblado (Manila, Provenza, Castropol), Envigado casco urbano, Bello (Cabañas, Madera).
+            </div>
+          </div>
+
+          <div style="background: #fff0f7; border: 1.5px solid #d81b60; border-radius: 8px; padding: 12px;">
+            <div style="font-weight: bold; color: #d81b60;">🛵 Zona 4 Extremos: $17.500 COP</div>
+            <div style="font-size: 0.82rem; color: #333; margin-top: 4px;">
+              Sabaneta, Itagüí sur, Caldas, Copacabana, San Antonio de Prado (14 a 22 km).
+            </div>
+          </div>
+
+          <div style="background: #f1f8ff; border: 1.5px solid #0366d6; border-radius: 8px; padding: 12px;">
+            <div style="font-weight: bold; color: #0366d6;">📦 Envío Nacional: $15.000 COP</div>
+            <div style="font-size: 0.82rem; color: #333; margin-top: 4px;">
+              Bogotá, Cali, Bucaramanga, etc. por Interrapidísimo / Envía con número de guía.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         6. GALERÍA DE PRINCESA (FOTOS REALES DE GATAS NEGRAS + MEMES)
+         ======================================================================== -->
+    <section class="retro-window" id="galeria">
+      <div class="retro-window-header">
+        <div class="retro-window-title">
+          <span>📸</span>
+          <span>Album_Princesa_Fotos_Reales_Y_Memes.gallery</span>
+        </div>
+        <div class="retro-window-controls">
+          <div class="retro-win-btn min">_</div>
+          <div class="retro-win-btn max">□</div>
+          <div class="retro-win-btn close">✕</div>
+        </div>
+      </div>
+
+      <div class="retro-window-body">
+        <div style="text-align: center; max-width: 600px; margin: 0 auto 16px auto;">
+          <h2 style="font-family: var(--font-fun); font-size: 1.8rem; color: #4a154b;">
+            🖤 Princesa en su Máximo Esplendor 🐾
+          </h2>
+          <p style="font-size: 0.92rem; color: #634358;">
+            Aquí puedes ver sus fotos más tiernas y momentos divertidos. ¡Gracias por cada granito de ayuda para superar este cálculo y úlcera!
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          
+          <!-- Foto 1 Real de Sara -->
+          <div class="polaroid-gallery-item has-cat-curiosity" tabindex="0">
+            <img src="assets/img/gata/1.jpg" alt="Princesa foto real 1" class="gallery-photo">
+            <div class="gallery-caption">Ojitos Curiosos 👀</div>
+            <small style="color: #888;">"Atenta a todo"</small>
+            <div class="curiosity-pill-hint">💡 Dato Curioso</div>
+
+            <!-- Tooltip BoJack -->
+            <div class="cat-curiosity-tooltip">
+              <div class="cat-tooltip-header">
+                <span>🎬 DATO CURIOSO FELINO</span>
+                <span class="cat-tooltip-close">×</span>
+              </div>
+              <div class="cat-tooltip-body">
+                <img src="assets/img/gata/princess-carolyn-bojack.svg" alt="Princess Carolyn BoJack" class="cat-tooltip-img">
+                <div class="cat-tooltip-text">
+                  <strong>Frase de jefa de Princesa Carolyn:</strong>
+                  <p>"You gotta get your shit together. Tomorrow you go out there and you handle it!" 💪🐱</p>
+                  <div class="cat-tooltip-quote">
+                    Superando cualquier obstáculo con valentía.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Foto 2 Real de Sara -->
+          <div class="polaroid-gallery-item has-cat-curiosity" tabindex="0">
+            <img src="assets/img/gata/2.jpg" alt="Princesa foto real 2" class="gallery-photo">
+            <div class="gallery-caption">La Consentida de Mamá 💖</div>
+            <small style="color: #888;">"Descansando en cama"</small>
+            <div class="curiosity-pill-hint">💡 Dato Curioso</div>
+
+            <!-- Tooltip BoJack -->
+            <div class="cat-curiosity-tooltip">
+              <div class="cat-tooltip-header">
+                <span>🎬 DATO CURIOSO FELINO</span>
+                <span class="cat-tooltip-close">×</span>
+              </div>
+              <div class="cat-tooltip-body">
+                <img src="assets/img/gata/princess-carolyn-bojack.svg" alt="Princess Carolyn BoJack" class="cat-tooltip-img">
+                <div class="cat-tooltip-text">
+                  <strong>La verdadera CEO de la casa:</strong>
+                  <p>Al igual que Princess Carolyn en la serie de Netflix, esta pequeña pantera manda con amor e inteligencia en el hogar de Sara.</p>
+                  <div class="cat-tooltip-quote">
+                    9 vidas, corazón noble y ronroneos infinitos. 🐾
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Foto 3 Real de Sara -->
+          <div class="polaroid-gallery-item has-cat-curiosity" tabindex="0">
+            <img src="assets/img/gata/3.jpg" alt="Princesa foto real 3" class="gallery-photo">
+            <div class="gallery-caption">Princesa Elegante 🐈‍⬛</div>
+            <small style="color: #888;">"Pantera de bolsillo"</small>
+            <div class="curiosity-pill-hint">💡 Dato Curioso</div>
+
+            <!-- Tooltip BoJack -->
+            <div class="cat-curiosity-tooltip">
+              <div class="cat-tooltip-header">
+                <span>🎬 DATO CURIOSO FELINO</span>
+                <span class="cat-tooltip-close">×</span>
+              </div>
+              <div class="cat-tooltip-body">
+                <img src="assets/img/gata/princess-carolyn-bojack.svg" alt="Princess Carolyn BoJack" class="cat-tooltip-img">
+                <div class="cat-tooltip-text">
+                  <strong>Pantera con estrella:</strong>
+                  <p>A pesar de ser negrita y que la Princess Carolyn original sea rosa, tienen la misma tenacidad para salir victoriosas.</p>
+                  <div class="cat-tooltip-quote">
+                    "¡Los gatos siempre caen sobre sus cuatro patas!"
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Foto 4 Real de Sara -->
+          <div class="polaroid-gallery-item has-cat-curiosity" tabindex="0">
+            <img src="assets/img/gata/4.jpg" alt="Princesa foto real 4" class="gallery-photo">
+            <div class="gallery-caption">Modo Mimitos 🥰</div>
+            <small style="color: #888;">"Esperando su recuperación"</small>
+            <div class="curiosity-pill-hint">💡 Dato Curioso</div>
+
+            <!-- Tooltip BoJack -->
+            <div class="cat-curiosity-tooltip">
+              <div class="cat-tooltip-header">
+                <span>🎬 DATO CURIOSO FELINO</span>
+                <span class="cat-tooltip-close">×</span>
+              </div>
+              <div class="cat-tooltip-body">
+                <img src="assets/img/gata/princess-carolyn-bojack.svg" alt="Princess Carolyn BoJack" class="cat-tooltip-img">
+                <div class="cat-tooltip-text">
+                  <strong>El lado tierno de la jefa:</strong>
+                  <p>Detrás de su mirada decidida de productora ejecutiva, su medicina favorita son los mimos en la barbilla y la compañía.</p>
+                  <div class="cat-tooltip-quote">
+                    Gracias por ayudar a devolverle su salud. 💖
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- GIF 1 Animado -->
+          <div class="polaroid-gallery-item">
+            <img src="assets/gifs/cat-bailarin.gif" alt="Gatito bailando" class="gallery-photo">
+            <div class="gallery-caption">Bailando de Emoción 💃</div>
+            <small style="color: #888;">"Gracias por donar"</small>
+          </div>
+
+          <!-- GIF 2 Cool Cute -->
+          <div class="polaroid-gallery-item">
+            <img src="assets/gifs/cool-verycute.gif" alt="Cat very cute" class="gallery-photo">
+            <div class="gallery-caption">Michi Cariñosa ✨</div>
+            <small style="color: #888;">"Pidiendo mimos"</small>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         7. DONACIÓN NEQUI DIRECTA (UBICADA DE ÚLTIMA COMO SE SOLICITÓ)
+         ======================================================================== -->
+    <section class="retro-window" id="nequi">
+      <div class="retro-window-header">
+        <div class="retro-window-title">
+          <span>💜</span>
+          <span>Nequi_Donaciones_Directas_Y_Aportes.box</span>
+        </div>
+        <div class="retro-window-controls">
+          <div class="retro-win-btn min">_</div>
+          <div class="retro-win-btn max">□</div>
+          <div class="retro-win-btn close">✕</div>
+        </div>
+      </div>
+
+      <div class="retro-window-body">
+        <div class="nequi-card">
+          <div class="nequi-card-grid">
+            
+            <!-- QR Nequi -->
+            <div class="nequi-qr-wrapper">
+              <img src="assets/img/badges/nequi-qr.svg" alt="Código QR Nequi Princesa" class="nequi-qr-img">
+              <span style="color: #20002c; font-size: 0.75rem; font-weight: bold; display: block; margin-top: 4px;">
+                Escanea desde tu Nequi
+              </span>
+            </div>
+
+            <!-- Información Nequi -->
+            <div class="nequi-info">
+              <div>
+                <span class="nequi-badge-tag">TRANSFERENCIA INSTANTÁNEA (COLOMBIA)</span>
+                <h2 style="font-family: var(--font-fun); font-size: 1.8rem; margin-top: 4px;">
+                  ¿Prefieres hacer una donación directa a Nequi? 🐱💜
+                </h2>
+                <p style="font-size: 0.95rem; opacity: 0.9;">
+                  Si no deseas merch o postres y solo quieres apoyar directamente los costos médicos del cálculo y la úlcera de Princesa, ¡cualquier aporte voluntario es recibido con inmensa gratitud!
+                </p>
+              </div>
+
+              <!-- Caja de número con botón de copiar -->
+              <div class="nequi-number-box">
+                <div>
+                  <div style="font-size: 0.8rem; text-transform: uppercase; color: #ffd6ec; letter-spacing: 1px;">Número Nequi de Sara:</div>
+                  <div class="nequi-phone" id="nequiNumberText">300 608 7608</div>
+                </div>
+                <button class="btn-copy" onclick="copyNequiNumber()">
+                  📋 Toca para Copiar
+                </button>
+              </div>
+
+              <!-- Pasos simples -->
+              <ul class="nequi-steps">
+                <li><span class="step-num">1</span> Abre tu App Nequi y selecciona <strong>Envía plata</strong> o escanea el código QR.</li>
+                <li><span class="step-num">2</span> Pega el número <strong>300 608 7608</strong> e ingresa el monto que desees.</li>
+                <li><span class="step-num">3</span> En mensaje pon: <em>"Para la cirugía de Princesa"</em> y ¡listo!</li>
+              </ul>
+
+              <!-- Enviar comprobante -->
+              <div style="margin-top: 4px;">
+                <button class="btn-retro btn-whatsapp" onclick="sendDonationProofWhatsApp()">
+                  <span>📲 Enviar Comprobante Voluntario por WhatsApp</span>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========================================================================
+         9. GUESTBOOK / MURO DE APOYO
+         ======================================================================== -->
+    <section class="retro-window" id="muro">
+      <div class="retro-window-header">
+        <div class="retro-window-title">
+          <span>💌</span>
+          <span>Muro_De_Apoyo_Para_Princesa.txt</span>
+        </div>
+        <div class="retro-window-controls">
+          <div class="retro-win-btn min">_</div>
+          <div class="retro-win-btn max">□</div>
+          <div class="retro-win-btn close">✕</div>
+        </div>
+      </div>
+
+      <div class="retro-window-body">
+        <div class="guestbook-box">
+          
+          <h2 style="font-family: var(--font-fun); font-size: 1.6rem; color: #4a154b; margin-bottom: 8px;">
+            ✍️ Déjale un mensajito de aliento a Princesa
+          </h2>
+          <p style="font-size: 0.9rem; color: #634358; margin-bottom: 16px;">
+            Tu mensaje aparecerá en vivo en este muro retro de apoyo. ¡A Princesa le leemos todos los cariñitos!
+          </p>
+
+          <form id="guestbookForm" class="guestbook-form">
+            <div class="form-group">
+              <label for="gbName">Tu Nombre o Apodo:</label>
+              <input type="text" id="gbName" class="form-input" placeholder="Ej: Caro & Misi" required>
+            </div>
+
+            <div class="form-group">
+              <label for="gbSticker">Elige tu Sticker / Huella:</label>
+              <select id="gbSticker" class="form-select">
+                <option value="💖">💖 Corazoncito Rosa</option>
+                <option value="🐾" selected>🐾 Huellita Felina</option>
+                <option value="🐱">🐱 Gatito Mágico</option>
+                <option value="⭐">⭐ Estrellita de la Suerte</option>
+                <option value="🧁">🧁 Cupcake con Cariño</option>
+                <option value="🩺">🩺 Sanación y Fuerza</option>
+              </select>
+            </div>
+
+            <div class="form-group form-full">
+              <label for="gbMsg">Tu Mensaje de Amor:</label>
+              <textarea id="gbMsg" class="form-textarea" placeholder="Escribe aquí tus mejores deseos para la operación de Princesa..." required></textarea>
+            </div>
+
+            <div class="form-full" style="text-align: right;">
+              <button type="submit" class="btn-retro btn-merch" style="padding: 8px 18px;">
+                <span>💌 Firmar en el Muro</span>
+              </button>
+            </div>
+          </form>
+
+          <!-- Muro con mensajes -->
+          <div class="guestbook-wall" id="guestbookWall">
+            <!-- Dinámico vía JS -->
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CONTADOR DE VISITAS RETRO & BADGES Y2K
+         ======================================================================== -->
+    <div class="retro-counter-container">
+      <div class="counter-label">★ VISITAS REGISTRADAS EN ESTA WEB ★</div>
+      
+      <div class="odometer-box" id="odometerDisplay">
+        <span class="odometer-digit">0</span>
+        <span class="odometer-digit">0</span>
+        <span class="odometer-digit">4</span>
+        <span class="odometer-digit">2</span>
+        <span class="odometer-digit">8</span>
+        <span class="odometer-digit">8</span>
+      </div>
+
+      <div>
+        <button class="btn-purr" id="btnPurr" onclick="triggerPurr()">
+          🐾 Haz clic aquí para hacer ronronear a Princesa
+        </button>
+      </div>
+
+      <!-- Colección de Badges Old Web (88x31) -->
+      <div class="badges-container">
+        <img src="assets/img/badges/no-ia.svg" alt="100% Arte Humano Cero IA" style="height:31px; border:1px solid #333;" class="retro-badge-img">
+        <img src="assets/img/badges/nequi-badge.svg" alt="Nequi Accepted" class="retro-badge-img">
+        <img src="assets/img/badges/cat-lover.svg" alt="Cat Lover Certified" class="retro-badge-img">
+        <img src="assets/img/badges/girl-power.svg" alt="Girlie Web" class="retro-badge-img">
+        <img src="assets/img/badges/under-con.svg" alt="En Recuperación" class="retro-badge-img">
+        <img src="assets/img/badges/html5.svg" alt="HTML5 Valid" class="retro-badge-img">
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ========================================================================
+       BOTÓN FLOTANTE DEL CARRITO (CONTEO DINÁMICO)
+       ======================================================================== -->
+  <button class="floating-cart-btn" id="floatingCartBtn" onclick="openCartModal()" style="display: none;">
+    <span>🛒 Carrito</span>
+    <span class="cart-count-badge" id="cartBadgeCount">0</span>
+  </button>
+
+  <!-- ========================================================================
+       MODAL DE CARRITO & CHECKOUT INTELIGENTE
+       ======================================================================== -->
+  <div class="modal-overlay" id="cartModal">
+    <div class="modal-window" style="max-width: 620px;">
+      
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>🛍️</span> Tu Pedido Solidario para Princesa
+        </div>
+        <button class="retro-win-btn close" onclick="closeCartModal()">✕</button>
+      </div>
+
+      <div class="modal-body">
+        
+        <!-- VISTA 1: FORMULARIO Y PRODUCTOS -->
+        <div id="cartFormView">
+          <div class="cart-items-list" id="cartModalItems">
+            <!-- Dinámico vía JS -->
+          </div>
+
+          <!-- Selector de Zona de Entrega (Calculado desde Torres de la Fuente) -->
+          <div style="background: #fff8fc; border: 2px dashed #ff77a9; border-radius: 10px; padding: 12px; margin: 12px 0;">
+            <label style="font-family: var(--font-fun); font-weight: bold; font-size: 0.95rem; color: #4a154b; display: block; margin-bottom: 4px;">
+              🛵 Zona de Entrega (Tarifa DiDi / Uber Flash):
+            </label>
+            <small style="color: #666; display: block; margin-bottom: 8px;">
+              Despacho desde: <em>Torres de la Fuente, Calle 65 # 55-30</em>
+            </small>
+
+            <select id="checkoutShippingZone" class="form-select" onchange="onShippingSelectChange(this)" style="width: 100%; font-weight: 500;">
+              <!-- Puntos Gratuitos -->
+              <optgroup label="📍 Puntos de Entrega GRATUITOS ($0 COP)">
+                <option value="pickup-torres" data-price="0" selected>📍 Portería Torres de la Fuente (Cll 65 # 55-30) - GRATIS</option>
+                <option value="pickup-unal" data-price="0">📍 Universidad Nacional (UNAL Medellín - Sede Volador/Minas) - GRATIS</option>
+                <option value="pickup-udea" data-price="0">📍 Universidad de Antioquia (Ciudad Univ. / Robledo) - GRATIS</option>
+                <option value="pickup-almamater" data-price="0">📍 Hospital Alma Máter de Antioquia (Antigua IPS) - GRATIS</option>
+                <option value="pickup-upb" data-price="0">📍 Hospital UPB (Clínica Univ. Bolivariana) - GRATIS</option>
+                <option value="pickup-metro" data-price="0">📍 Estación Universidad del Metro - GRATIS</option>
+              </optgroup>
+              <!-- Domicilios DiDi / Uber Flash -->
+              <optgroup label="🛵 Domicilio en Moto (DiDi / Uber Flash desde Cll 65 #55-30)">
+                <option value="didi-cercana" data-price="6500">🛵 Zona 1: Centro / Chagualo / Prado / Boston / Aranjuez ($6.500 COP)</option>
+                <option value="didi-media" data-price="9500">🛵 Zona 2: Laureles / Estadio / Belén / Floresta ($9.500 COP)</option>
+                <option value="didi-sur-norte" data-price="13500">🛵 Zona 3: El Poblado / Envigado / Bello ($13.500 COP)</option>
+                <option value="didi-extremos" data-price="17500">🛵 Zona 4: Sabaneta / Itagüí sur / Caldas ($17.500 COP)</option>
+              </optgroup>
+              <!-- Nacional -->
+              <optgroup label="📦 Envíos Fuera de Medellín">
+                <option value="nacional" data-price="15000">📦 Envío Nacional por Transportadora (Interrapidísimo: $15.000 COP)</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <!-- Desglose de totales -->
+          <div style="background: #fff0f7; border: 2px solid var(--pink-main); border-radius: 10px; padding: 12px; display: flex; flex-direction: column; gap: 4px;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: #555;">
+              <span>Subtotal Productos:</span>
+              <span id="cartModalSubtotal">$0 COP</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: #555;">
+              <span>Costo de Entrega:</span>
+              <span id="cartModalShippingCost" style="font-weight: bold; color: #0a5c36;">GRATIS</span>
+            </div>
+            <div style="border-top: 1px dashed #ffb6c1; margin-top: 4px; padding-top: 6px; display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: bold; color: var(--pink-deep);">
+              <span>TOTAL A PAGAR:</span>
+              <span id="cartModalTotal">$0 COP</span>
+            </div>
+          </div>
+
+          <!-- Formulario de Registro Obligatorio de Entrega (Guardado en Base de Datos) -->
+          <div class="cart-form-group" style="margin-top: 14px;">
+            <div style="background: #e8f5e9; border: 1.5px solid #2e7d32; border-radius: 8px; padding: 10px; margin-bottom: 8px; font-size: 0.82rem; color: #1b5e20;">
+              🔒 <strong>Datos protegidos y guardados:</strong> Toda tu información se registra en la base de datos de pedidos para que nunca se traspapele ni se pierda.
+            </div>
+
+            <label style="font-family: var(--font-fun); font-weight: bold; font-size: 0.88rem;">
+              Nombre Completo de quien recibe: <span style="color:red;">*</span>
+            </label>
+            <input type="text" id="checkoutName" class="form-input" placeholder="Ej: Mariana Gómez" required>
+
+            <label style="font-family: var(--font-fun); font-weight: bold; font-size: 0.88rem; margin-top: 6px;">
+              Celular / WhatsApp (indispensable para coordinar despacho): <span style="color:red;">*</span>
+            </label>
+            <input type="tel" id="checkoutPhone" class="form-input" placeholder="Ej: 310 987 6543" required>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 6px;">
+              <div>
+                <label style="font-family: var(--font-fun); font-weight: bold; font-size: 0.88rem;">
+                  Ciudad / Municipio: <span style="color:red;">*</span>
+                </label>
+                <input type="text" id="checkoutCity" class="form-input" placeholder="Ej: Medellín" required>
+              </div>
+              <div>
+                <label style="font-family: var(--font-fun); font-weight: bold; font-size: 0.88rem;">
+                  Barrio o Sector:
+                </label>
+                <input type="text" id="checkoutNeighborhood" class="form-input" placeholder="Ej: Laureles / Prado">
+              </div>
+            </div>
+
+            <label style="font-family: var(--font-fun); font-weight: bold; font-size: 0.88rem; margin-top: 6px;">
+              Dirección exacta (Calle, Carrera, Edificio/Casa, Apto): <span style="color:red;">*</span>
+            </label>
+            <input type="text" id="checkoutAddress" class="form-input" placeholder="Ej: Circular 4 # 71-25, Apto 302" required>
+
+            <label style="font-family: var(--font-fun); font-weight: bold; font-size: 0.88rem; margin-top: 6px;">
+              Indicaciones adicionales para el mensajero (opcional):
+            </label>
+            <input type="text" id="checkoutNotes" class="form-input" placeholder="Ej: Dejar en portería o timbrar">
+          </div>
+
+          <div style="margin-top: 18px; display: flex; flex-direction: column; gap: 8px;">
+            <button class="btn-retro btn-whatsapp" onclick="processOrderCheckout()" style="width: 100%;">
+              <span>💾 Confirmar y Guardar Pedido en el Sistema</span>
+            </button>
+            
+            <button class="btn-retro btn-merch" onclick="closeCartModal()" style="width: 100%; font-size: 0.88rem; padding: 6px;">
+              Seguir Mirando Más Productos
+            </button>
+          </div>
+        </div>
+
+        <!-- VISTA 2: CONFIRMACIÓN Y PASO A PASO NEQUI + WHATSAPP -->
+        <div id="cartSuccessView" style="display: none;">
+          <div class="order-success-box">
+            <div style="font-size: 2.2rem;">🎉🐾</div>
+            <h3 style="font-family: var(--font-fun); color: #880e4f; font-size: 1.4rem;">
+              ¡Tu Pedido ha quedado Guardado en el Sistema!
+            </h3>
+            <div class="order-success-code" id="successOrderCode">#PRINCESA-0000</div>
+            <p style="font-size: 0.88rem; color: #555;">
+              Cliente: <strong id="successClientName"></strong><br>
+              Entrega en: <span id="successClientAddress"></span><br>
+              Método: <strong id="successShippingZone"></strong>
+            </p>
+          </div>
+
+          <div class="step-instruction-box">
+            <div class="step-item">
+              <span class="step-circle-badge">1</span>
+              <div>
+                <strong>Transfiere el total a Nequi:</strong>
+                <div style="font-size: 1.3rem; font-weight: bold; color: #d81b60; margin: 2px 0;" id="successOrderTotal">
+                  $0 COP
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
+                  <span style="font-family: monospace; font-size: 1.1rem; background: #fff0f7; padding: 3px 8px; border-radius: 4px; border: 1px solid #ff77a9;">
+                    300 608 7608
+                  </span>
+                  <button class="btn-copy" onclick="copyNequiNumber()" style="padding: 4px 10px; font-size: 0.8rem;">
+                    📋 Copiar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="step-item" style="border-top: 1px dashed #ffb6c1; padding-top: 10px;">
+              <span class="step-circle-badge">2</span>
+              <div>
+                <strong>Envía tu pantallazo de pago a Sara por WhatsApp:</strong>
+                <p style="font-size: 0.85rem; color: #555; margin-top: 2px;">
+                  Tus datos de dirección <strong>ya quedaron guardados en la base de datos de la página</strong>. Al tocar el botón, WhatsApp se abrirá con el código de tu pedido para que solo adjuntes el pantallazo de Nequi.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 8px;">
+            <button class="btn-retro btn-whatsapp" onclick="sendOrderProofToWhatsApp()" style="width: 100%;">
+              <span>📲 Abrir WhatsApp y Enviar Pantallazo</span>
+            </button>
+            <button class="btn-retro btn-outline-clinic" onclick="downloadOrderReceipt()" style="width: 100%; font-size: 0.85rem; padding: 6px;">
+              📄 Descargar Comprobante Digital (.txt)
+            </button>
+            <button class="btn-retro btn-merch" onclick="closeCartModal()" style="width: 100%; font-size: 0.85rem; padding: 6px;">
+              Cerrar Ventana
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL LIGHTBOX PARA FACTURAS & DOCUMENTOS UdeA
+       ======================================================================== -->
+  <div class="modal-overlay" id="lightboxModal">
+    <div class="modal-window lightbox-modal-window">
+      
+      <div class="modal-header">
+        <div class="modal-title" id="lightboxTitle">
+          Documento Clínico UdeA
+        </div>
+        <button class="retro-win-btn close" onclick="closeDocLightbox()">✕</button>
+      </div>
+
+      <div class="modal-body" style="text-align: center;">
+        <img src="" alt="Documento Ampliado" id="lightboxImg" class="lightbox-img">
+        <p id="lightboxCaption" style="margin-top: 10px; font-size: 0.9rem; color: #555;"></p>
+        <button class="btn-retro btn-outline-clinic" onclick="closeDocLightbox()" style="margin-top: 12px;">
+          Cerrar Vista
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       FOOTER RETRO
+       ======================================================================== -->
+  <footer class="footer-retro">
+    <p>
+      🐱 <strong>Recaudación para la Cirugía de Princesa (Cálculo y Úlcera)</strong> | Medellín, Colombia 🇨🇴
+    </p>
+    <p>
+      Diseñado con inspiración <span class="footer-highlight">Web 1.0 & Y2K Girlie</span> • <strong>100% Arte Humano por Amiga Artista (Cero IA)</strong>
+    </p>
+    <p style="font-size: 0.8rem; color: #888; margin-top: 8px;">
+      ★ Hospital Clínico Veterinario Universidad de Antioquia • Despachos desde Torres de la Fuente ★
+    </p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+</body>
+</html>

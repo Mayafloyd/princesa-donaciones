@@ -1,0 +1,10 @@
+# Archivos grandes y temporales
+video_presentacion_lgd_integrante_3.webm
+*.webm
+Recibo_PRINCESA-*.txt
+
+# Archivos de sistema y entorno
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc

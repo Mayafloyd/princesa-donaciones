@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <rect width="400" height="400" fill="#fff9fb" rx="20"/>
+  <rect x="10" y="10" width="380" height="380" fill="none" stroke="#ffb6c1" stroke-width="3" stroke-dasharray="8 6" rx="15"/>
+  
+  <!-- Merch representation -->
+  <g transform="translate(200, 180)">
+    
+    
+
+    
+    <!-- Mug -->
+    <rect x="-65" y="-70" width="130" height="150" rx="20" fill="#ffffff" stroke="#ff80ab" stroke-width="5"/>
+    <path d="M 65 -30 C 115 -30 115 50 65 50" fill="none" stroke="#ff80ab" stroke-width="14" stroke-linecap="round"/>
+    <rect x="-50" y="-45" width="100" height="100" rx="12" fill="#ffd1eb"/>
+    <circle cx="0" cy="5" r="28" fill="#1e1822"/>
+    <polygon points="-18,-15 -10,-32 0,-15" fill="#1e1822"/>
+    <polygon points="0,-15 10,-32 18,-15" fill="#1e1822"/>
+    <ellipse cx="-8" cy="2" rx="4" ry="6" fill="#ffea79"/>
+    <ellipse cx="8" cy="2" rx="4" ry="6" fill="#ffea79"/>
+    <path d="M -30 -85 Q -25 -100 -30 -115" stroke="#ff80ab" stroke-width="3" fill="none" opacity="0.6"/>
+    <path d="M 0 -85 Q 5 -100 0 -115" stroke="#ff80ab" stroke-width="3" fill="none" opacity="0.6"/>
+    <path d="M 30 -85 Q 35 -100 30 -115" stroke="#ff80ab" stroke-width="3" fill="none" opacity="0.6"/>
+    
+
+    
+
+    
+  </g>
+
+  <!-- Tag / Ribbons -->
+  <rect x="30" y="325" width="340" height="50" rx="25" fill="#ffd1eb" stroke="#ff80ab" stroke-width="2"/>
+  <text x="200" y="356" font-family="'Comic Sans MS', cursive, sans-serif" font-size="18" font-weight="bold" fill="#c2185b" text-anchor="middle">
+    ✨ Mug Cerámico Mágico ✨
+  </text>
+</svg>

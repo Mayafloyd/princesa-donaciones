@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="31" viewBox="0 0 120 31">
+  <rect width="120" height="31" fill="#d81b60" stroke="#ffffff" stroke-width="1"/>
+  <rect x="1" y="1" width="118" height="29" fill="none" stroke="#000000" stroke-width="1"/>
+  <rect x="2" y="15" width="116" height="14" fill="#20002c"/>
+  <text x="60" y="11" font-family="'MS Sans Serif', Arial, sans-serif" font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">🎨 100% ARTE HUMANO</text>
+  <text x="60" y="25" font-family="'MS Sans Serif', Arial, sans-serif" font-size="8" font-weight="bold" fill="#ffeb3b" text-anchor="middle">🚫 CERO IA • HANDMADE</text>
+</svg>
