@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffe4f2"/>
+      <stop offset="100%" stop-color="#ffc2e2" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Aura suave -->
+  <circle cx="32" cy="34" r="28" fill="url(#glow)"/>
+  
+  <!-- Ondas de ronroneo (Prrr~) -->
+  <path d="M8 24 Q5 20 8 16" fill="none" stroke="#d81b60" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M56 24 Q59 20 56 16" fill="none" stroke="#d81b60" stroke-width="2.2" stroke-linecap="round"/>
+
+  <!-- Corazoncito flotando arriba -->
+  <path d="M32 6 C30 3, 25 3, 25 7 C25 11, 32 14, 32 16 C32 14, 39 11, 39 7 C39 3, 34 3, 32 6 Z" fill="#ff1493"/>
+
+  <!-- Orejitas de gatita negra -->
+  <polygon points="15,32 13,13 27,23" fill="#1e1b22" stroke="#4a154b" stroke-width="1.5" stroke-linejoin="round"/>
+  <polygon points="16,28 15,17 24,23" fill="#ff85b3"/>
+  <polygon points="49,32 51,13 37,23" fill="#1e1b22" stroke="#4a154b" stroke-width="1.5" stroke-linejoin="round"/>
+  <polygon points="48,28 49,17 40,23" fill="#ff85b3"/>
+
+  <!-- Cabeza gatita negra -->
+  <ellipse cx="32" cy="37" rx="19" ry="16" fill="#1e1b22" stroke="#4a154b" stroke-width="1.5"/>
+
+  <!-- Ojitos cerrados felices (^ ^) -->
+  <path d="M21 35 Q25 30 28 35" fill="none" stroke="#ffea79" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M36 35 Q39 30 43 35" fill="none" stroke="#ffea79" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Mejillas sonrojadas -->
+  <ellipse cx="19" cy="40" rx="3.5" ry="2" fill="#ff66a3" opacity="0.85"/>
+  <ellipse cx="45" cy="40" rx="3.5" ry="2" fill="#ff66a3" opacity="0.85"/>
+
+  <!-- Naricita y boquita :3 -->
+  <polygon points="30,39 34,39 32,41.5" fill="#ff85b3"/>
+  <path d="M28 43 Q30 45.5 32 43 Q34 45.5 36 43" fill="none" stroke="#ff85b3" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- Bigotes -->
+  <line x1="8" y1="37" x2="15" y2="38" stroke="#9e8fb2" stroke-width="1.4" stroke-linecap="round"/>
+  <line x1="9" y1="42" x2="15" y2="41" stroke="#9e8fb2" stroke-width="1.4" stroke-linecap="round"/>
+  <line x1="56" y1="37" x2="49" y2="38" stroke="#9e8fb2" stroke-width="1.4" stroke-linecap="round"/>
+  <line x1="55" y1="42" x2="49" y2="41" stroke="#9e8fb2" stroke-width="1.4" stroke-linecap="round"/>
+
+  <!-- Patita con almohadilla rosa dando mimos -->
+  <circle cx="32" cy="54" r="6" fill="#2c2633" stroke="#ff77a9" stroke-width="1.5"/>
+  <ellipse cx="32" cy="55.5" rx="2.5" ry="2" fill="#ff85b3"/>
+  <circle cx="29.5" cy="52" r="1.2" fill="#ff85b3"/>
+  <circle cx="32" cy="51.2" r="1.2" fill="#ff85b3"/>
+  <circle cx="34.5" cy="52" r="1.2" fill="#ff85b3"/>
+</svg>

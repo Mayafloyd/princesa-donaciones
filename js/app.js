@@ -1,6 +1,6 @@
 /**
  * PRINCESA'S RESCUE QUEST - APP JAVASCRIPT
- * Sistema Completo: Carrito, Calculadora de Envíos desde Torres de la Fuente (Cll 65 #55-30),
+ * Sistema Completo: Carrito, Calculadora de Envíos desde Sector UdeA / Chagualo,
  * Base de Datos de Pedidos Permanente, Integración con Google Sheets / Webhook,
  * Panel de Gestión de Pedidos de Sara, Copiado Nequi, Web Audio y Muro de Apoyo.
  */
@@ -13,41 +13,34 @@ const CONFIG = {
   whatsappNumber: "573006087608",
   nequiNumber: "300 608 7608",
   nequiNumberClean: "3006087608",
-  goalAmount: 2900000,
-  currentCollected: 1450000,
+  goalAmount: 2006884,
+  currentCollected: 0,
 
-  // Dirección de origen para despachos DiDi / Uber Flash:
-  originAddress: "Torres de la Fuente, Calle 65 # 55-30, Medellín",
+  // Sector de origen para despachos DiDi / Uber Flash:
+  originAddress: "Sector Chagualo / UdeA, Medellín",
 
   // URL DE TU APLICACIÓN WEB DE GOOGLE APPS SCRIPT:
   // Al crear tu Google Apps Script, pega aquí la URL generada:
   // Ej: "https://script.google.com/macros/s/AKfycbx.../exec"
   // ¡Todos los pedidos llegarán a tu Google Sheet privado al instante!
-  cloudWebhookUrl: "https://script.google.com/macros/s/AKfycby-sIZvaH8eG0VlnA5zmU-_sXPF1l0CIs_g7kDG9nEmc7WpFU0PAFP8XkxcCl8QasI/exec" 
+  cloudWebhookUrl: "https://script.google.com/macros/s/AKfycby-sIZvaH8eG0VlnA5zmU-_sXPF1l0CIs_g7kDG9nEmc7WpFU0PAFP8XkxcCl8QasI/exec"
 };
 
 // ==========================================
 // TABLA DE TARIFAS DE ENTREGA (DiDi / Uber Flash)
-// Origen: Torres de la Fuente, Calle 65 # 55-30 (Chagualo / SIU / UdeA)
 // ==========================================
 const SHIPPING_ZONES = [
   {
-    id: "pickup-torres",
-    name: "📍 Portería Torres de la Fuente (Cll 65 #55-30)",
-    price: 0,
-    desc: "Gratis • Coordinar hora de entrega con Sara"
-  },
-  {
     id: "pickup-unal",
-    name: "📍 Universidad Nacional (UNAL Medellín - Sede Volador / Minas)",
+    name: "📍 Universidad Nacional (UNAL): Sede Volador / Minas",
     price: 0,
     desc: "Gratis • Entrega en mano en campus UNAL"
   },
   {
     id: "pickup-udea",
-    name: "📍 Universidad de Antioquia (Ciudad Univ. Calle Barranquilla / Robledo)",
+    name: "📍 Universidad de Antioquia (UdeA): Porterías de la Sede Principal",
     price: 0,
-    desc: "Gratis • Entrega en mano en campus UdeA"
+    desc: "Gratis • Entrega en las porterías de la Sede Principal UdeA"
   },
   {
     id: "pickup-almamater",
@@ -62,34 +55,28 @@ const SHIPPING_ZONES = [
     desc: "Gratis • Entrega en mano en sede UPB Laureles / Robledo"
   },
   {
-    id: "pickup-metro",
-    name: "📍 Estación Universidad del Metro de Medellín",
-    price: 0,
-    desc: "Gratis • Torniquetes / Punto de encuentro Metro"
-  },
-  {
     id: "didi-cercana",
     name: "🛵 Zona 1 ($6.500 COP): Centro / Chagualo / Prado / Boston / Aranjuez / Robledo bajo",
     price: 6500,
-    desc: "DiDi / Uber Flash Moto (2 a 4 km desde Torres de la Fuente)"
+    desc: "DiDi / Uber Flash Moto (2 a 4 km desde Sector UdeA)"
   },
   {
     id: "didi-media",
     name: "🛵 Zona 2 ($9.500 COP): Laureles / Estadio / Belén / Floresta / Conquistadores",
     price: 9500,
-    desc: "DiDi / Uber Flash Moto (5 a 8 km desde Torres de la Fuente)"
+    desc: "DiDi / Uber Flash Moto (5 a 8 km desde Sector UdeA)"
   },
   {
     id: "didi-sur-norte",
     name: "🛵 Zona 3 ($13.500 COP): El Poblado / Envigado / Bello",
     price: 13500,
-    desc: "DiDi / Uber Flash Moto (8 a 13 km desde Torres de la Fuente)"
+    desc: "DiDi / Uber Flash Moto (8 a 13 km desde Sector UdeA)"
   },
   {
     id: "didi-extremos",
     name: "🛵 Zona 4 ($17.500 COP): Sabaneta / Itagüí sur / Caldas / Copacabana",
     price: 17500,
-    desc: "DiDi / Uber Flash Moto (14 a 22 km desde Torres de la Fuente)"
+    desc: "DiDi / Uber Flash Moto (14 a 22 km desde Sector UdeA)"
   },
   {
     id: "nacional",
@@ -106,6 +93,8 @@ class RetroAudio {
   constructor() {
     this.ctx = null;
     this.enabled = true;
+    this.purrBuffer = null;
+    this.activePurrSource = null;
   }
 
   init() {
@@ -127,12 +116,33 @@ class RetroAudio {
       osc.type = 'sine';
       osc.frequency.setValueAtTime(440, this.ctx.currentTime);
       osc.frequency.exponentialRampToValueAtTime(880, this.ctx.currentTime + 0.08);
-      gain.gain.setValueAtTime(0.15, this.ctx.currentTime);
+      gain.gain.setValueAtTime(0.22, this.ctx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.08);
       osc.connect(gain);
       gain.connect(this.ctx.destination);
       osc.start();
       osc.stop(this.ctx.currentTime + 0.08);
+    } catch (e) {}
+  }
+
+  playChime() {
+    if (!this.enabled) return;
+    try {
+      this.init();
+      const now = this.ctx.currentTime;
+      const notes = [523.25, 659.25, 783.99, 1046.5];
+      notes.forEach((freq, i) => {
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, now + i * 0.06);
+        gain.gain.setValueAtTime(0.18, now + i * 0.06);
+        gain.gain.exponentialRampToValueAtTime(0.008, now + i * 0.06 + 0.22);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now + i * 0.06);
+        osc.stop(now + i * 0.06 + 0.23);
+      });
     } catch (e) {}
   }
 
@@ -145,7 +155,7 @@ class RetroAudio {
       osc.type = 'square';
       osc.frequency.setValueAtTime(987.77, this.ctx.currentTime);
       osc.frequency.setValueAtTime(1318.51, this.ctx.currentTime + 0.08);
-      gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+      gain.gain.setValueAtTime(0.16, this.ctx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.35);
       osc.connect(gain);
       gain.connect(this.ctx.destination);
@@ -158,18 +168,16 @@ class RetroAudio {
     if (!this.enabled) return;
     try {
       this.init();
-      const osc = this.ctx.createOscillator();
-      const gain = this.ctx.createGain();
-      osc.type = 'triangle';
-      osc.frequency.setValueAtTime(80, this.ctx.currentTime);
-      osc.frequency.linearRampToValueAtTime(110, this.ctx.currentTime + 0.15);
-      osc.frequency.linearRampToValueAtTime(75, this.ctx.currentTime + 0.3);
-      gain.gain.setValueAtTime(0.2, this.ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.35);
-      osc.connect(gain);
-      gain.connect(this.ctx.destination);
-      osc.start();
-      osc.stop(this.ctx.currentTime + 0.35);
+      // Reproducir directamente la grabación real y limpia de ronroneo ("brrrrrr")
+      if (!this.purrAudio) {
+        this.purrAudio = new Audio('assets/audio/purr.wav?v=6');
+      }
+      this.purrAudio.currentTime = 0;
+      this.purrAudio.volume = 1.0;
+      const playPromise = this.purrAudio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {});
+      }
     } catch (e) {}
   }
 }
@@ -179,7 +187,7 @@ const retroSound = new RetroAudio();
 // ==========================================
 // TOAST DE NOTIFICACIÓN RETRO
 // ==========================================
-function showToast(message) {
+function showToast(message, playCoinSound = true) {
   let toast = document.getElementById('retroToast');
   if (!toast) {
     toast = document.createElement('div');
@@ -189,8 +197,10 @@ function showToast(message) {
   }
   toast.innerHTML = message;
   toast.classList.add('show');
-  retroSound.playCoin();
-  
+  if (playCoinSound) {
+    retroSound.playCoin();
+  }
+
   clearTimeout(window.toastTimer);
   window.toastTimer = setTimeout(() => {
     toast.classList.remove('show');
@@ -219,10 +229,24 @@ function copyNequiNumber() {
 // CONTADOR DE VISITAS & RONRONEO
 // ==========================================
 function initVisitorCounter() {
-  let visits = parseInt(localStorage.getItem('princesa_visit_count') || '4288', 10);
+  // Limpiamos los valores antiguos de prueba (4288 y 162)
+  localStorage.removeItem('princesa_visit_count');
+  localStorage.removeItem('princesa_purr_count');
+
+  let visits = parseInt(localStorage.getItem('princesa_visit_count_v2') || '0', 10);
   visits += 1;
-  localStorage.setItem('princesa_visit_count', visits);
+  localStorage.setItem('princesa_visit_count_v2', visits);
   updateOdometerDisplay(visits);
+
+  const purrs = parseInt(localStorage.getItem('princesa_purr_count_v2') || '0', 10);
+  updatePurrCountDisplay(purrs);
+}
+
+function updatePurrCountDisplay(count) {
+  const heroCountEl = document.getElementById('heroPurrCountVal');
+  const bottomCountEl = document.getElementById('bottomPurrCountVal');
+  if (heroCountEl) heroCountEl.textContent = count;
+  if (bottomCountEl) bottomCountEl.textContent = count;
 }
 
 function updateOdometerDisplay(number) {
@@ -240,15 +264,63 @@ function updateOdometerDisplay(number) {
 
 function triggerPurr() {
   retroSound.playPurr();
-  let count = parseInt(localStorage.getItem('princesa_purr_count') || '162', 10);
+  let count = parseInt(localStorage.getItem('princesa_purr_count_v2') || '0', 10);
   count += 1;
-  localStorage.setItem('princesa_purr_count', count);
-  
-  const purrBtn = document.getElementById('btnPurr');
-  if (purrBtn) {
-    purrBtn.innerHTML = `😻 ¡Princesa ronronea feliz! (${count} cariños)`;
+  localStorage.setItem('princesa_purr_count_v2', count);
+
+  updatePurrCountDisplay(count);
+  showToast(`🐾 Prrrrr~ ¡Princesa ronronea feliz con tus mimos! (${count}) 💕`, false);
+}
+
+// ==========================================
+// ÁLBUM MISTERIOSO DE PRINCESA (MOSTRAR / OCULTAR)
+// ==========================================
+function toggleMysteryGallery() {
+  const gate = document.getElementById('mysteryAlbumGate');
+  const content = document.getElementById('mysteryAlbumContent');
+  if (!gate || !content) return;
+
+  const isHidden = content.style.display === 'none' || content.style.display === '';
+  if (isHidden) {
+    gate.style.display = 'none';
+    content.style.display = 'block';
+    retroSound.playChime();
+  } else {
+    content.style.display = 'none';
+    gate.style.display = 'flex';
+    retroSound.playPop();
   }
-  showToast(`🐾 ¡Princesa dice: Miau! Gracias por tu amor 💕`);
+}
+
+function openMysteryGallery() {
+  const gate = document.getElementById('mysteryAlbumGate');
+  const content = document.getElementById('mysteryAlbumContent');
+  if (gate && content && (content.style.display === 'none' || content.style.display === '')) {
+    gate.style.display = 'none';
+    content.style.display = 'block';
+    retroSound.playChime();
+  }
+}
+
+function initFundThermometer() {
+  const goal = CONFIG.goalAmount || 2006884;
+  const collected = CONFIG.currentCollected || 0;
+  const missing = Math.max(0, goal - collected);
+  const pct = Math.min(100, Math.round((collected / goal) * 100));
+
+  const badge = document.getElementById('fundPercentBadge');
+  const colVal = document.getElementById('fundCollectedVal');
+  const goalVal = document.getElementById('fundGoalVal');
+  const misVal = document.getElementById('fundMissingVal');
+  const fill = document.getElementById('verticalThermoFill');
+  const pctTxt = document.getElementById('verticalThermoPct');
+
+  if (badge) badge.textContent = `● ${pct}% RECAUDADO ($${formatCOP(collected)} COP)`;
+  if (colVal) colVal.textContent = `$${formatCOP(collected)} COP`;
+  if (goalVal) goalVal.textContent = `$${formatCOP(goal)}`;
+  if (misVal) misVal.textContent = `$${formatCOP(missing)}`;
+  if (fill) fill.style.height = `${pct}%`;
+  if (pctTxt) pctTxt.textContent = `${pct}%`;
 }
 
 // ==========================================
@@ -259,15 +331,15 @@ function initSparkleCursor() {
   window.addEventListener('mousemove', (e) => {
     if (!sparklesActive) return;
     if (Math.random() > 0.4) return;
-    
+
     const sparkle = document.createElement('div');
     sparkle.className = 'sparkle-particle';
     sparkle.style.left = `${e.clientX + (Math.random() * 12 - 6)}px`;
     sparkle.style.top = `${e.clientY + (Math.random() * 12 - 6)}px`;
-    
+
     const colors = ['#ff77a9', '#ffea79', '#d8b4e2', '#70e000', '#ffffff'];
     sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
-    
+
     document.body.appendChild(sparkle);
     setTimeout(() => sparkle.remove(), 800);
   });
@@ -296,7 +368,7 @@ function toggleSound() {
 const cart = {
   items: [],
   selectedShippingPrice: 0,
-  selectedShippingName: "Recoger en Torres de la Fuente (Gratis)",
+  selectedShippingName: "📍 Universidad de Antioquia (UdeA): Porterías de la Sede Principal - GRATIS",
 
   addItem(id, name, price, variant = '') {
     const existingIndex = this.items.findIndex(i => i.id === id && i.variant === variant);
@@ -419,7 +491,15 @@ const cart = {
     }
 
     if (subtotalDisplay) subtotalDisplay.textContent = `$${formatCOP(subtotal)} COP`;
-    if (shippingDisplay) shippingDisplay.textContent = this.selectedShippingPrice === 0 ? 'GRATIS' : `$${formatCOP(this.selectedShippingPrice)} COP`;
+    if (shippingDisplay) {
+      if (this.selectedShippingName && this.selectedShippingName.includes('Otras zonas')) {
+        shippingDisplay.textContent = 'Lo que cueste el domicilio';
+      } else if (this.selectedShippingPrice === 0) {
+        shippingDisplay.textContent = 'GRATIS';
+      } else {
+        shippingDisplay.textContent = `~$${formatCOP(this.selectedShippingPrice)} COP (aprox.)`;
+      }
+    }
     if (totalDisplay) totalDisplay.textContent = `$${formatCOP(total)} COP`;
   }
 };
@@ -440,7 +520,7 @@ function openCartModal() {
   const modal = document.getElementById('cartModal');
   const cartView = document.getElementById('cartFormView');
   const successView = document.getElementById('cartSuccessView');
-  
+
   if (cartView) cartView.style.display = 'block';
   if (successView) successView.style.display = 'none';
 
@@ -560,7 +640,7 @@ function renderOrderSuccessScreen(order) {
   if (formView) formView.style.display = 'none';
   if (successView) {
     successView.style.display = 'block';
-    
+
     document.getElementById('successOrderCode').textContent = order.code;
     document.getElementById('successOrderTotal').textContent = `$${formatCOP(order.total)} COP`;
     document.getElementById('successClientName').textContent = order.customer.name;
@@ -607,7 +687,7 @@ function sendOrderProofToWhatsApp() {
 // Descargar comprobante digital del pedido en archivo de texto
 function downloadOrderReceipt(order = currentActiveOrder) {
   if (!order) return;
-  
+
   let text = `====================================================\n`;
   text += `   COMPROBANTE DE PEDIDO SOLIDARIO - CIRUGÍA PRINCESA\n`;
   text += `====================================================\n\n`;
@@ -711,35 +791,13 @@ function closeDocLightbox() {
 // ==========================================
 // MURO DE APOYO / GUESTBOOK
 // ==========================================
-const initialGuestbookMessages = [
-  {
-    name: "Valentina M.",
-    sticker: "💖",
-    msg: "¡Fuerza Princesa hermosa! Compré una camiseta y el calendario. Vas a salir súper sana de esa cirugía.",
-    date: "28 Oct 2026"
-  },
-  {
-    name: "Camilo & Michi Luna",
-    sticker: "🐾",
-    msg: "Te mandamos un súper aporte por Nequi. Los michis negros son los seres más mágicos del universo 🪄",
-    date: "27 Oct 2026"
-  },
-  {
-    name: "Dra. Sofía (Agrarias UdeA)",
-    sticker: "🩺",
-    msg: "El equipo médico del Hospital Veterinario UdeA es excelente, está en las mejores manos. ¡Ánimo Sara!",
-    date: "26 Oct 2026"
-  },
-  {
-    name: "Mariana R.",
-    sticker: "🧁",
-    msg: "Los brownies están deliciosos y el diseño de la gatita quedó precioso. ¡Mucho amor para Princesa!",
-    date: "25 Oct 2026"
-  }
-];
+const initialGuestbookMessages = [];
 
 function initGuestbook() {
-  let saved = localStorage.getItem('princesa_guestbook');
+  // Limpiamos los mensajes de prueba anteriores
+  localStorage.removeItem('princesa_guestbook');
+
+  let saved = localStorage.getItem('princesa_guestbook_v2');
   let messages = saved ? JSON.parse(saved) : initialGuestbookMessages;
   renderGuestbook(messages);
 
@@ -756,11 +814,18 @@ function initGuestbook() {
         return;
       }
 
-      messages.unshift({ name, sticker, msg, date: "Hoy" });
-      localStorage.setItem('princesa_guestbook', JSON.stringify(messages));
+      const fechaActual = new Date().toLocaleDateString('es-CO', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric'
+      });
+
+      messages.unshift({ name, sticker, msg, date: fechaActual });
+      localStorage.setItem('princesa_guestbook_v2', JSON.stringify(messages));
       renderGuestbook(messages);
 
       form.reset();
+      retroSound.playChime();
       showToast('💌 ¡Mensaje publicado en el muro de Princesa! Gracias');
     });
   }
@@ -769,6 +834,15 @@ function initGuestbook() {
 function renderGuestbook(messages) {
   const wall = document.getElementById('guestbookWall');
   if (!wall) return;
+
+  if (!messages || messages.length === 0) {
+    wall.innerHTML = `
+      <div class="guestbook-empty" style="grid-column: 1 / -1; text-align: center; padding: 24px 16px; background: #fff9fc; border: 2px dashed #f3a6cf; border-radius: 10px; color: #7b4f6d; font-size: 0.92rem;">
+        🐾 Aún no hay mensajes firmados. ¡Sé la primera persona en dejarle un mensajito de aliento a Princesa! 💌
+      </div>
+    `;
+    return;
+  }
 
   wall.innerHTML = messages.map(item => `
     <div class="guestbook-card">
@@ -782,30 +856,293 @@ function renderGuestbook(messages) {
 }
 
 // ==========================================
-// TOOLTIPS INTERACTIVOS: DATO CURIOSO FELINO (BOJACK)
+// CATÁLOGO INTERACTIVO DE POSTRES CREMOSOS Y CHEESECAKES
 // ==========================================
-function initCatCuriosityTooltips() {
-  document.querySelectorAll('.has-cat-curiosity').forEach(card => {
-    card.addEventListener('click', (e) => {
+const DESSERT_CATALOG_DATA = {
+  cremoso: {
+    "Brownie": { slug: "cremoso-brownie", desc: "Postre a base de 3 leches y galleta con topping de bizcocho de chocolate y arequipe. ¡Sin conservantes!" },
+    "Milo": { slug: "cremoso-milo", desc: "Postre a base de 3 leches y galleta con abundante topping de Milo." },
+    "Quipitos": { slug: "cremoso-quipitos", desc: "Postre a base de 3 leches con galletas y divertido topping explosivo de Quipitos Pops." },
+    "Arequipe y Queso": { slug: "cremoso-arequipe-queso", desc: "Postre a base de 3 leches y galleta con topping de queso rallado y arequipe original." },
+    "Oreo": { slug: "cremoso-oreo", desc: "Postre a base de 3 leches y galleta con topping de galleta Oreo triturada." },
+    "Maracuyá": { slug: "cremoso-maracuya", desc: "Postre a base de 3 leches y galleta con topping de mermelada de maracuyá 100% natural." },
+    "Fresa": { slug: "cremoso-fresa", desc: "Postre a base de 3 leches y galleta con topping de mermelada de fresa 100% natural." },
+    "Mora": { slug: "cremoso-mora", desc: "Postre a base de 3 leches y galleta con topping de mermelada de mora 100% natural." },
+    "Durazno": { slug: "cremoso-durazno", desc: "Postre a base de 3 leches y galleta con topping de duraznos en almíbar." },
+    "Café": { slug: "cremoso-cafe", desc: "Postre a base de 3 leches con galleta, toque de café y topping de chocolate rallado." },
+    "Tres Leches": { slug: "cremoso-tres-leches", desc: "Postre de bizcocho humedecido en 3 leches con topping de chantilly y chocolatina rallada." },
+    "Leche Klim": { slug: "cremoso-leche-klim", desc: "Postre a base de 3 leches y galleta con generoso topping de Leche Klim." },
+    "Coco": { slug: "cremoso-coco", desc: "Postre a base de 3 leches, coco deshidratado y galleta con topping de uvas pasas." }
+  },
+  cheesecake: {
+    "Frutos Rojos": { slug: "cheesecake-frutos-rojos", desc: "Cheesecake de queso crema, crema de leche y lechera con base de galleta con mantequilla y topping de frutos rojos." },
+    "Crema de Baileys": { slug: "cheesecake-baileys", desc: "Cheesecake de queso crema, crema de leche, lechera, whisky y café con base de galleta y chocolate rallado." },
+    "Queso y Bocadillo": { slug: "cheesecake-queso-bocadillo", desc: "Cheesecake de queso crema, crema de leche y lechera con base de galleta y topping de queso rallado y bocadillo." },
+    "Tiramisú de Milo": { slug: "cheesecake-tiramisu-milo", desc: "Cheesecake de queso crema, crema de leche, lechera y café con base de bizcocho en café y topping de Milo." },
+    "Arequipe": { slug: "cheesecake-arequipe", desc: "Cheesecake de queso crema, crema de leche y lechera con base de galleta con mantequilla y topping de arequipe." },
+    "Limón": { slug: "cheesecake-limon", desc: "Cheesecake de queso crema, crema de leche, lechera y zumo de limón con base de galleta y topping de galleta Sultana." }
+  },
+  zero: {
+    "Fresa con Chocolate Zero": { slug: "zero-fresa-chocolate", desc: "Postre Zero Azúcar endulzado con Stevia y galleta integral con fresas picadas y chocolate." },
+    "Frutos Secos Zero": { slug: "zero-frutos-secos", desc: "Postre Zero Azúcar endulzado con Stevia y galleta integral con mezcla de frutos secos." },
+    "Queso con Arequipe Zero": { slug: "zero-queso-arequipe", desc: "Postre Zero Azúcar con queso rallado y arequipe artesanal endulzado con Stevia." },
+    "Fresa Picada Zero": { slug: "zero-fresa", desc: "Postre Zero Azúcar endulzado con Stevia y galleta integral con fresas frescas picadas." },
+    "Durazno en Trozos Zero": { slug: "zero-durazno", desc: "Postre Zero Azúcar endulzado con Stevia y galleta integral con durazno en trozos." }
+  },
+  familiar: {
+    "Milo": { slug: "familiar-milo", desc: "Bandeja de 9 porciones (incluye caja) de 3 leches con Milo. Combinable con Quipitos, Oreo, Brownie o Queso." },
+    "Brownie": { slug: "familiar-brownie", desc: "Bandeja de 9 porciones (incluye caja) de Brownie y Arequipe. Combinable con Queso, Durazno, Maracuyá, Fresa, Mora o Klim." },
+    "Arequipe y Queso": { slug: "familiar-arequipe-queso", desc: "Bandeja de 9 porciones (incluye caja) de Queso y Arequipe. Combinable con cualquier sabor tradicional." },
+    "Quipitos": { slug: "familiar-quipitos", desc: "Bandeja de 9 porciones (incluye caja) con Quipitos Pops. Combinable con Queso Arequipe o Brownie Arequipe." },
+    "Oreo": { slug: "familiar-oreo", desc: "Bandeja de 9 porciones (incluye caja) de Oreo triturada. Combinable con Queso, Brownie, Quipitos, Milo o Klim." },
+    "Maracuyá": { slug: "familiar-maracuya", desc: "Bandeja de 9 porciones (incluye caja) de Maracuyá 100% natural. Combinable con Queso Arequipe o Brownie." },
+    "Fresa": { slug: "familiar-fresa", desc: "Bandeja de 9 porciones (incluye caja) de Fresa 100% natural. Combinable con Durazno, Queso, Brownie u Oreo." },
+    "Durazno": { slug: "familiar-durazno", desc: "Bandeja de 9 porciones (incluye caja) de Duraznos en almíbar. Combinable con Fresa, Queso o Brownie." },
+    "Café": { slug: "familiar-cafe", desc: "Bandeja de 9 porciones (incluye caja) de Café y chocolate. Combinable con Queso, Brownie, Quipitos, Milo o Klim." },
+    "Tres Leches": { slug: "familiar-tres-leches", desc: "Bandeja de 9 porciones (incluye caja) de bizcocho Tres Leches con chantilly y chocolatina rallada." },
+    "Coco": { slug: "familiar-coco", desc: "Bandeja de 9 porciones (incluye caja) de 3 leches, coco deshidratado y uvas pasas." },
+    "Frutos Secos Zero": { slug: "familiar-zero-frutos-secos", desc: "Bandeja Familiar 9 porciones Zero Azúcar (endulzado con Stevia y galleta integral) con frutos secos." },
+    "Fresa Zero": { slug: "familiar-zero-fresa", desc: "Bandeja Familiar 9 porciones Zero Azúcar (endulzado con Stevia y galleta integral) con fresas picadas." },
+    "Durazno Zero": { slug: "familiar-zero-durazno", desc: "Bandeja Familiar 9 porciones Zero Azúcar (endulzado con Stevia y galleta integral) con durazno en trozos." }
+  },
+  "cheesecake-fam": {
+    "Crema de Baileys": { slug: "cheesecake-fam-baileys", desc: "Cheesecake Familiar (8 a 16 porciones, incluye caja) de queso crema, whisky Baileys, café y chocolate." },
+    "Frutos Rojos": { slug: "cheesecake-frutos-rojos", desc: "Cheesecake Familiar (8 a 16 porciones, incluye caja) con reducción artesanal de frutos rojos." },
+    "Queso y Bocadillo": { slug: "cheesecake-fam-queso-bocadillo", desc: "Cheesecake Familiar (8 a 16 porciones, incluye caja) con topping de queso rallado y bocadillo." },
+    "Tiramisú de Milo": { slug: "cheesecake-fam-tiramisu-milo", desc: "Cheesecake Familiar (8 a 16 porciones, incluye caja) con base de bizcocho en café y topping de Milo." },
+    "Arequipe": { slug: "cheesecake-fam-arequipe", desc: "Cheesecake Familiar (8 a 16 porciones, incluye caja) con cubierta generosa de arequipe." },
+    "Limón": { slug: "cheesecake-fam-limon", desc: "Cheesecake Familiar (8 a 16 porciones, incluye caja) con zumo de limón natural y galleta Sultana." }
+  },
+  mega: {
+    "Brownie": { slug: "mega-brownie", desc: "Megafamiliar de 15 porciones (incluye caja) con bizcocho de chocolate y arequipe. ¡Combinable mitad y mitad!" },
+    "Milo": { slug: "mega-milo", desc: "Megafamiliar de 15 porciones (incluye caja) de 3 leches con Milo (el Milo llega aparte para espolvorear fresco)." },
+    "Arequipe y Queso": { slug: "mega-arequipe-queso", desc: "Megafamiliar de 15 porciones (incluye caja) con queso rallado y arequipe. ¡Combinable con tu sabor favorito!" },
+    "Quipitos": { slug: "mega-quipitos", desc: "Megafamiliar de 15 porciones (incluye caja) con Quipitos Pops. Combinable con Queso Arequipe o Brownie." },
+    "Oreo": { slug: "mega-oreo", desc: "Megafamiliar de 15 porciones (incluye caja) con galleta Oreo triturada. ¡Combinable mitad y mitad!" },
+    "Maracuyá": { slug: "mega-maracuya", desc: "Megafamiliar de 15 porciones (incluye caja) con mermelada de maracuyá 100% natural." },
+    "Fresa": { slug: "mega-fresa", desc: "Megafamiliar de 15 porciones (incluye caja) con mermelada de fresa 100% natural." },
+    "Mora": { slug: "mega-mora", desc: "Megafamiliar de 15 porciones (incluye caja) con mermelada de mora 100% natural." },
+    "Durazno": { slug: "mega-durazno", desc: "Megafamiliar de 15 porciones (incluye caja) con duraznos en almíbar." },
+    "Coco": { slug: "mega-coco", desc: "Megafamiliar de 15 porciones (incluye caja) con coco deshidratado y uvas pasas." },
+    "Fresa Zero": { slug: "mega-zero-fresa", desc: "Megafamiliar de 15 porciones Zero Azúcar (Stevia y galleta integral) con fresas picadas." },
+    "Durazno Zero": { slug: "mega-zero-durazno", desc: "Megafamiliar de 15 porciones Zero Azúcar (Stevia y galleta integral) con durazno en trozos." }
+  }
+};
+
+function onDessertFlavorChange(categoryKey, flavorName) {
+  const cat = DESSERT_CATALOG_DATA[categoryKey];
+  if (!cat || !cat[flavorName]) return;
+  const info = cat[flavorName];
+  const imgEl = document.getElementById(`img-dessert-${categoryKey}`);
+  const descEl = document.getElementById(`desc-dessert-${categoryKey}`);
+  if (imgEl) {
+    imgEl.src = `assets/img/postres/${info.slug}.jpg`;
+    imgEl.alt = `${flavorName}`;
+  }
+  if (descEl) {
+    descEl.textContent = info.desc;
+  }
+  retroSound.playPop();
+}
+
+function openDessertCardPreview(categoryKey) {
+  const selectMap = {
+    "cremoso": "opt-cremoso",
+    "cheesecake": "opt-cheesecake",
+    "zero": "opt-zero",
+    "familiar": "opt-familiar-1",
+    "cheesecake-fam": "opt-cheesecake-fam",
+    "mega": "opt-mega-1"
+  };
+  const selectEl = document.getElementById(selectMap[categoryKey]);
+  const flavorName = selectEl ? selectEl.value : "";
+  const cat = DESSERT_CATALOG_DATA[categoryKey];
+  if (cat && cat[flavorName]) {
+    const info = cat[flavorName];
+    openDocLightbox(`assets/img/postres/${info.slug}-card.jpg`, `${flavorName} — ${info.desc}`);
+  }
+}
+
+function addCombinedDessertToCart(productId, productName, price, select1Id, select2Id) {
+  const s1 = document.getElementById(select1Id);
+  const s2 = document.getElementById(select2Id);
+  const mainFlavor = s1 ? s1.value : "";
+  const secondFlavor = s2 ? s2.value : "Un solo sabor";
+  const variantLabel = (secondFlavor && secondFlavor !== "Un solo sabor")
+    ? `${mainFlavor} + ${secondFlavor}`
+    : `${mainFlavor} (Completo)`;
+  cart.addItem(productId, productName, price, variantLabel);
+}
+
+// ==========================================
+// TOOLTIPS INTERACTIVOS: DATO CURIOSO FELINO (BOJACK)
+// Portalizado en document.body para no recortarse nunca con ningún div
+// ==========================================
+let curiosityPortal = null;
+let activeCuriosityCard = null;
+let curiosityHideTimer = null;
+
+function ensureCuriosityPortal() {
+  if (!curiosityPortal) {
+    curiosityPortal = document.createElement('div');
+    curiosityPortal.className = 'floating-curiosity-portal';
+    document.body.appendChild(curiosityPortal);
+
+    curiosityPortal.addEventListener('mouseenter', () => {
+      clearTimeout(curiosityHideTimer);
+    });
+    curiosityPortal.addEventListener('mouseleave', () => {
+      hideCuriosityPortal();
+    });
+    curiosityPortal.addEventListener('click', (e) => {
       if (e.target.closest('.cat-tooltip-close')) {
-        e.stopPropagation();
-        card.classList.remove('active-tip');
-        return;
+        hideCuriosityPortal(true);
       }
-      // Alternar en pantallas táctiles (móviles)
-      const wasActive = card.classList.contains('active-tip');
-      document.querySelectorAll('.has-cat-curiosity').forEach(c => c.classList.remove('active-tip'));
-      if (!wasActive) {
+    });
+  }
+  return curiosityPortal;
+}
+
+function showCuriosityPortalForCard(card) {
+  const inlineTip = card.querySelector('.cat-curiosity-tooltip');
+  if (!inlineTip) return;
+  clearTimeout(curiosityHideTimer);
+  activeCuriosityCard = card;
+
+  const portal = ensureCuriosityPortal();
+  portal.innerHTML = inlineTip.innerHTML;
+  portal.classList.add('visible');
+
+  positionCuriosityPortal(card);
+}
+
+function positionCuriosityPortal(card) {
+  if (!curiosityPortal || !card) return;
+  const rect = card.getBoundingClientRect();
+  const tipWidth = curiosityPortal.offsetWidth || 305;
+  const tipHeight = curiosityPortal.offsetHeight || 160;
+
+  let left = rect.left + (rect.width / 2) - (tipWidth / 2);
+  left = Math.max(12, Math.min(left, window.innerWidth - tipWidth - 12));
+
+  // Mostrar encima si cabe en la ventana; si no cabe arriba, mostrar debajo
+  let top = rect.top - tipHeight - 10;
+  if (top < 12) {
+    top = Math.min(window.innerHeight - tipHeight - 12, rect.bottom + 10);
+  }
+
+  curiosityPortal.style.left = `${Math.round(left)}px`;
+  curiosityPortal.style.top = `${Math.round(top)}px`;
+}
+
+function hideCuriosityPortal(immediate = false) {
+  clearTimeout(curiosityHideTimer);
+  const doHide = () => {
+    if (curiosityPortal) curiosityPortal.classList.remove('visible');
+    if (activeCuriosityCard) activeCuriosityCard.classList.remove('active-tip');
+    activeCuriosityCard = null;
+  };
+  if (immediate) {
+    doHide();
+  } else {
+    curiosityHideTimer = setTimeout(doHide, 120);
+  }
+}
+
+function initCatCuriosityTooltips() {
+  ensureCuriosityPortal();
+
+  document.querySelectorAll('.has-cat-curiosity').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      showCuriosityPortalForCard(card);
+    });
+    card.addEventListener('mouseleave', () => {
+      hideCuriosityPortal(false);
+    });
+    card.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (activeCuriosityCard === card && curiosityPortal.classList.contains('visible')) {
+        hideCuriosityPortal(true);
+      } else {
         card.classList.add('active-tip');
+        showCuriosityPortalForCard(card);
       }
     });
   });
 
-  // Cerrar al tocar fuera
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.has-cat-curiosity')) {
-      document.querySelectorAll('.has-cat-curiosity').forEach(c => c.classList.remove('active-tip'));
+  window.addEventListener('scroll', () => {
+    if (activeCuriosityCard && curiosityPortal && curiosityPortal.classList.contains('visible')) {
+      positionCuriosityPortal(activeCuriosityCard);
     }
+  }, { passive: true });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.has-cat-curiosity') && !e.target.closest('.floating-curiosity-portal')) {
+      hideCuriosityPortal(true);
+    }
+  });
+}
+
+// ==========================================
+// MEJORAS DE UX PARA MÓVIL (ACORDEONES Y REDUCCIÓN DE CARGA VISUAL)
+// ==========================================
+function initMobileUX() {
+  // 1. Botón desplegable para la escalera de hitos (25% a 100%) en móvil
+  const milestonesList = document.querySelector('.vertical-milestones-list');
+  if (milestonesList && !document.getElementById('btnToggleMobileMilestones')) {
+    const toggleBtn = document.createElement('button');
+    toggleBtn.type = 'button';
+    toggleBtn.id = 'btnToggleMobileMilestones';
+    toggleBtn.className = 'btn-mobile-milestones-toggle';
+    toggleBtn.innerHTML = '📊 Ver escalera de metas (25% a 100%) ▾';
+    toggleBtn.addEventListener('click', () => {
+      const expanded = milestonesList.classList.toggle('mobile-expanded');
+      toggleBtn.innerHTML = expanded
+        ? '📊 Ocultar escalera de metas ▴'
+        : '📊 Ver escalera de metas (25% a 100%) ▾';
+      retroSound.playPop();
+    });
+    milestonesList.appendChild(toggleBtn);
+  }
+
+  // 2. Permitir minimizar/expandir cualquier ventana tocando el botón "_" o la barra de título en móvil
+  document.querySelectorAll('.retro-window').forEach(win => {
+    if (win.id === 'inicio' || win.id === 'mysteryAlbumContent') return;
+    const header = win.querySelector('.retro-window-header');
+    const minBtn = win.querySelector('.retro-win-btn.min');
+
+    const toggleWindow = () => {
+      win.classList.toggle('window-collapsed');
+      retroSound.playPop();
+    };
+
+    if (minBtn) {
+      minBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleWindow();
+      });
+    }
+
+    if (header) {
+      header.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768 && !e.target.closest('.retro-win-btn')) {
+          toggleWindow();
+        }
+      });
+    }
+  });
+
+  // 3. Si el usuario toca un enlace de navegación rápida, asegurar que esa ventana se despliegue
+  document.querySelectorAll('.retro-tab-link, .hero-cta-group a').forEach(link => {
+    link.addEventListener('click', () => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        const target = document.querySelector(href);
+        if (target && target.classList.contains('window-collapsed')) {
+          target.classList.remove('window-collapsed');
+        }
+      }
+    });
   });
 }
 
@@ -813,10 +1150,12 @@ function initCatCuriosityTooltips() {
 // INICIALIZACIÓN GLOBAL
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
+  initFundThermometer();
   initVisitorCounter();
   initSparkleCursor();
   initGuestbook();
   initCatCuriosityTooltips();
+  initMobileUX();
   cart.load();
 
   window.addEventListener('keydown', (e) => {

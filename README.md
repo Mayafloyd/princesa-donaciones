@@ -5,14 +5,14 @@ Página web con estética **Old Web / Y2K Girlie** (inspirada en Web Design Muse
 ---
 
 ## 🛵 Cálculo de Tarifas de Entrega (DiDi & Uber Flash)
-**Punto de Origen de los despachos:** `Torres de la Fuente, Calle 65 # 55-30, Medellín`  
+**Punto de Origen de los despachos:** `Sector Chagualo / UdeA, Medellín`  
 *(Sector Chagualo / SIU / Ciudad Universitaria UdeA)*
 
 Basado en las tarifas habituales de moto en Medellín (banderazo de $4.500 - $5.500 + $1.000 - $1.400 por km):
 
 | Zona de Entrega | Barrios / Sectores | Distancia | Tarifa DiDi / Uber Flash |
 | :--- | :--- | :--- | :--- |
-| **Puntos Gratuitos ($0)** | Portería Torres de la Fuente / Universidad Nacional (UNAL) / UdeA / Hospital Alma Máter / Hospital UPB / Metro Universidad | 0 a 2 km | **GRATIS ($0 COP)** |
+| **Puntos Gratuitos ($0)** | Sector Chagualo / SIU / Universidad Nacional (UNAL) / UdeA / Hospital Alma Máter / Hospital UPB / Metro Universidad | 0 a 2 km | **GRATIS ($0 COP)** |
 | **Zona 1 (Cercana)** | Centro, Chagualo, Prado, Sevilla, Aranjuez, Robledo bajo (Fac. Agrarias), Boston | 2 a 4 km | **$6.500 COP** |
 | **Zona 2 (Media)** | Laureles, Estadio, Belén, Floresta, Conquistadores, San Joaquín, Robledo medio | 5 a 8 km | **$9.500 COP** |
 | **Zona 3 (Sur/Norte)** | El Poblado (Manila, Provenza, Castropol), Envigado casco urbano, Bello (Cabañas) | 8 a 13 km | **$13.500 COP** |
