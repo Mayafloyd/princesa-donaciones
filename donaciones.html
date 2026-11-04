@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💜 Donaciones Directas Nequi | Princesa</title>
+
+  <!-- Favicon retro pixel cat -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐱</text></svg>">
+
+  <meta name="description" content="Página para recolectar fondos para la cirugía de mi gatita Princesa (cálculo en la vejiga) en la Clínica Veterinaria de la Universidad de Antioquia. Merch 100% arte humano, calendario 2027 y donaciones a Nequi.">
+
+  <link rel="stylesheet" href="css/style.css?v=3">
+</head>
+<body>
+
+  <!-- ========================================================================
+       TOP MARQUEE OLD WEB
+       ======================================================================== -->
+  <div class="top-marquee-bar">
+    <div class="top-marquee-content">
+      <span>🐾 Cirugía de Princesa • Hospital Veterinario UdeA • Calendario 2027, Postres & Donaciones Nequi 💖</span>
+      <span>★ Apoya la recuperación de Princesa • Conoce su diagnóstico y facturas médicas 🐾</span>
+      <!-- Loop -->
+      <span>🐾 Cirugía de Princesa • Hospital Veterinario UdeA • Calendario 2027, Postres & Donaciones Nequi 💖</span>
+      <span>★ Apoya la recuperación de Princesa • Conoce su diagnóstico y facturas médicas 🐾</span>
+    </div>
+  </div>
+
+  <!-- Barra de utilidades retro -->
+  <div class="top-sub-bar">
+    <div class="sub-bar-left">
+    </div>
+    <div class="sub-bar-right">
+      <button class="btn-sparkle-toggle" id="btnSparkleToggle" onclick="toggleSparkles()">✨ Destellos: ON</button>
+      <button class="btn-sound-toggle" id="btnSoundToggle" onclick="toggleSound()">🔊 Sonido: ON</button>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       CONTENEDOR PRINCIPAL
+       ======================================================================== -->
+  <div class="container">
+
+    <!-- BREADCRUMB RETRO -->
+    <div class="retro-breadcrumb">
+      <a href="index.html">🐾 Inicio</a>
+      <span class="sep">/</span>
+      <span>💜 Donación Nequi</span>
+    </div>
+
+    <!-- NAVEGACIÓN RÁPIDA RETRO TABS -->
+    <nav class="retro-tabs-nav" aria-label="Secciones">
+      <a href="index.html" class="retro-tab-link"><span>🏠</span> Inicio</a>
+      <a href="clinica.html" class="retro-tab-link"><span>🩺</span> Diagnóstico & Facturas</a>
+      <a href="mercancia.html" class="retro-tab-link"><span>🎨</span> Mercancía & Calendario</a>
+      <a href="postres.html" class="retro-tab-link"><span>🧁</span> Postrecitos</a>
+      <a href="donaciones.html" class="retro-tab-link active"><span>💜</span> Donación Nequi</a>
+      <a href="index.html#galeria" class="retro-tab-link"><span>📸</span> Fotos</a>
+      <a href="index.html#muro" class="retro-tab-link"><span>💌</span> Muro de Amor</a>
+    </nav>
+    <section class="retro-window" id="nequi">
+      <div class="retro-window-header">
+        <div class="retro-window-title">
+          <span>💜</span>
+          <span>Nequi_Donaciones_Directas.box</span>
+        </div>
+        <div class="retro-window-controls">
+          <div class="retro-win-btn min">_</div>
+          <div class="retro-win-btn max">□</div>
+          <div class="retro-win-btn close">✕</div>
+        </div>
+      </div>
+
+      <div class="retro-window-body">
+        <div class="nequi-card">
+          <div class="nequi-card-grid">
+
+            <!-- QR Nequi / Bre-B Oficial -->
+            <div class="nequi-qr-wrapper" style="cursor: pointer;" onclick="openDocLightbox('assets/img/badges/nequi-qr.jpg', 'Código QR Oficial Bre-B / Nequi - Sara Acevedo (300 608 7608)')">
+              <img src="assets/img/badges/nequi-qr.jpg" alt="Código QR Nequi y Bre-B Sara Acevedo" class="nequi-qr-img" style="border-radius: 8px;">
+              <span style="color: #20002c; font-size: 0.75rem; font-weight: bold; display: block; margin-top: 6px;">
+                🔍 QR Nequi / Bre-B (Toca para ampliar)
+              </span>
+            </div>
+
+            <!-- Información Nequi -->
+            <div class="nequi-info">
+              <div>
+                <span class="nequi-badge-tag">TRANSFERENCIA INSTANTÁNEA</span>
+                <h2 style="font-family: var(--font-fun); font-size: 1.6rem; margin-top: 4px;">
+                  Donación Directa por Nequi 🐱💜
+                </h2>
+                <p style="font-size: 0.92rem; opacity: 0.95; margin-top: 2px;">
+                  Aportes voluntarios directos para cubrir la cirugía de Princesa en el Hospital Veterinario UdeA.
+                </p>
+              </div>
+
+              <!-- Caja de número con botón de copiar -->
+              <div class="nequi-number-box">
+                <div>
+                  <div style="font-size: 0.75rem; text-transform: uppercase; color: #ffd6ec; letter-spacing: 1px;">Nequi de Sara:</div>
+                  <div class="nequi-phone" id="nequiNumberText">300 608 7608</div>
+                </div>
+                <button class="btn-copy" onclick="copyNequiNumber()">
+                  📋 Copiar Número
+                </button>
+              </div>
+
+              <!-- Pasos simples -->
+              <ul class="nequi-steps">
+                <li><span class="step-num">1</span> Abre tu App Nequi y transfiere al <strong>300 608 7608</strong> o escanea el QR.</li>
+                <li><span class="step-num">2</span> En mensaje pon: <em>"Cirugía de Princesa"</em>.</li>
+              </ul>
+
+              <!-- Enviar comprobante -->
+              <div style="margin-top: 6px;">
+                <button class="btn-retro btn-whatsapp" onclick="sendDonationProofWhatsApp()">
+                  <span>📲 Enviar Comprobante por WhatsApp</span>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESTINO DE FONDOS Y TRANSPARENCIA -->
+    <section class="retro-window" style="margin-top: 24px;">
+      <div class="retro-window-header">
+        <div class="retro-window-title">
+          <span>📊</span>
+          <span>Destino_De_Los_Fondos_Transparencia.calc</span>
+        </div>
+        <div class="retro-window-controls">
+          <div class="retro-win-btn min">_</div>
+          <div class="retro-win-btn max">□</div>
+          <div class="retro-win-btn close">✕</div>
+        </div>
+      </div>
+      <div class="retro-window-body">
+        <h3 style="font-family: var(--font-fun); font-size: 1.3rem; color: #4a154b; margin-bottom: 8px;">
+          🏥 ¿A dónde va cada peso de tu donación?
+        </h3>
+        <p style="font-size: 0.92rem; color: #553549; margin-bottom: 14px;">
+          El 100% de los aportes recibidos se destina exclusivamente a cubrir las deudas y tratamientos médicos de Princesa en el <strong>Hospital Veterinario de la Universidad de Antioquia (Sede Robledo)</strong>.
+        </p>
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem;">
+            <thead>
+              <tr style="background: #ffe4f0; color: #880e4f; text-align: left;">
+                <th style="padding: 8px 12px; border: 1px solid #f8bbd0;">Concepto Médico UdeA</th>
+                <th style="padding: 8px 12px; border: 1px solid #f8bbd0;">Soporte</th>
+                <th style="padding: 8px 12px; border: 1px solid #f8bbd0; text-align: right;">Valor (COP)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 8px 12px; border: 1px solid #eee;">Urgencia, Ecografía del Cálculo & Exámenes</td>
+                <td style="padding: 8px 12px; border: 1px solid #eee;">Factura UdeA #1305789</td>
+                <td style="padding: 8px 12px; border: 1px solid #eee; text-align: right; font-weight: bold;">$544.800 COP</td>
+              </tr>
+              <tr style="background: #fafafa;">
+                <td style="padding: 8px 12px; border: 1px solid #eee;">Hospitalización & Prequirúrgico</td>
+                <td style="padding: 8px 12px; border: 1px solid #eee;">Factura UdeA #1308752</td>
+                <td style="padding: 8px 12px; border: 1px solid #eee; text-align: right; font-weight: bold;">$234.900 COP</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 12px; border: 1px solid #eee;">Cirugía de Cistotomía (Extracción del cálculo)</td>
+                <td style="padding: 8px 12px; border: 1px solid #eee;">Factura UdeA #1313537</td>
+                <td style="padding: 8px 12px; border: 1px solid #eee; text-align: right; font-weight: bold;">$852.050 COP</td>
+              </tr>
+              <tr style="background: #fafafa;">
+                <td style="padding: 8px 12px; border: 1px solid #eee;">Medicamentos Posquirúrgicos & Insumos</td>
+                <td style="padding: 8px 12px; border: 1px solid #eee;">Fórmula y Recibos UdeA</td>
+                <td style="padding: 8px 12px; border: 1px solid #eee; text-align: right; font-weight: bold;">$256.134 COP</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 12px; border: 1px solid #eee;">Análisis Fisicoquímico del Cálculo Extraído</td>
+                <td style="padding: 8px 12px; border: 1px solid #eee;">Laboratorio UdeA</td>
+                <td style="padding: 8px 12px; border: 1px solid #eee; text-align: right; font-weight: bold;">$119.000 COP</td>
+              </tr>
+              <tr style="background: #fff0f7; font-weight: bold; color: #880e4f;">
+                <td style="padding: 10px 12px; border: 1px solid #f8bbd0;">TOTAL META MÉDICA</td>
+                <td style="padding: 10px 12px; border: 1px solid #f8bbd0;">Hospital Veterinario Robledo</td>
+                <td style="padding: 10px 12px; border: 1px solid #f8bbd0; text-align: right; font-size: 1.05rem;">$2.006.884 COP</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top: 14px; text-align: center;">
+          <a href="clinica.html" class="btn-retro btn-outline-clinic" style="display: inline-block; text-decoration: none;">
+            🔍 Ver Todas las Facturas y Ecografías Reales Ampliadas
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ========================================================================
+       BOTÓN FLOTANTE DEL CARRITO (CONTEO DINÁMICO)
+       ======================================================================== -->
+  <button class="floating-cart-btn" id="floatingCartBtn" onclick="openCartModal()" style="display: none;">
+    <span>🛒 Carrito</span>
+    <span class="cart-count-badge" id="cartBadgeCount">0</span>
+  </button>
+
+  <!-- ========================================================================
+       MODAL DE CARRITO & CHECKOUT INTELIGENTE
+       ======================================================================== -->
+  <div class="modal-overlay" id="cartModal">
+    <div class="modal-window" style="max-width: 620px;">
+
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>🛍️</span> Tu Pedido Solidario para Princesa
+        </div>
+        <button class="retro-win-btn close" onclick="closeCartModal()">✕</button>
+      </div>
+
+      <div class="modal-body">
+
+        <!-- VISTA 1: FORMULARIO Y PRODUCTOS -->
+        <div id="cartFormView">
+          <div class="cart-items-list" id="cartModalItems">
+            <!-- Dinámico vía JS -->
+          </div>
+
+          <!-- Selector de Zona de Entrega -->
+          <div style="background: #fff8fc; border: 2px dashed #ff77a9; border-radius: 10px; padding: 12px; margin: 12px 0;">
+            <label style="font-family: var(--font-fun); font-weight: bold; font-size: 0.95rem; color: #4a154b; display: block; margin-bottom: 4px;">
+              🛵 Zona de Entrega (Tarifa DiDi / Uber Flash):
+            </label>
+            <small style="color: #880e4f; display: block; margin-bottom: 8px; font-weight: 600;">
+              * Los precios de domicilio mostrados son un aproximado. Para otras zonas, cuesta lo que marque el domicilio.
+            </small>
+
+            <select id="checkoutShippingZone" class="form-select" onchange="onShippingSelectChange(this)" style="width: 100%; font-weight: 500;">
+              <!-- Puntos Gratuitos -->
+              <optgroup label="📍 Puntos de Entrega GRATUITOS ($0 COP)">
+                <option value="pickup-udea" data-price="0" selected>📍 Universidad de Antioquia (UdeA): Porterías de la Sede Principal - GRATIS</option>
+                <option value="pickup-unal" data-price="0">📍 Universidad Nacional (UNAL): Sede Volador / Minas - GRATIS</option>
+                <option value="pickup-almamater" data-price="0">📍 Hospital Alma Máter de Antioquia (Antigua IPS) - GRATIS</option>
+                <option value="pickup-upb" data-price="0">📍 Hospital UPB (Clínica Univ. Bolivariana) - GRATIS</option>
+              </optgroup>
+              <!-- Domicilios DiDi / Uber Flash (Precios aproximados) -->
+              <optgroup label="🛵 Domicilio en Moto (Precios aproximados)">
+                <option value="didi-cercana" data-price="6500">🛵 Zona 1: Centro / Chagualo / Prado / Boston / Aranjuez (~$6.500 COP aprox.)</option>
+                <option value="didi-media" data-price="9500">🛵 Zona 2: Laureles / Estadio / Belén / Floresta (~$9.500 COP aprox.)</option>
+                <option value="didi-sur-norte" data-price="13500">🛵 Zona 3: El Poblado / Envigado / Bello (~$13.500 COP aprox.)</option>
+                <option value="didi-extremos" data-price="17500">🛵 Zona 4: Sabaneta / Itagüí sur / Caldas (~$17.500 COP aprox.)</option>
+                <option value="otras-zonas" data-price="0">🛵 Otras zonas (Lo que cueste el domicilio)</option>
+              </optgroup>
+              <!-- Nacional -->
+              <optgroup label="📦 Envíos Fuera de Medellín">
+                <option value="nacional" data-price="15000">📦 Envío Nacional por Transportadora (~$15.000 COP aprox.)</option>
+              </optgroup>
+            </select>
+
+            <!-- Guía rápida de puntos gratuitos y barrios por zona a la hora de pagar -->
+            <details style="margin-top: 8px; background: #ffffff; border: 1.5px solid #f3a6cf; border-radius: 8px; padding: 8px 10px; font-size: 0.8rem; color: #4a154b;">
+              <summary style="cursor: pointer; font-weight: bold; color: #880e4f;">
+                📍 Ver detalle de puntos gratuitos y tarifas aproximadas ▾
+              </summary>
+              <div style="margin-top: 8px; display: grid; gap: 6px; color: #333;">
+                <div style="background: #e8f5e9; border: 1px solid #2e7d32; border-radius: 6px; padding: 6px 8px;">
+                  <strong style="color: #1b5e20;">📍 Puntos de Entrega GRATUITOS ($0 COP):</strong>
+                  <div style="margin-top: 3px;">• <strong>Universidad Nacional (UNAL):</strong> Sede Volador / Minas</div>
+                  <div>• <strong>Universidad de Antioquia (UdeA):</strong> Porterías de la Sede Principal</div>
+                  <div>• <strong>Hospital Alma Máter:</strong> Portería (Antigua IPS Universitaria)</div>
+                  <div>• <strong>Hospital UPB:</strong> Clínica Universitaria Bolivariana / Campus UPB</div>
+                </div>
+                <div>• <strong style="color: #d81b60;">Zona 1 (~$6.500 aprox.):</strong> Chagualo, Centro, Prado, Robledo bajo (Fac. Agrarias), Sevilla, Aranjuez, Boston.</div>
+                <div>• <strong style="color: #d81b60;">Zona 2 (~$9.500 aprox.):</strong> Laureles, Estadio, Belén, Floresta, Conquistadores, San Joaquín, Robledo medio.</div>
+                <div>• <strong style="color: #d81b60;">Zona 3 (~$13.500 aprox.):</strong> El Poblado (Manila, Provenza, Castropol), Envigado casco urbano, Bello (Cabañas, Madera).</div>
+                <div>• <strong style="color: #d81b60;">Zona 4 (~$17.500 aprox.):</strong> Sabaneta, Itagüí sur, Caldas, Copacabana, San Antonio de Prado.</div>
+                <div>• <strong style="color: #d81b60;">Otras zonas:</strong> Lo que cueste el domicilio.</div>
+                <div>• <strong style="color: #0366d6;">Envío Nacional (~$15.000 aprox.):</strong> Bogotá, Cali, Bucaramanga, etc. por Interrapidísimo / Envía con guía.</div>
+                <div style="font-style: italic; color: #666; margin-top: 2px;">* Todos los precios de domicilio mostrados son un aproximado según la tarifa de DiDi / Uber Flash al momento del envío.</div>
+              </div>
+            </details>
+          </div>
+
+          <!-- Desglose de totales -->
+          <div style="background: #fff0f7; border: 2px solid var(--pink-main); border-radius: 10px; padding: 12px; display: flex; flex-direction: column; gap: 4px;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: #555;">
+              <span>Subtotal Productos:</span>
+              <span id="cartModalSubtotal">$0 COP</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: #555;">
+              <span>Costo de Entrega:</span>
+              <span id="cartModalShippingCost" style="font-weight: bold; color: #0a5c36;">GRATIS</span>
+            </div>
+            <div style="border-top: 1px dashed #ffb6c1; margin-top: 4px; padding-top: 6px; display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: bold; color: var(--pink-deep);">
+              <span>TOTAL A PAGAR:</span>
+              <span id="cartModalTotal">$0 COP</span>
+            </div>
+          </div>
+
+          <!-- Formulario de Registro Obligatorio de Entrega (Guardado en Base de Datos) -->
+          <div class="cart-form-group" style="margin-top: 14px;">
+            <div style="background: #e8f5e9; border: 1.5px solid #2e7d32; border-radius: 8px; padding: 10px; margin-bottom: 8px; font-size: 0.82rem; color: #1b5e20;">
+              🔒 <strong>Datos protegidos y guardados:</strong> Toda tu información se registra en la base de datos de pedidos para que nunca se traspapele ni se pierda.
+            </div>
+
+            <label style="font-family: var(--font-fun); font-weight: bold; font-size: 0.88rem;">
+              Nombre Completo de quien recibe: <span style="color:red;">*</span>
+            </label>
+            <input type="text" id="checkoutName" class="form-input" placeholder="Ej: Mariana Gómez" required>
+
+            <label style="font-family: var(--font-fun); font-weight: bold; font-size: 0.88rem; margin-top: 6px;">
+              Celular / WhatsApp (indispensable para coordinar despacho): <span style="color:red;">*</span>
+            </label>
+            <input type="tel" id="checkoutPhone" class="form-input" placeholder="Ej: 310 987 6543" required>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 6px;">
+              <div>
+                <label style="font-family: var(--font-fun); font-weight: bold; font-size: 0.88rem;">
+                  Ciudad / Municipio: <span style="color:red;">*</span>
+                </label>
+                <input type="text" id="checkoutCity" class="form-input" placeholder="Ej: Medellín" required>
+              </div>
+              <div>
+                <label style="font-family: var(--font-fun); font-weight: bold; font-size: 0.88rem;">
+                  Barrio o Sector:
+                </label>
+                <input type="text" id="checkoutNeighborhood" class="form-input" placeholder="Ej: Laureles / Prado">
+              </div>
+            </div>
+
+            <label style="font-family: var(--font-fun); font-weight: bold; font-size: 0.88rem; margin-top: 6px;">
+              Dirección exacta (Calle, Carrera, Edificio/Casa, Apto): <span style="color:red;">*</span>
+            </label>
+            <input type="text" id="checkoutAddress" class="form-input" placeholder="Ej: Circular 4 # 71-25, Apto 302" required>
+
+            <label style="font-family: var(--font-fun); font-weight: bold; font-size: 0.88rem; margin-top: 6px;">
+              Indicaciones adicionales para el mensajero (opcional):
+            </label>
+            <input type="text" id="checkoutNotes" class="form-input" placeholder="Ej: Dejar en portería o timbrar">
+          </div>
+
+          <div style="margin-top: 18px; display: flex; flex-direction: column; gap: 8px;">
+            <button class="btn-retro btn-whatsapp" onclick="processOrderCheckout()" style="width: 100%;">
+              <span>💾 Confirmar y Guardar Pedido en el Sistema</span>
+            </button>
+
+            <button class="btn-retro btn-merch" onclick="closeCartModal()" style="width: 100%; font-size: 0.88rem; padding: 6px;">
+              Seguir Mirando Más Productos
+            </button>
+          </div>
+        </div>
+
+        <!-- VISTA 2: CONFIRMACIÓN Y PASO A PASO NEQUI + WHATSAPP -->
+        <div id="cartSuccessView" style="display: none;">
+          <div class="order-success-box">
+            <div style="font-size: 2.2rem;">🎉🐾</div>
+            <h3 style="font-family: var(--font-fun); color: #880e4f; font-size: 1.4rem;">
+              ¡Tu Pedido ha quedado Guardado en el Sistema!
+            </h3>
+            <div class="order-success-code" id="successOrderCode">#PRINCESA-0000</div>
+            <p style="font-size: 0.88rem; color: #555;">
+              Cliente: <strong id="successClientName"></strong><br>
+              Entrega en: <span id="successClientAddress"></span><br>
+              Método: <strong id="successShippingZone"></strong>
+            </p>
+          </div>
+
+          <div class="step-instruction-box">
+            <div class="step-item">
+              <span class="step-circle-badge">1</span>
+              <div>
+                <strong>Transfiere el total a Nequi:</strong>
+                <div style="font-size: 1.3rem; font-weight: bold; color: #d81b60; margin: 2px 0;" id="successOrderTotal">
+                  $0 COP
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px; flex-wrap: wrap;">
+                  <span style="font-family: monospace; font-size: 1.1rem; background: #fff0f7; padding: 3px 8px; border-radius: 4px; border: 1px solid #ff77a9;">
+                    300 608 7608
+                  </span>
+                  <button class="btn-copy" onclick="copyNequiNumber()" style="padding: 4px 10px; font-size: 0.8rem;">
+                    📋 Copiar Llave / Nequi
+                  </button>
+                </div>
+                <div style="margin-top: 10px; text-align: center; background: #ffffff; border: 2px dashed #ff007f; border-radius: 10px; padding: 8px; max-width: 190px;">
+                  <img src="assets/img/badges/nequi-qr.jpg" alt="QR Nequi Sara Acevedo" style="width: 100%; height: auto; border-radius: 6px; display: block;">
+                  <small style="font-size: 0.72rem; color: #4a154b; font-weight: bold;">Escanea con Nequi o Bre-B</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="step-item" style="border-top: 1px dashed #ffb6c1; padding-top: 10px;">
+              <span class="step-circle-badge">2</span>
+              <div>
+                <strong>Envía tu pantallazo de pago a Sara por WhatsApp:</strong>
+                <p style="font-size: 0.85rem; color: #555; margin-top: 2px;">
+                  Tus datos de dirección <strong>ya quedaron guardados en la base de datos de la página</strong>. Al tocar el botón, WhatsApp se abrirá con el código de tu pedido para que solo adjuntes el pantallazo de Nequi.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 8px;">
+            <button class="btn-retro btn-whatsapp" onclick="sendOrderProofToWhatsApp()" style="width: 100%;">
+              <span>📲 Abrir WhatsApp y Enviar Pantallazo</span>
+            </button>
+            <button class="btn-retro btn-outline-clinic" onclick="downloadOrderReceipt()" style="width: 100%; font-size: 0.85rem; padding: 6px;">
+              📄 Descargar Comprobante Digital (.txt)
+            </button>
+            <button class="btn-retro btn-merch" onclick="closeCartModal()" style="width: 100%; font-size: 0.85rem; padding: 6px;">
+              Cerrar Ventana
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL LIGHTBOX PARA FACTURAS & DOCUMENTOS UdeA
+       ======================================================================== -->
+  <div class="modal-overlay" id="lightboxModal">
+    <div class="modal-window lightbox-modal-window">
+
+      <div class="modal-header">
+        <div class="modal-title" id="lightboxTitle">
+          Documento Clínico UdeA
+        </div>
+        <button class="retro-win-btn close" onclick="closeDocLightbox()">✕</button>
+      </div>
+
+      <div class="modal-body" style="text-align: center;">
+        <img src="" alt="Documento Ampliado" id="lightboxImg" class="lightbox-img">
+        <p id="lightboxCaption" style="margin-top: 10px; font-size: 0.9rem; color: #555;"></p>
+        <button class="btn-retro btn-outline-clinic" onclick="closeDocLightbox()" style="margin-top: 12px;">
+          Cerrar Vista
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       FOOTER RETRO
+       ======================================================================== -->
+  <footer class="footer-retro">
+    <p>
+      🐱 <strong>Recaudación para la Cirugía de Princesa (Cálculo en la Vejiga)</strong> | Medellín, Colombia 🇨🇴
+    </p>
+    <p style="font-size: 0.8rem; color: #888; margin-top: 8px;">
+      ★ Hospital Clínico Veterinario Universidad de Antioquia • Medellín, Colombia ★
+    </p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js?v=6"></script>
+</body>
+</html>

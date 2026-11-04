@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=VT323&family=Quicksand:wght@500;600;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 1080px;
+      min-height: 1920px;
+      background: linear-gradient(135deg, #ffd6ec 0%, #fff0f7 40%, #e8d7ff 100%);
+      font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #3b1828;
+      padding: 50px 45px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Contenedor principal estilo ventana Windows 98 / Y2K Girlie */
+    .window-card {
+      background: #ffffff;
+      border: 4px solid #ff77a9;
+      border-radius: 28px;
+      box-shadow: 12px 14px 0px rgba(216, 27, 96, 0.25);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .window-header {
+      background: linear-gradient(90deg, #d81b60 0%, #ad1457 100%);
+      color: #ffffff;
+      padding: 22px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .window-title {
+      font-family: 'VT323', monospace;
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .window-dots {
+      display: flex;
+      gap: 10px;
+    }
+
+    .dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+    }
+    .dot.min { background: #ffeb3b; }
+    .dot.max { background: #00e676; }
+    .dot.close { background: #ff5252; }
+
+    .window-body {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    /* Cabecera / Banner */
+    .hero-banner {
+      text-align: center;
+      background: #fff5fa;
+      border: 3px dashed #ff77a9;
+      border-radius: 20px;
+      padding: 26px 20px;
+    }
+
+    .hero-title {
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: #880e4f;
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: #63334d;
+      font-weight: 600;
+    }
+
+    .badge-url {
+      display: inline-block;
+      margin-top: 12px;
+      background: #880e4f;
+      color: #ffffff;
+      font-size: 1.1rem;
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-family: monospace;
+      font-weight: bold;
+    }
+
+    /* Secciones de la lista */
+    .checklist-section {
+      background: #faf4f8;
+      border: 2.5px solid #ffd1eb;
+      border-radius: 18px;
+      padding: 24px 26px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      border-bottom: 2px solid #ffd1eb;
+      padding-bottom: 10px;
+    }
+
+    .section-icon {
+      font-size: 1.8rem;
+    }
+
+    .section-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #880e4f;
+    }
+
+    .items-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: #ffffff;
+      border: 2px solid #ffe3f0;
+      border-radius: 14px;
+      padding: 14px 18px;
+      box-shadow: 2px 3px 0px rgba(216, 27, 96, 0.08);
+    }
+
+    .check-box {
+      width: 28px;
+      height: 28px;
+      border: 3px solid #ff77a9;
+      border-radius: 7px;
+      background: #ffffff;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .item-content {
+      flex-grow: 1;
+    }
+
+    .item-title {
+      font-size: 1.22rem;
+      font-weight: 700;
+      color: #4a154b;
+    }
+
+    .item-desc {
+      font-size: 1.02rem;
+      color: #6d4c5d;
+      margin-top: 4px;
+      line-height: 1.35;
+    }
+
+    /* Footer motivacional */
+    .footer-note {
+      text-align: center;
+      background: linear-gradient(90deg, #ff77a9 0%, #ba68c8 100%);
+      color: #ffffff;
+      padding: 20px;
+      border-radius: 18px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      box-shadow: 4px 6px 0px rgba(0,0,0,0.1);
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="window-card">
+    <div class="window-header">
+      <div class="window-title">
+        <span>🐾</span>
+        <span>PRINCESA_QUEST_CHECKLIST.EXE</span>
+      </div>
+      <div class="window-dots">
+        <div class="dot min"></div>
+        <div class="dot max"></div>
+        <div class="dot close"></div>
+      </div>
+    </div>
+
+    <div class="window-body">
+
+      <!-- Banner Superior -->
+      <div class="hero-banner">
+        <div class="hero-title">🐾 Material Pendiente para la Web 💖</div>
+        <div class="hero-subtitle">Checklist de archivos para dejar la tiendita 100% verificada</div>
+        <div class="badge-url">mayafloyd.github.io/princesa-donaciones</div>
+      </div>
+
+      <!-- 1. Documentos Médicos UdeA -->
+      <div class="checklist-section">
+        <div class="section-header">
+          <span class="section-icon">🩺</span>
+          <span class="section-title">1. Documentos Médicos (UdeA) • Confianza</span>
+        </div>
+        <div class="items-list">
+          <div class="check-item">
+            <div class="check-box"></div>
+            <div class="item-content">
+              <div class="item-title">Ecografía del Cálculo y Úlcera (PDF o Foto)</div>
+              <div class="item-desc">Muestra la ecografía oficial donde se identificó el cálculo vesical.</div>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="check-box"></div>
+            <div class="item-content">
+              <div class="item-title">Historia Clínica / Orden de Cirugía UdeA</div>
+              <div class="item-desc">Formato membretado de la Clínica Veterinaria de la UdeA.</div>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="check-box"></div>
+            <div class="item-content">
+              <div class="item-title">Cotización / Presupuesto de Cirugía ($2.900.000)</div>
+              <div class="item-desc">Comprobante del costo de quirófano, anestesia inhalatoria y hospitalización.</div>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="check-box"></div>
+            <div class="item-content">
+              <div class="item-title">Fecha programada de la cirugía</div>
+              <div class="item-desc">Para actualizar el contador de días y la urgencia médica.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Merch y Arte -->
+      <div class="checklist-section">
+        <div class="section-header">
+          <span class="section-icon">🎨</span>
+          <span class="section-title">2. Merch & Ilustraciones (100% Arte Humano)</span>
+        </div>
+        <div class="items-list">
+          <div class="check-item">
+            <div class="check-box"></div>
+            <div class="item-content">
+              <div class="item-title">Diseño de Stickers Holográficos</div>
+              <div class="item-desc">Foto o imagen final del pack de stickers de Princesa.</div>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="check-box"></div>
+            <div class="item-content">
+              <div class="item-title">Fotos o Mockups de Camisetas + Tallas</div>
+              <div class="item-desc">Foto del estampado y confirmación de tallas disponibles (S, M, L, XL).</div>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="check-box"></div>
+            <div class="item-content">
+              <div class="item-title">Fotos o Mockups de Mugs & Tote Bags</div>
+              <div class="item-desc">Diseño real aplicado a las tazas y bolsas de tela.</div>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="check-box"></div>
+            <div class="item-content">
+              <div class="item-title">Vista Previa Calendario 2027</div>
+              <div class="item-desc">Portada y 1 mes de muestra del calendario de memes gatunos.</div>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="check-box"></div>
+            <div class="item-content">
+              <div class="item-title">Nombre o Instagram de tu amiga artista</div>
+              <div class="item-desc">Para darle el crédito y enlazar su portafolio en la web.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Postrecitos & Pagos -->
+      <div class="checklist-section">
+        <div class="section-header">
+          <span class="section-icon">🧁</span>
+          <span class="section-title">3. Postrecitos & Datos de Pago</span>
+        </div>
+        <div class="items-list">
+          <div class="check-item">
+            <div class="check-box"></div>
+            <div class="item-content">
+              <div class="item-title">Fotos reales de los postres caseros</div>
+              <div class="item-desc">Brownies, galletitas o cupcakes empacados y listos para antojar.</div>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="check-box"></div>
+            <div class="item-content">
+              <div class="item-title">Días de horneado y entregas</div>
+              <div class="item-desc">Ej: "Horneados los jueves, entregas viernes y sábados".</div>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="check-box"></div>
+            <div class="item-content">
+              <div class="item-title">Código QR oficial de Nequi (Descargado de tu App)</div>
+              <div class="item-desc">Para escanear directamente desde la pantalla de cualquier computador.</div>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="check-box"></div>
+            <div class="item-content">
+              <div class="item-title">Foto de Princesa en la clínica o con su carnet</div>
+              <div class="item-desc">Para la sección clínica y generar mayor empatía.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-note">
+        ✨ No hay prisa: tu web ya está al aire. ¡A medida que tengas cada archivo, me lo pasas y lo monto! 🐾
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

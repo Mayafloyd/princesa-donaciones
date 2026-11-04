@@ -425,12 +425,12 @@ const cart = {
   },
 
   save() {
-    sessionStorage.setItem('princesa_cart', JSON.stringify(this.items));
+    localStorage.setItem('princesa_cart', JSON.stringify(this.items));
   },
 
   load() {
     try {
-      const data = sessionStorage.getItem('princesa_cart');
+      const data = localStorage.getItem('princesa_cart') || sessionStorage.getItem('princesa_cart');
       if (data) this.items = JSON.parse(data);
     } catch (e) {
       this.items = [];
@@ -1157,6 +1157,14 @@ document.addEventListener('DOMContentLoaded', () => {
   initCatCuriosityTooltips();
   initMobileUX();
   cart.load();
+
+  if (window.location.hash === '#galeria') {
+    setTimeout(() => {
+      openMysteryGallery();
+      const gal = document.getElementById('galeria');
+      if (gal) gal.scrollIntoView({ behavior: 'smooth' });
+    }, 150);
+  }
 
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {

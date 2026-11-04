@@ -12,7 +12,7 @@ Basado en las tarifas habituales de moto en Medellín (banderazo de $4.500 - $5.
 
 | Zona de Entrega | Barrios / Sectores | Distancia | Tarifa DiDi / Uber Flash |
 | :--- | :--- | :--- | :--- |
-| **Puntos Gratuitos ($0)** | Sector Chagualo / SIU / Universidad Nacional (UNAL) / UdeA / Hospital Alma Máter / Hospital UPB / Metro Universidad | 0 a 2 km | **GRATIS ($0 COP)** |
+| **Puntos Gratuitos ($0)** | Universidad de Antioquia (UdeA) / Universidad Nacional (UNAL) / Hospital Alma Máter / Hospital UPB | Puntos fijos | **GRATIS ($0 COP)** |
 | **Zona 1 (Cercana)** | Centro, Chagualo, Prado, Sevilla, Aranjuez, Robledo bajo (Fac. Agrarias), Boston | 2 a 4 km | **$6.500 COP** |
 | **Zona 2 (Media)** | Laureles, Estadio, Belén, Floresta, Conquistadores, San Joaquín, Robledo medio | 5 a 8 km | **$9.500 COP** |
 | **Zona 3 (Sur/Norte)** | El Poblado (Manila, Provenza, Castropol), Envigado casco urbano, Bello (Cabañas) | 8 a 13 km | **$13.500 COP** |
