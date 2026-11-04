@@ -3130,39 +3130,43 @@ body {
     margin-top: 6px;
   }
 
-  /* Mini muestras de productos en móvil */
+  /* Mini muestras de productos en móvil - alejadas de la foto principal */
   .polaroid-wrapper {
-    margin: 8px auto;
+    margin: 26px auto 24px auto;
+  }
+
+  .hero-cat-img {
+    max-width: 146px;
   }
 
   .hero-mini-sample img {
-    width: 56px;
-    height: 56px;
+    width: 52px;
+    height: 52px;
   }
 
-  /* Asimétricas en móvil */
+  /* Asimétricas y alejadas del centro en móvil */
   .sample-tl {
-    top: -4px;
-    left: -22px;
-    transform: rotate(-11deg);
+    top: -16px;
+    left: -38px;
+    transform: rotate(-13deg);
   }
 
   .sample-tr {
-    top: -18px;
-    right: -10px;
-    transform: rotate(9deg);
+    top: -26px;
+    right: -26px;
+    transform: rotate(11deg);
   }
 
   .sample-bl {
-    bottom: -10px;
-    left: -14px;
-    transform: rotate(6deg);
+    bottom: -18px;
+    left: -30px;
+    transform: rotate(8deg);
   }
 
   .sample-br {
-    bottom: 10px;
-    right: -24px;
-    transform: rotate(-12deg);
+    bottom: -6px;
+    right: -36px;
+    transform: rotate(-14deg);
   }
 
   .hero-info {
