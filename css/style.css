@@ -3162,23 +3162,23 @@ body {
   }
 
   .sample-tr {
-    top: -10px;
-    right: -16px;
+    top: -18px;
+    right: -18px;
   }
 
   .sample-br {
-    bottom: 2px;
-    right: -14px;
+    bottom: -8px;
+    right: -16px;
   }
 
   .sample-bl {
-    bottom: 2px;
-    left: -14px;
+    bottom: -8px;
+    left: -16px;
   }
 
   .sample-tl {
-    top: -10px;
-    left: -16px;
+    top: -18px;
+    left: -18px;
   }
 
   .hero-info {
