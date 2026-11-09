@@ -160,19 +160,20 @@ html_doc = f'''<!DOCTYPE html>
     text-align: center;
     flex-shrink: 0;
     background: #fff;
-    border: 1.5px solid #ff77a9;
-    padding: 3px 5px;
-    border-radius: 8px;
+    border: 2px solid #ff77a9;
+    padding: 5px 7px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
   }}
   .header-qr-box img {{
-    width: 46px;
-    height: 46px;
+    width: 76px;
+    height: 76px;
   }}
   .header-qr-lbl {{
-    font-size: 6.5px;
+    font-size: 8px;
     font-weight: bold;
     color: #700040;
-    margin-top: 1px;
+    margin-top: 2px;
   }}
 
   /* Mini Header for subsequent pages */
@@ -352,29 +353,31 @@ html_doc = f'''<!DOCTYPE html>
   }}
   .order-qr-col {{
     display: flex;
-    gap: 10px;
+    gap: 16px;
     flex-shrink: 0;
   }}
   .qr-badge-card {{
     background: #fff;
-    border: 1.5px solid #d3adf7;
-    border-radius: 6px;
-    padding: 5px;
+    border: 2px solid #b37feb;
+    border-radius: 14px;
+    padding: 10px 12px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80px;
+    width: 155px;
+    box-shadow: 0 4px 14px rgba(83, 29, 171, 0.12);
   }}
   .qr-badge-card img {{
-    width: 60px;
-    height: 60px;
+    width: 135px;
+    height: 135px;
   }}
   .qr-badge-txt {{
-    font-size: 7px;
-    font-weight: bold;
+    font-size: 9.5px;
+    font-weight: 800;
     color: #531dab;
-    margin-top: 2px;
+    margin-top: 6px;
+    line-height: 1.25;
   }}
 </style>
 </head>
@@ -504,7 +507,7 @@ html_doc = f'''<!DOCTYPE html>
     <span class="section-tag">9, 12 Y 15 PORCIONES • IDEAL REUNIONES</span>
   </div>
 
-  {render_cards(familiares, cols=2, img_h=130)}
+  {render_cards(familiares, cols=2, img_h=118)}
 
   <div class="order-guide">
     <div class="order-steps">
