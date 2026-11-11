@@ -14,7 +14,7 @@ const CONFIG = {
   nequiNumber: "300 608 7608",
   nequiNumberClean: "3006087608",
   goalAmount: 2006884,
-  currentCollected: 20000,
+  currentCollected: 120000,
 
   // Sector de origen para despachos DiDi / Uber Flash:
   originAddress: "Sector Chagualo / UdeA, Medellín",
