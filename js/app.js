@@ -789,25 +789,102 @@ function closeDocLightbox() {
 }
 
 // ==========================================
-// MURO DE APOYO / GUESTBOOK
+// MURO DE APOYO / GUESTBOOK COMUNITARIO
 // ==========================================
-const initialGuestbookMessages = [];
+const initialGuestbookMessages = [
+  {
+    name: "Caro & Misi",
+    sticker: "🐱",
+    msg: "¡Princesa hermosa! Toda la manada te manda mucho amor y ronroneos. ¡Esa cirugía va a salir perfecta! 💖",
+    date: "10 nov 2026"
+  },
+  {
+    name: "Valentina R.",
+    sticker: "🩺",
+    msg: "Mucho ánimo Sara, eres una excelente mamá gatuna. ¡Pronto Princesa estará como nueva y sin ningún dolor! 🐾",
+    date: "11 nov 2026"
+  },
+  {
+    name: "Juan David & Familia",
+    sticker: "🧁",
+    msg: "Apoyando con postrecitos deliciosos. ¡Toda la mejor energía del mundo para su pronta recuperación! ⭐",
+    date: "11 nov 2026"
+  }
+];
+
+let guestbookMessages = [];
+
+async function fetchCommunityMessages() {
+  if (!CONFIG.cloudWebhookUrl || CONFIG.cloudWebhookUrl.trim() === '') {
+    return;
+  }
+
+  const statusEl = document.getElementById('guestbookStatus');
+  if (statusEl) {
+    statusEl.innerHTML = '<span>🔄 Conectando con el muro comunitario...</span>';
+  }
+
+  try {
+    const response = await fetch(CONFIG.cloudWebhookUrl, {
+      method: 'GET',
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      if (data && data.status === 'success' && Array.isArray(data.messages)) {
+        if (data.messages.length > 0) {
+          guestbookMessages = data.messages;
+          localStorage.setItem('princesa_guestbook_cloud', JSON.stringify(data.messages));
+          renderGuestbook(guestbookMessages);
+          if (statusEl) {
+            statusEl.innerHTML = `<span>● Muro comunitario en vivo • ${guestbookMessages.length} mensajitos 💌</span>`;
+          }
+          return;
+        }
+      }
+    }
+  } catch (err) {
+    console.warn('Nota: Usando mensajes locales/cacheados para el muro:', err);
+  }
+
+  if (statusEl) {
+    statusEl.innerHTML = `<span>● Muro comunitario en vivo • ${guestbookMessages.length} mensajitos 💌</span>`;
+  }
+}
 
 function initGuestbook() {
-  // Limpiamos los mensajes de prueba anteriores
-  localStorage.removeItem('princesa_guestbook');
+  // 1. Cargar caché previo o mensajes de inicio
+  const cached = localStorage.getItem('princesa_guestbook_cloud') || localStorage.getItem('princesa_guestbook_v2');
+  if (cached) {
+    try {
+      const parsed = JSON.parse(cached);
+      guestbookMessages = (Array.isArray(parsed) && parsed.length > 0) ? parsed : initialGuestbookMessages;
+    } catch (e) {
+      guestbookMessages = initialGuestbookMessages;
+    }
+  } else {
+    guestbookMessages = initialGuestbookMessages;
+  }
 
-  let saved = localStorage.getItem('princesa_guestbook_v2');
-  let messages = saved ? JSON.parse(saved) : initialGuestbookMessages;
-  renderGuestbook(messages);
+  renderGuestbook(guestbookMessages);
 
+  // 2. Sincronizar en vivo con Google Sheets en la nube
+  fetchCommunityMessages();
+
+  // 3. Manejo de nuevos mensajes
   const form = document.getElementById('guestbookForm');
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const name = document.getElementById('gbName').value.trim();
-      const sticker = document.getElementById('gbSticker').value;
-      const msg = document.getElementById('gbMsg').value.trim();
+      const nameInput = document.getElementById('gbName');
+      const stickerInput = document.getElementById('gbSticker');
+      const msgInput = document.getElementById('gbMsg');
+      const submitBtn = form.querySelector('button[type="submit"]');
+
+      const name = nameInput.value.trim();
+      const sticker = stickerInput.value;
+      const msg = msgInput.value.trim();
 
       if (!name || !msg) {
         showToast('Por favor escribe tu nombre y mensaje 💕');
@@ -820,13 +897,51 @@ function initGuestbook() {
         year: 'numeric'
       });
 
-      messages.unshift({ name, sticker, msg, date: fechaActual });
-      localStorage.setItem('princesa_guestbook_v2', JSON.stringify(messages));
-      renderGuestbook(messages);
+      const newEntry = { name, sticker, msg, date: fechaActual };
 
-      form.reset();
+      // Actualización optimista inmediata en pantalla
+      guestbookMessages.unshift(newEntry);
+      localStorage.setItem('princesa_guestbook_cloud', JSON.stringify(guestbookMessages));
+      renderGuestbook(guestbookMessages);
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>⏳ Publicando en el muro...</span>';
+      }
+
       retroSound.playChime();
-      showToast('💌 ¡Mensaje publicado en el muro de Princesa! Gracias');
+      showToast('💌 ¡Mensaje publicado para toda la comunidad! Muchas gracias 💕');
+      form.reset();
+
+      // Envío en segundo plano al webhook comunitario (Google Sheets)
+      if (CONFIG.cloudWebhookUrl && CONFIG.cloudWebhookUrl.trim() !== '') {
+        try {
+          await fetch(CONFIG.cloudWebhookUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              type: 'guestbook',
+              name: name,
+              sticker: sticker,
+              msg: msg,
+              date: fechaActual
+            })
+          });
+        } catch (postErr) {
+          console.warn('Error al enviar mensaje a Google Sheets:', postErr);
+        }
+      }
+
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>💌 Firmar en el Muro</span>';
+      }
+
+      const statusEl = document.getElementById('guestbookStatus');
+      if (statusEl) {
+        statusEl.innerHTML = `<span>● Muro comunitario en vivo • ${guestbookMessages.length} mensajitos 💌</span>`;
+      }
     });
   }
 }

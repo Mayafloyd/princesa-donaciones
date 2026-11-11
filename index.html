@@ -369,9 +369,19 @@
           <h2 style="font-family: var(--font-fun); font-size: 1.6rem; color: #4a154b; margin-bottom: 8px;">
             ✍️ Déjale un mensajito de aliento a Princesa
           </h2>
-          <p style="font-size: 0.9rem; color: #634358; margin-bottom: 16px;">
-            Tu mensaje aparecerá en vivo en este muro retro de apoyo. ¡A Princesa le leemos todos los cariñitos!
+          <p style="font-size: 0.9rem; color: #634358; margin-bottom: 12px;">
+            Tu mensaje aparecerá en vivo en este muro comunitario de apoyo para que todos puedan leerlo. ¡A Princesa le leemos todos los cariñitos!
           </p>
+
+          <!-- Barra de sincronización comunitaria en vivo -->
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; background: #fff5fa; padding: 6px 12px; border-radius: 8px; border: 1px dashed #f8bbd0;">
+            <div id="guestbookStatus" style="font-size: 0.8rem; font-weight: bold; color: #d81b60; font-family: var(--font-pixel);">
+              ● Muro comunitario en vivo 💌
+            </div>
+            <button type="button" class="btn-sound-toggle" onclick="fetchCommunityMessages()" title="Refrescar mensajes comunitarios" style="font-size: 0.76rem; padding: 3px 8px; cursor: pointer;">
+              🔄 Actualizar mensajes
+            </button>
+          </div>
 
           <form id="guestbookForm" class="guestbook-form">
             <div class="form-group">

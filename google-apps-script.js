@@ -3,20 +3,92 @@
  * 🐾 Recaudación Cirugía Princesa
  * 
  * Funcionalidades:
- * 1. Guarda los pedidos automáticamente en tu Google Sheet privado.
- * 2. ENVÍA UN CORREO ELECTRÓNICO AUTOMÁTICO A SARA con el resumen del pedido,
- *    el total a cobrar, y un botón para abrir el WhatsApp del comprador con 1 clic.
- * 3. Formato visual rosado retro con SELECTOR DESPLEGABLE de estado (Pendiente, Pagado, Despachado).
+ * 1. Muro de Apoyo Comunitario en Vivo:
+ *    - doGet(): Consulta los mensajes comunitarios de la pestaña "Muro de Apoyo"
+ *      y los envía a la página web en tiempo real en formato JSON.
+ *    - doPost({ type: "guestbook" }): Recibe y guarda los mensajes de los visitantes
+ *      directamente en la hoja "Muro de Apoyo".
+ * 2. Gestión de Pedidos de la Tienda de Postres:
+ *    - Guarda los pedidos automáticamente en la pestaña "Pedidos Princesa".
+ *    - ENVÍA UN CORREO ELECTRÓNICO AUTOMÁTICO A SARA con el resumen del pedido,
+ *      el total a cobrar, y un botón para abrir el WhatsApp del comprador con 1 clic.
+ *    - Formato visual rosado retro con SELECTOR DESPLEGABLE de estado (Pendiente, Pagado, Despachado).
  */
 
-// ==========================================
-// 1. RECEPCIÓN DE PEDIDOS DESDE LA WEB
-// ==========================================
+// =========================================================================
+// 1. CONSULTA DE MENSAJES DEL MURO COMUNITARIO (doGet)
+// =========================================================================
+function doGet(e) {
+  try {
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = ss.getSheetByName("Muro de Apoyo") || ss.getSheetByName("Muro");
+    var messages = [];
+
+    if (sheet && sheet.getLastRow() > 1) {
+      var numRows = sheet.getLastRow() - 1;
+      var rows = sheet.getRange(2, 1, numRows, 4).getValues();
+
+      // Recorremos de la más reciente a la más antigua para mostrar los últimos mensajes arriba
+      for (var i = rows.length - 1; i >= 0; i--) {
+        var r = rows[i];
+        var fechaVal = r[0];
+        var fechaStr = fechaVal instanceof Date
+          ? Utilities.formatDate(fechaVal, "America/Bogota", "dd MMM yyyy")
+          : String(fechaVal || "");
+        var nombreStr = String(r[1] || "").trim();
+        var stickerStr = String(r[2] || "🐾").trim();
+        var msgStr = String(r[3] || "").trim();
+
+        if (nombreStr && msgStr) {
+          messages.push({
+            date: fechaStr,
+            name: nombreStr,
+            sticker: stickerStr,
+            msg: msgStr
+          });
+        }
+      }
+    }
+
+    var output = JSON.stringify({ status: "success", messages: messages });
+    
+    // Soporte JSONP por si el navegador lo requiere
+    var callback = e && e.parameter && e.parameter.callback;
+    if (callback) {
+      return ContentService.createTextOutput(callback + "(" + output + ")")
+        .setMimeType(ContentService.MimeType.JAVASCRIPT);
+    }
+
+    return ContentService.createTextOutput(output)
+      .setMimeType(ContentService.MimeType.JSON);
+
+  } catch (err) {
+    var errOutput = JSON.stringify({ 
+      status: "error", 
+      error: err.toString(), 
+      messages: [] 
+    });
+    return ContentService.createTextOutput(errOutput).setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+// =========================================================================
+// 2. RECEPCIÓN DE DATOS DESDE LA WEB (doPost)
+// =========================================================================
 function doPost(e) {
   try {
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    var data = JSON.parse(e.postData.contents);
-    
+    var contents = e.postData && e.postData.contents ? e.postData.contents : "{}";
+    var data = JSON.parse(contents);
+
+    // CASO A: Mensaje para el Muro de Apoyo Comunitario
+    if (data.type === "guestbook") {
+      return guardarMensajeMuro(data);
+    }
+
+    // CASO B: Pedido de la Tienda de Postres / Merch
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = ss.getSheetByName("Pedidos Princesa") || ss.getSheetByName("Pedidos") || ss.getSheets()[0];
+
     // Formatear los productos en una lista legible para la hoja
     var productosTexto = (data.items || []).map(function(item) {
       var variante = item.variant ? " (" + item.variant + ")" : "";
@@ -57,9 +129,50 @@ function doPost(e) {
   }
 }
 
-// ==========================================
-// 2. FUNCIÓN DE ENVÍO DE EMAIL A SARA
-// ==========================================
+// =========================================================================
+// 3. GUARDAR MENSAJE EN EL MURO DE APOYO
+// =========================================================================
+function guardarMensajeMuro(data) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getSheetByName("Muro de Apoyo");
+  
+  // Si no existe la pestaña, la crea con sus encabezados automáticamente
+  if (!sheet) {
+    sheet = ss.insertSheet("Muro de Apoyo");
+    var headers = ["FECHA", "NOMBRE / APODO", "STICKER", "MENSAJE DE APOYO"];
+    var headerRange = sheet.getRange(1, 1, 1, headers.length);
+    headerRange.setValues([headers]);
+    headerRange.setFontWeight("bold");
+    headerRange.setFontSize(10);
+    headerRange.setBackground("#ffd6ec");
+    headerRange.setFontColor("#590d34");
+    headerRange.setHorizontalAlignment("center");
+    headerRange.setVerticalAlignment("middle");
+    sheet.setRowHeight(1, 35);
+    sheet.setFrozenRows(1);
+    sheet.setColumnWidth(1, 140);
+    sheet.setColumnWidth(2, 180);
+    sheet.setColumnWidth(3, 90);
+    sheet.setColumnWidth(4, 500);
+    sheet.getRange("D2:D").setWrap(true);
+  }
+
+  var fecha = data.date || Utilities.formatDate(new Date(), "America/Bogota", "dd MMM yyyy");
+  var nombre = String(data.name || "Amigo/a de Princesa").trim().substring(0, 80);
+  var sticker = String(data.sticker || "🐾").trim().substring(0, 10);
+  var mensaje = String(data.msg || "").trim().substring(0, 600);
+
+  if (mensaje) {
+    sheet.appendRow([fecha, nombre, sticker, mensaje]);
+  }
+
+  return ContentService.createTextOutput(JSON.stringify({ status: "success" }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+// =========================================================================
+// 4. FUNCIÓN DE ENVÍO DE EMAIL A SARA
+// =========================================================================
 function enviarNotificacionEmail(data) {
   var emailDestino = Session.getEffectiveUser().getEmail() || "saacevedom@unal.edu.co";
   var sheetUrl = SpreadsheetApp.getActiveSpreadsheet().getUrl();
@@ -111,17 +224,20 @@ function enviarNotificacionEmail(data) {
 }
 
 // =========================================================================
-// 3. ORGANIZADOR AUTOMÁTICO (Encabezados + Selector Desplegable + Formato)
+// 5. ORGANIZADOR AUTOMÁTICO (Encabezados + Selector Desplegable + Formato)
 // =========================================================================
 function setupSheet() {
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  
-  // Si en la fila 1 ya cayó algún pedido sin títulos, insertamos una fila arriba
-  if (sheet.getRange(1, 1).getValue().toString().indexOf("#") !== -1) {
-    sheet.insertRowBefore(1);
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+
+  // 1. Configurar pestaña de Pedidos
+  var sheetPedidos = ss.getSheetByName("Pedidos Princesa") || ss.getActiveSheet();
+  sheetPedidos.setName("Pedidos Princesa");
+
+  if (sheetPedidos.getRange(1, 1).getValue().toString().indexOf("#") !== -1) {
+    sheetPedidos.insertRowBefore(1);
   }
-  
-  var headers = [
+
+  var headersPedidos = [
     "CÓDIGO PEDIDO", 
     "FECHA Y HORA", 
     "NOMBRE CLIENTE", 
@@ -138,33 +254,24 @@ function setupSheet() {
     "ESTADO PEDIDO (Clic aquí)"
   ];
 
-  // Insertar títulos en la Fila 1
-  var headerRange = sheet.getRange(1, 1, 1, headers.length);
-  headerRange.setValues([headers]);
+  var headerRange = sheetPedidos.getRange(1, 1, 1, headersPedidos.length);
+  headerRange.setValues([headersPedidos]);
   headerRange.setFontWeight("bold");
   headerRange.setFontSize(10);
-  headerRange.setBackground("#ffd6ec"); // Rosita Y2K
-  headerRange.setFontColor("#590d34"); // Vino tinto contraste
+  headerRange.setBackground("#ffd6ec");
+  headerRange.setFontColor("#590d34");
   headerRange.setHorizontalAlignment("center");
   headerRange.setVerticalAlignment("middle");
-  sheet.setRowHeight(1, 38);
-  sheet.setFrozenRows(1); // Fila fija al hacer scroll
+  sheetPedidos.setRowHeight(1, 38);
+  sheetPedidos.setFrozenRows(1);
 
-  // Formato de moneda colombiana en Envíos, Subtotal y Total (Columnas I, K, L)
-  sheet.getRange("I2:I").setNumberFormat("$#,##0");
-  sheet.getRange("K2:L").setNumberFormat("$#,##0");
+  sheetPedidos.getRange("I2:I").setNumberFormat("$#,##0");
+  sheetPedidos.getRange("K2:L").setNumberFormat("$#,##0");
+  sheetPedidos.getRange("G2:G").setWrap(true);
+  sheetPedidos.getRange("J2:J").setWrap(true);
+  sheetPedidos.getRange("A2:B").setHorizontalAlignment("center");
+  sheetPedidos.getRange("D2:D").setHorizontalAlignment("center");
 
-  // Ajuste automático de saltos de línea para que los productos no se corten
-  sheet.getRange("G2:G").setWrap(true);
-  sheet.getRange("J2:J").setWrap(true);
-
-  // Centrado estético en códigos y fechas
-  sheet.getRange("A2:B").setHorizontalAlignment("center");
-  sheet.getRange("D2:D").setHorizontalAlignment("center");
-
-  // ========================================================
-  // SELECTOR DESPLEGABLE (DROPDOWN) PARA ESTADO DEL PEDIDO
-  // ========================================================
   var estados = [
     "🟡 Pendiente Comprobante Nequi",
     "🟢 Pago Confirmado",
@@ -172,28 +279,46 @@ function setupSheet() {
     "✅ Entregado",
     "❌ Cancelado"
   ];
-  
   var rule = SpreadsheetApp.newDataValidation()
     .requireValueInList(estados, true)
     .setAllowInvalid(false)
     .build();
-    
-  // Aplica el menú desplegable a toda la columna N (desde la fila 2 en adelante)
-  sheet.getRange("N2:N1000").setDataValidation(rule);
+  sheetPedidos.getRange("N2:N1000").setDataValidation(rule);
 
-  // Anchos perfectos de columnas para que todo se lea sin tener que estirar a mano
-  sheet.setColumnWidth(1, 150); // Código
-  sheet.setColumnWidth(2, 160); // Fecha
-  sheet.setColumnWidth(3, 190); // Nombre
-  sheet.setColumnWidth(4, 130); // Teléfono
-  sheet.setColumnWidth(5, 110); // Ciudad
-  sheet.setColumnWidth(6, 140); // Barrio
-  sheet.setColumnWidth(7, 230); // Dirección
-  sheet.setColumnWidth(8, 200); // Zona
-  sheet.setColumnWidth(9, 110); // Costo envío
-  sheet.setColumnWidth(10, 280); // Productos
-  sheet.setColumnWidth(11, 110); // Subtotal
-  sheet.setColumnWidth(12, 130); // Total
-  sheet.setColumnWidth(13, 180); // Notas
-  sheet.setColumnWidth(14, 230); // Selector Dropdown
+  sheetPedidos.setColumnWidth(1, 150);
+  sheetPedidos.setColumnWidth(2, 160);
+  sheetPedidos.setColumnWidth(3, 190);
+  sheetPedidos.setColumnWidth(4, 130);
+  sheetPedidos.setColumnWidth(5, 110);
+  sheetPedidos.setColumnWidth(6, 140);
+  sheetPedidos.setColumnWidth(7, 230);
+  sheetPedidos.setColumnWidth(8, 200);
+  sheetPedidos.setColumnWidth(9, 110);
+  sheetPedidos.setColumnWidth(10, 280);
+  sheetPedidos.setColumnWidth(11, 110);
+  sheetPedidos.setColumnWidth(12, 130);
+  sheetPedidos.setColumnWidth(13, 180);
+  sheetPedidos.setColumnWidth(14, 230);
+
+  // 2. Configurar pestaña del Muro de Apoyo Comunitario
+  var sheetMuro = ss.getSheetByName("Muro de Apoyo");
+  if (!sheetMuro) {
+    sheetMuro = ss.insertSheet("Muro de Apoyo");
+  }
+  var headersMuro = ["FECHA", "NOMBRE / APODO", "STICKER", "MENSAJE DE APOYO"];
+  var rangeMuro = sheetMuro.getRange(1, 1, 1, headersMuro.length);
+  rangeMuro.setValues([headersMuro]);
+  rangeMuro.setFontWeight("bold");
+  rangeMuro.setFontSize(10);
+  rangeMuro.setBackground("#ffd6ec");
+  rangeMuro.setFontColor("#590d34");
+  rangeMuro.setHorizontalAlignment("center");
+  rangeMuro.setVerticalAlignment("middle");
+  sheetMuro.setRowHeight(1, 35);
+  sheetMuro.setFrozenRows(1);
+  sheetMuro.setColumnWidth(1, 140);
+  sheetMuro.setColumnWidth(2, 180);
+  sheetMuro.setColumnWidth(3, 90);
+  sheetMuro.setColumnWidth(4, 500);
+  sheetMuro.getRange("D2:D").setWrap(true);
 }

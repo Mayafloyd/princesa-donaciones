@@ -33,21 +33,19 @@ Al alojar la web públicamente en GitHub Pages, **la privacidad de los clientes 
 
 ---
 
-## ☁️ Conexión con Google Sheets (Toma 2 minutos)
+## ☁️ Conexión con Google Sheets (Pedidos y Muro Comunitario en Vivo)
 
-1. Abre [Google Sheets](https://sheets.google.com) y crea una nueva hoja vacía (ej: *"Pedidos Cirugía Princesa"*).
+1. Abre tu hoja de cálculo de Google Sheets donde recibes los pedidos.
 2. En el menú superior ve a: **Extensiones -> Apps Script**.
-3. Pega el contenido completo del archivo `google-apps-script.js`.
-4. (Opcional): Selecciona `setupSheetHeaders` y haz clic en **Ejecutar** (▶️) para crear los encabezados rosados retro automáticamente.
-5. Haz clic en **Implementar (Deploy) -> Nueva implementación**:
-   - Tipo: **Aplicación web**.
-   - Ejecutar como: **Yo** (tu cuenta de Google).
-   - Quién tiene acceso: **Cualquier usuario (Anyone)** *(¡Imprescindible para que la web pueda registrar pedidos!)*.
-6. Copia la URL terminada en `/exec` y pégala en `js/app.js`:
-   ```javascript
-   cloudWebhookUrl: "https://script.google.com/macros/s/AKfycb.../exec"
-   ```
-¡Listo! Cualquier pedido que hagan en la web aparecerá como una nueva fila en tu Google Sheet al segundo.
+3. Pega el contenido completo actualizado de [`google-apps-script.js`](file:///home/sara/Documents/Proyectos/princesa-page/google-apps-script.js).
+4. (Opcional): Selecciona `setupSheet` y haz clic en **Ejecutar** (▶️) para configurar automáticamente las dos pestañas con estilo retro rosado:
+   - `Pedidos Princesa`: Todos los pedidos con selector de estado y desglose.
+   - `Muro de Apoyo`: Los mensajes comunitarios que los visitantes dejan en vivo.
+5. Haz clic en **Implementar (Deploy) -> Administrar implementaciones**:
+   - Haz clic en el ícono del **Lápiz (Editar)**.
+   - En *Versión*, elige **Nueva versión**.
+   - Haz clic en **Implementar**.
+6. ¡Listo! Cualquier mensaje que alguien firme en la página web aparecerá al instante en tu pestaña *Muro de Apoyo* y se sincronizará automáticamente para todos los visitantes del mundo. Además, si deseas moderar o eliminar algún mensaje, solo tienes que borrar la fila correspondiente en Google Sheets.
 
 ---
 
