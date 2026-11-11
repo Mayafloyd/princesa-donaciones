@@ -23,7 +23,7 @@ const CONFIG = {
   // Al crear tu Google Apps Script, pega aquí la URL generada:
   // Ej: "https://script.google.com/macros/s/AKfycbx.../exec"
   // ¡Todos los pedidos llegarán a tu Google Sheet privado al instante!
-  cloudWebhookUrl: "https://script.google.com/macros/s/AKfycby-sIZvaH8eG0VlnA5zmU-_sXPF1l0CIs_g7kDG9nEmc7WpFU0PAFP8XkxcCl8QasI/exec"
+  cloudWebhookUrl: "https://script.google.com/macros/s/AKfycbzKBbcuBwc3rmBd282iaSGcbPAPZgvz6uYQ2YjV9XkwedN--sWQ-PX3t2RacuYuvRY/exec"
 };
 
 // ==========================================
